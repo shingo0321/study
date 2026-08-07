@@ -1,3 +1,11 @@
+---
+layout: default
+title: Architect – Professional
+nav_order: 6
+has_children: true
+permalink: /claude/architect-professional/
+---
+
 # Claude Certified Architect – Professional 勉強用プロジェクト
 
 Anthropic公式の技術認定「Claude Certified Architect – Professional」(CCAR-P)の学習用フォルダ。

@@ -1,3 +1,10 @@
+---
+layout: default
+title: "03. Claude Code"
+parent: "Developer – Foundations"
+nav_order: 3
+---
+
 # Claude Code（3.1%）
 
 Anthropic公式のターミナル/CLIベースのコーディングエージェント「Claude Code」の使い方・仕組みを扱うドメイン。出題比重は小さいが、CLI操作・フック・スラッシュコマンド・MCP連携・設定/パーミッション・サブエージェントなど、基本機能を一通り押さえておく必要がある。

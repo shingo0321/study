@@ -1,3 +1,10 @@
+---
+layout: default
+title: "02. Applications and Integration"
+parent: "Developer – Foundations"
+nav_order: 2
+---
+
 # Applications and Integration（33.1%）
 
 試験範囲の中で最も比重が大きいドメイン。Claude API（Messages API）を使ったアプリケーション構築の基礎知識全般——リクエスト/レスポンスの基本構造、ストリーミング、ツールユース（function calling）、プロンプトキャッシュ、エラーハンドリング、SDK利用、構造化出力、Claude Agent SDKによるカスタムエージェント構築までを含む。実務でAPIを組み込む開発者が最も差がつく領域。

@@ -1,3 +1,10 @@
+---
+layout: default
+title: "01. Agents and Workflows"
+parent: "Developer – Foundations"
+nav_order: 1
+---
+
 # Agents and Workflows（14.7%）
 
 Claudeを使った「エージェント」や「ワークフロー」をどう設計するかを扱うドメイン。単純なプロンプト応答では対応できない、複数ステップにまたがるタスクの分解・実行方式、オーケストレーションパターン、エージェントを使うべき場面/使うべきでない場面の判断が中心。

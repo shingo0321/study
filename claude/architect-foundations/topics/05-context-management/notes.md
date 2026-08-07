@@ -1,3 +1,10 @@
+---
+layout: default
+title: "05. Context Management"
+parent: "Architect – Foundations"
+nav_order: 5
+---
+
 # 05. Context Management(15%)
 
 ## この分野が扱うこと

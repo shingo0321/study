@@ -1,3 +1,10 @@
+---
+layout: default
+title: "05. Configuration and Knowledge Management"
+parent: "Associate – Foundations"
+nav_order: 5
+---
+
 # 5. Configuration and Knowledge Management(設定とナレッジ管理)出題比率 目安: 12%
 
 ## この分野が扱うこと

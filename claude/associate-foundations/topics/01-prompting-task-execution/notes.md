@@ -1,3 +1,10 @@
+---
+layout: default
+title: "01. Prompting and Task Execution"
+parent: "Associate – Foundations"
+nav_order: 1
+---
+
 # 1. Prompting and Task Execution(プロンプト設計とタスク実行)出題比率 目安: 14%
 
 ## この分野が扱うこと

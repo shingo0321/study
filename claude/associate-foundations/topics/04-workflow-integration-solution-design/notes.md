@@ -1,3 +1,10 @@
+---
+layout: default
+title: "04. Workflow Integration and Solution Design"
+parent: "Associate – Foundations"
+nav_order: 4
+---
+
 # 4. Workflow Integration and Solution Design(ワークフロー統合とソリューション設計)出題比率 目安: 16%
 
 ## この分野が扱うこと

@@ -1,3 +1,10 @@
+---
+layout: default
+title: "04. Evaluation, Testing & Optimization"
+parent: "Architect – Professional"
+nav_order: 4
+---
+
 # 04. Evaluation, Testing & Optimization (出題比率 16%)
 
 ## この分野が問うこと

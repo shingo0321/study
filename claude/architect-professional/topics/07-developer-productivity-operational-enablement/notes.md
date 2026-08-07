@@ -1,3 +1,10 @@
+---
+layout: default
+title: "07. Developer Productivity & Operational Enablement"
+parent: "Architect – Professional"
+nav_order: 7
+---
+
 # 07. Developer Productivity & Operational Enablement (出題比率 7%)
 
 ## この分野が問うこと

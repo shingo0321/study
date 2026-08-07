@@ -1,0 +1,21 @@
+title: Claude認定資格 学習ノート
+description: "Claude Certification Program 学習ノート・練習問題"
+lang: ja
+
+remote_theme: just-the-docs/just-the-docs
+plugins:
+  - jekyll-remote-theme
+
+color_scheme: light
+search_enabled: true
+heading_anchors: true
+
+url: "https://shingo0321.github.io"
+baseurl: "/study"
+
+aux_links:
+  "GitHub Repository":
+    - "https://github.com/shingo0321/study"
+
+exclude:
+  - CLAUDE.md

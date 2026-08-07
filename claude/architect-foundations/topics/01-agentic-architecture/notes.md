@@ -1,3 +1,10 @@
+---
+layout: default
+title: "01. Agentic Architecture"
+parent: "Architect – Foundations"
+nav_order: 1
+---
+
 # 01. Agentic Architecture(27% — 最重要ドメイン)
 
 ## この分野が扱うこと

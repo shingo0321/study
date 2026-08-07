@@ -1,3 +1,10 @@
+---
+layout: default
+title: "02. Output Evaluation and Validation"
+parent: "Associate – Foundations"
+nav_order: 2
+---
+
 # 2. Output Evaluation and Validation(出力の評価と検証)出題比率 目安: 21%(最大配点分野)
 
 ## この分野が扱うこと

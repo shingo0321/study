@@ -1,3 +1,10 @@
+---
+layout: default
+title: "06. Governance, Risk, and Responsible Use"
+parent: "Associate – Foundations"
+nav_order: 6
+---
+
 # 6. Governance, Risk, and Responsible Use(ガバナンス・リスク・責任あるAI利用)出題比率 目安: 15%
 
 ## この分野が扱うこと

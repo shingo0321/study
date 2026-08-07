@@ -1,3 +1,10 @@
+---
+layout: default
+title: "06. Stakeholder Communication & Lifecycle Management"
+parent: "Architect – Professional"
+nav_order: 6
+---
+
 # 06. Stakeholder Communication & Lifecycle Management (出題比率 14%)
 
 ## この分野が問うこと

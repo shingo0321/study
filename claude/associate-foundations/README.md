@@ -1,3 +1,11 @@
+---
+layout: default
+title: Associate – Foundations
+nav_order: 3
+has_children: true
+permalink: /claude/associate-foundations/
+---
+
 # Claude Certified Associate – Foundations 勉強用プロジェクト
 
 Anthropic公式の技術認定「Claude Certified Associate – Foundations」(CCAO-F)の学習用フォルダ。

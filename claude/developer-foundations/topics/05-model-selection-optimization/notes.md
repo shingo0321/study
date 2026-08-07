@@ -1,3 +1,10 @@
+---
+layout: default
+title: "05. Model Selection and Optimization"
+parent: "Developer – Foundations"
+nav_order: 5
+---
+
 # Model Selection and Optimization（16.8%）
 
 用途に応じて適切なClaudeモデルを選び、コスト・レイテンシ・品質のバランスを最適化するためのドメイン。モデルファミリーの特性、拡張思考（extended thinking）、コンテキストウィンドウ管理、プロンプトキャッシュによるコスト最適化などを扱う。

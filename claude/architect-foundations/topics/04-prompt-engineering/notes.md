@@ -1,3 +1,10 @@
+---
+layout: default
+title: "04. Prompt Engineering"
+parent: "Architect – Foundations"
+nav_order: 4
+---
+
 # 04. Prompt Engineering(20%)
 
 ## この分野が扱うこと

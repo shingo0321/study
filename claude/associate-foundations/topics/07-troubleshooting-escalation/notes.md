@@ -1,3 +1,10 @@
+---
+layout: default
+title: "07. Troubleshooting and Escalation"
+parent: "Associate – Foundations"
+nav_order: 7
+---
+
 # 7. Troubleshooting and Escalation(トラブルシューティングとエスカレーション)出題比率 目安: 残り約10%
 
 > **注記**: この分野名「Troubleshooting and Escalation」はAnthropic公式が明言した正式ドメイン名として一般公開情報で確認できたものではなく、他6分野の公表比率(14+21+12+16+12+15=90%)から残り約10%を占めるであろう内容を、試験対象範囲の説明(質の低い出力への対処、人間によるレビュー・技術的エスカレーションが必要な場面の認識)から推測して立てた仮の分類。将来公式情報が見つかった場合は本ファイルとフォルダ名を見直すこと。

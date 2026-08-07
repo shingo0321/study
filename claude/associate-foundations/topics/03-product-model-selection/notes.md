@@ -1,3 +1,10 @@
+---
+layout: default
+title: "03. Product and Model Selection"
+parent: "Associate – Foundations"
+nav_order: 3
+---
+
 # 3. Product and Model Selection(製品とモデルの選択)出題比率 目安: 12%
 
 ## この分野が扱うこと

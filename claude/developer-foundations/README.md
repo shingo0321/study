@@ -1,3 +1,11 @@
+---
+layout: default
+title: Developer – Foundations
+nav_order: 4
+has_children: true
+permalink: /claude/developer-foundations/
+---
+
 # Claude Certified Developer – Foundations 勉強用プロジェクト
 
 Anthropic公式の技術認定「Claude Certified Developer – Foundations」(CCDV-F) の学習用フォルダ。

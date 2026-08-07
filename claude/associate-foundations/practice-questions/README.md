@@ -1,3 +1,10 @@
+---
+layout: default
+title: 練習問題
+parent: "Associate – Foundations"
+nav_order: 99
+---
+
 # 練習問題
 
 > **注記**: 以下はすべて自己学習用に作成したオリジナルの練習問題であり、Anthropic公式の実際の試験問題ではありません。出題形式・分野配分をイメージするための参考としてのみ利用してください。

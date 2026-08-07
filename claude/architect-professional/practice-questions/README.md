@@ -1,3 +1,10 @@
+---
+layout: default
+title: 練習問題
+parent: "Architect – Professional"
+nav_order: 99
+---
+
 # 練習問題
 
 > **注意**: これは自己学習用に作成した**オリジナルの模擬問題**であり、Anthropic公式の「Claude Certified Architect – Professional」試験の実際の出題内容ではありません。実際の試験問題・出題形式とは異なります。学習の理解度確認のみを目的としています。

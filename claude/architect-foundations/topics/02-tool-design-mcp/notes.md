@@ -1,3 +1,10 @@
+---
+layout: default
+title: "02. Tool Design & MCP"
+parent: "Architect – Foundations"
+nav_order: 2
+---
+
 # 02. Tool Design & MCP(18%)
 
 ## この分野が扱うこと

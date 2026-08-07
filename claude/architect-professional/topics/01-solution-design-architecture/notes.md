@@ -1,3 +1,10 @@
+---
+layout: default
+title: "01. Solution Design & Architecture"
+parent: "Architect – Professional"
+nav_order: 1
+---
+
 # 01. Solution Design & Architecture (出題比率 17%)
 
 ## この分野が問うこと

@@ -1,3 +1,10 @@
+---
+layout: default
+title: "07. Security and Safety"
+parent: "Developer – Foundations"
+nav_order: 7
+---
+
 # Security and Safety（8.1%）
 
 Claudeを組み込んだアプリケーション・エージェントを安全に運用するためのドメイン。プロンプトインジェクションのリスクと対策、最小権限でのツール権限設計、入出力の検証、信頼できないコンテンツの扱いを中心に扱う。

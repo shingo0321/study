@@ -1,3 +1,10 @@
+---
+layout: default
+title: 資格一覧
+nav_order: 2
+permalink: /claude/
+---
+
 # Claude認定資格 勉強用プロジェクト
 
 Anthropic公式「Claude Certification Program」の学習用フォルダ。全4試験、いずれもPearson VUE経由のproctored試験(120分、合格ラインはスケール100〜1000中720点)。前提資格は4試験とも**なし**(Architect – ProfessionalもFoundations合格は必須ではない)。

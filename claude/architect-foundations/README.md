@@ -1,3 +1,11 @@
+---
+layout: default
+title: Architect – Foundations
+nav_order: 5
+has_children: true
+permalink: /claude/architect-foundations/
+---
+
 # Claude Certified Architect – Foundations 勉強用プロジェクト
 
 Anthropic公式の技術認定「Claude Certified Architect – Foundations」の学習用フォルダ。

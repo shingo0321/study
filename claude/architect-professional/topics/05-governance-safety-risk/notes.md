@@ -1,3 +1,10 @@
+---
+layout: default
+title: "05. Governance, Safety & Risk Management"
+parent: "Architect – Professional"
+nav_order: 5
+---
+
 # 05. Governance, Safety & Risk Management (出題比率 14%)
 
 ## この分野が問うこと

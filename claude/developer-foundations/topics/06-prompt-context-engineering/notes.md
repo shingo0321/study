@@ -1,3 +1,10 @@
+---
+layout: default
+title: "06. Prompt and Context Engineering"
+parent: "Developer – Foundations"
+nav_order: 6
+---
+
 # Prompt and Context Engineering（11.0%）
 
 Claudeに意図通りの振る舞いをさせるための、プロンプト設計とコンテキスト構成に関するドメイン。システムプロンプトの書き方、XML構造化、few-shot例、コンテキストウィンドウの予算配分、RAG的なコンテキスト注入などを扱う。

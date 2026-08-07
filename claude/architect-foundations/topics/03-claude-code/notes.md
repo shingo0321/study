@@ -1,3 +1,10 @@
+---
+layout: default
+title: "03. Claude Code"
+parent: "Architect – Foundations"
+nav_order: 3
+---
+
 # 03. Claude Code(20%)
 
 ## この分野が扱うこと

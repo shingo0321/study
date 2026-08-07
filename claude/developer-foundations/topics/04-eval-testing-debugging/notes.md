@@ -1,3 +1,10 @@
+---
+layout: default
+title: "04. Eval, Testing, and Debugging"
+parent: "Developer – Foundations"
+nav_order: 4
+---
+
 # Eval, Testing, and Debugging（2.6%）
 
 出題比重は最小だが、Claudeを組み込んだアプリケーション/エージェントの品質を継続的に検証するための基本的な考え方（評価データセット・ルーブリック設計、ツール呼び出し失敗のデバッグ、ロギング/可観測性）を扱う。

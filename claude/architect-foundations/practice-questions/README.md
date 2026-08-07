@@ -1,3 +1,10 @@
+---
+layout: default
+title: 練習問題
+parent: "Architect – Foundations"
+nav_order: 99
+---
+
 # 練習問題
 
 > **注意**: これは自己学習用にオリジナルで作成した練習問題です。実際の「Claude Certified Architect – Foundations」試験の問題そのものではありません(実試験の内容は非公開・NDA対象)。出題形式・難易度のイメージをつかむための模擬問題としてご利用ください。

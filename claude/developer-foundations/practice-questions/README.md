@@ -1,3 +1,10 @@
+---
+layout: default
+title: 練習問題
+parent: "Developer – Foundations"
+nav_order: 99
+---
+
 # 練習問題
 
 > 本ページの問題はすべて自己学習用にオリジナルで作成したものであり、Anthropic公式の実際の試験問題ではありません。出題形式・雰囲気を掴むための模擬問題として利用してください。

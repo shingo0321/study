@@ -1,3 +1,10 @@
+---
+layout: default
+title: "08. Tools and MCPs"
+parent: "Developer – Foundations"
+nav_order: 8
+---
+
 # Tools and MCPs（10.6%）
 
 Claudeにツールを持たせる仕組み全般を扱うドメイン。ツールユースの基礎に加え、Model Context Protocol（MCP）の概念（サーバー、リソース、ツール、トランスポート）、カスタムツールの構築、MCPサーバーの設定を中心に扱う。
