@@ -1,13 +1,16 @@
 ---
 layout: default
-title: 資格一覧
-nav_order: 2
+title: ホーム
+nav_order: 1
+description: "Claude Certification Program 学習ノート・練習問題"
 permalink: /claude/
 ---
 
-# Claude認定資格 勉強用プロジェクト
+# Claude認定資格 学習サイト
 
-Anthropic公式「Claude Certification Program」の学習用フォルダ。全4試験、いずれもPearson VUE経由のproctored試験(120分、合格ラインはスケール100〜1000中720点)。前提資格は4試験とも**なし**(Architect – ProfessionalもFoundations合格は必須ではない)。
+Anthropic公式「Claude Certification Program」の学習用フォルダ。全4試験、いずれもPearson VUE経由のproctored試験(120分、合格ラインはスケール100〜1000中720点)。前提資格は4試験とも**なし**(Architect – ProfessionalもFoundations合格は必須ではない)。実際の試験は英語で実施されるため、練習問題には英訳を併記しています。
+
+> 練習問題はすべて自己学習用に作成したオリジナル問題であり、Anthropic公式の実際の試験問題ではありません。
 
 ## 資格一覧
 
