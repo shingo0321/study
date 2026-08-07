@@ -13,7 +13,7 @@ nav_order: 99
 
 ---
 
-## 問1 (2: 出力の評価と検証)
+## 問1 ([2: 出力の評価と検証](../topics/02-output-evaluation-validation/notes.html))
 
 *When asked about internal company regulations, Claude confidently answered by citing a non-existent article number. Which of the following is the LEAST appropriate measure to prevent this?*<br><span style="color:#8a8a8a">Claudeに社内規程に関する質問をしたところ、実在しない条項番号を挙げて自信満々に回答した。この現象を防ぐための対策として**最も適切でないもの**はどれか。</span>
 
@@ -28,7 +28,7 @@ nav_order: 99
 
 ---
 
-## 問2 (2: 出力の評価と検証)
+## 問2 ([2: 出力の評価と検証](../topics/02-output-evaluation-validation/notes.html))
 
 *Which of the following is NOT an appropriate criterion for evaluating the quality of Claude's output? Choose one.*<br><span style="color:#8a8a8a">Claudeの出力品質を評価する際の観点として**適切でないもの**を1つ選べ。</span>
 
@@ -43,7 +43,7 @@ nav_order: 99
 
 ---
 
-## 問3 (2: 出力の評価と検証、複数選択)
+## 問3 ([2: 出力の評価と検証](../topics/02-output-evaluation-validation/notes.html)、複数選択)
 
 *Before adopting Claude's output for business use, select ALL cases where careful human fact-checking should be especially prioritized.*<br><span style="color:#8a8a8a">Claudeの出力を業務で採用する前に、人間による入念なファクトチェックを特に優先すべきケースを**すべて**選べ。</span>
 
@@ -58,7 +58,7 @@ nav_order: 99
 
 ---
 
-## 問4 (4: ワークフロー統合とソリューション設計)
+## 問4 ([4: ワークフロー統合とソリューション設計](../topics/04-workflow-integration-solution-design/notes.html))
 
 *You are designing a workflow that triages a high daily volume of inquiry emails by urgency, while a human staff member makes the final decision on how to respond. Which of the following best describes this design approach?*<br><span style="color:#8a8a8a">毎日大量に届く問い合わせメールを、緊急度別に一次仕分けし、対応方針の最終決定は担当者が行う、というワークフローを設計している。この設計の考え方として最も適切なものはどれか。</span>
 
@@ -73,7 +73,7 @@ nav_order: 99
 
 ---
 
-## 問5 (4: ワークフロー統合とソリューション設計)
+## 問5 ([4: ワークフロー統合とソリューション設計](../topics/04-workflow-integration-solution-design/notes.html))
 
 *When incorporating Claude into a complex business process, which design approach most increases reliability?*<br><span style="color:#8a8a8a">複雑な業務プロセスにClaudeを組み込む際の設計として、最も信頼性を高める考え方はどれか。</span>
 
@@ -88,7 +88,7 @@ nav_order: 99
 
 ---
 
-## 問6 (4: ワークフロー統合とソリューション設計)
+## 問6 ([4: ワークフロー統合とソリューション設計](../topics/04-workflow-integration-solution-design/notes.html))
 
 *Which of the following best describes a type of task that is NOT well-suited to adopting Claude?*<br><span style="color:#8a8a8a">Claudeの導入に**向いていない**業務の特徴として最も適切なものはどれか。</span>
 
@@ -103,7 +103,7 @@ nav_order: 99
 
 ---
 
-## 問7 (1: プロンプト設計とタスク実行)
+## 問7 ([1: プロンプト設計とタスク実行](../topics/01-prompting-task-execution/notes.html))
 
 *When you want to keep the format and level of detail of outputs consistent, which prompting technique is most effective?*<br><span style="color:#8a8a8a">出力のフォーマットや粒度を一定に揃えたい場合に、最も効果的なプロンプト技法はどれか。</span>
 
@@ -118,7 +118,7 @@ nav_order: 99
 
 ---
 
-## 問8 (1: プロンプト設計とタスク実行)
+## 問8 ([1: プロンプト設計とタスク実行](../topics/01-prompting-task-execution/notes.html))
 
 *When you want to improve the accuracy of an analytical task involving complex, multi-step calculations, which approach is most suitable?*<br><span style="color:#8a8a8a">複雑な多段階の計算を含む分析タスクの精度を上げたい場合に、最も適した工夫はどれか。</span>
 
@@ -133,7 +133,7 @@ nav_order: 99
 
 ---
 
-## 問9 (1: プロンプト設計とタスク実行)
+## 問9 ([1: プロンプト設計とタスク実行](../topics/01-prompting-task-execution/notes.html))
 
 *When creating a complex prompt that includes lengthy reference material and multiple instructions, which technique is most appropriate for preventing Claude from confusing which parts are reference material and which are instructions?*<br><span style="color:#8a8a8a">長文の参考資料と複数の指示を含む複雑なプロンプトを作成する際に、Claudeが「どこが参考資料でどこが指示か」を混同しないようにするための工夫として最も適切なものはどれか。</span>
 
@@ -148,7 +148,7 @@ nav_order: 99
 
 ---
 
-## 問10 (3: 製品とモデルの選択)
+## 問10 ([3: 製品とモデルの選択](../topics/03-product-model-selection/notes.html))
 
 *You want to perform fast, low-cost initial classification of a large volume of daily inquiry emails. Which model tier is most suitable?*<br><span style="color:#8a8a8a">大量の問い合わせメールを毎日高速かつ低コストで一次分類したい。最も適したモデル階層はどれか。</span>
 
@@ -163,7 +163,7 @@ C. Opus
 
 ---
 
-## 問11 (3: 製品とモデルの選択)
+## 問11 ([3: 製品とモデルの選択](../topics/03-product-model-selection/notes.html))
 
 *When you want to continuously interact with Claude in the same work context while having it reference a collection of internal documents, which Claude.ai feature is most suitable?*<br><span style="color:#8a8a8a">社内資料をまとめて参照させながら、同じ業務文脈で継続的にClaudeとやり取りしたい場合、Claude.aiで最も適した機能はどれか。</span>
 
@@ -178,7 +178,7 @@ C. Opus
 
 ---
 
-## 問12 (5: 設定とナレッジ管理)
+## 問12 ([5: 設定とナレッジ管理](../topics/05-configuration-knowledge-management/notes.html))
 
 *Which of the following best explains the difference in role between "custom instructions" and "knowledge" in Projects?*<br><span style="color:#8a8a8a">Projectsの「カスタム指示」と「ナレッジ」の役割の違いとして最も適切な説明はどれか。</span>
 
@@ -193,7 +193,7 @@ C. Opus
 
 ---
 
-## 問13 (6: ガバナンス・リスク・責任あるAI利用)
+## 問13 ([6: ガバナンス・リスク・責任あるAI利用](../topics/06-governance-risk-responsible-use/notes.html))
 
 *Which of the following best describes the "Constitutional AI" approach used by Anthropic?*<br><span style="color:#8a8a8a">Anthropicが用いる「Constitutional AI」という手法の説明として最も適切なものはどれか。</span>
 
@@ -208,7 +208,7 @@ C. Opus
 
 ---
 
-## 問14 (6: ガバナンス・リスク・責任あるAI利用、複数選択)
+## 問14 ([6: ガバナンス・リスク・責任あるAI利用](../topics/06-governance-risk-responsible-use/notes.html)、複数選択)
 
 *Select ALL of the following that are appropriate principles of responsible AI use to keep in mind when using Claude for work within an organization.*<br><span style="color:#8a8a8a">組織でClaudeを業務利用する際に踏まえるべき責任あるAI利用の原則として**適切なもの**をすべて選べ。</span>
 
@@ -223,7 +223,7 @@ C. Opus
 
 ---
 
-## 問15 (7: トラブルシューティングとエスカレーション)
+## 問15 ([7: トラブルシューティングとエスカレーション](../topics/07-troubleshooting-escalation/notes.html))
 
 *When Claude's output isn't what you expected, which of the following is the most likely cause to check first?*<br><span style="color:#8a8a8a">Claudeの出力が期待通りでないとき、最初に見直すべき原因として最も可能性が高いものはどれか。</span>
 

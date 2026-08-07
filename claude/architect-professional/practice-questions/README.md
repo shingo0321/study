@@ -13,7 +13,7 @@ nav_order: 99
 
 ---
 
-### Q1 (03: Integration)
+### Q1 ([03: Integration](../topics/03-integration/notes.html))
 
 *Multiple internal teams have each independently issued their own direct Anthropic API keys and built their own retry/logging implementations to call Claude. Months later, cost overruns and a security audit finding (some cases of API keys hardcoded directly into repositories) have become a problem. As the architect, what is the most appropriate next step?*<br><span style="color:#8a8a8a">社内の複数チームが、それぞれ独自にAnthropic直接APIキーを発行し、独自のリトライ・ロギング実装でClaudeを呼び出すようになっている。数ヶ月後、コスト超過とセキュリティ監査での指摘(APIキーがリポジトリに直書きされている事例あり)が問題化した。アーキテクトとして最も適切な次の一手はどれか。</span>
 
@@ -28,7 +28,7 @@ nav_order: 99
 
 ---
 
-### Q2 (03: Integration)
+### Q2 ([03: Integration](../topics/03-integration/notes.html))
 
 *A financial institution is building a batch job with Claude that classifies hundreds of thousands of documents overnight; real-time responsiveness is not required. Latency requirements are loose, but cost should be minimized. Which integration pattern is most suitable?*<br><span style="color:#8a8a8a">金融機関が、リアルタイム性は不要だが夜間に数十万件のドキュメントを分類するバッチジョブをClaudeで構築している。レイテンシ要件は緩いが、コストを最小化したい。最も適した統合パターンはどれか。</span>
 
@@ -43,7 +43,7 @@ nav_order: 99
 
 ---
 
-### Q3 (03: Integration)
+### Q3 ([03: Integration](../topics/03-integration/notes.html))
 
 *An enterprise is considering an architecture that uses both the direct Anthropic API and Claude via AWS Bedrock together. What is the most appropriate primary motivation for this design?*<br><span style="color:#8a8a8a">あるエンタープライズが、Anthropic直接APIとAWS Bedrock経由のClaudeを併用するアーキテクチャを検討している。この設計の主な動機として最も適切なものはどれか。</span>
 
@@ -58,7 +58,7 @@ nav_order: 99
 
 ---
 
-### Q4 (01: Solution Design & Architecture)
+### Q4 ([01: Solution Design & Architecture](../topics/01-solution-design-architecture/notes.html))
 
 *You are designing an internal inquiry-response agent. The requirements are: "a human must always give final approval for processes with financial impact, such as refund decisions" and "the response history must be auditable." Which architecture pattern is most suitable?*<br><span style="color:#8a8a8a">社内問い合わせ対応エージェントを設計中。要件は「返金判断など金銭的影響のある処理は必ず人間が最終承認する」「対応履歴は監査可能でなければならない」というもの。最も適したアーキテクチャパターンはどれか。</span>
 
@@ -73,7 +73,7 @@ nav_order: 99
 
 ---
 
-### Q5 (01: Solution Design & Architecture)
+### Q5 ([01: Solution Design & Architecture](../topics/01-solution-design-architecture/notes.html))
 
 *A team gave a single agent more than 20 different tools to handle a complex task, and tool-selection accuracy dropped while latency also worsened. What is the most reasonable design change to consider next?*<br><span style="color:#8a8a8a">あるチームが単一エージェントに20種類以上のツールを持たせて複雑なタスクを処理させたところ、ツール選択の精度が下がり、レイテンシも悪化した。次に検討すべき設計変更として最も妥当なものはどれか。</span>
 
@@ -88,7 +88,7 @@ nav_order: 99
 
 ---
 
-### Q6 (02: Claude Models, Prompting & Context Engineering)
+### Q6 ([02: Claude Models, Prompting & Context Engineering](../topics/02-models-prompting-context-engineering/notes.html))
 
 *A system needs to handle both a high-frequency, low-difficulty inquiry classification task and a low-frequency, high-difficulty contract review task. Which design is most appropriate for keeping costs down while maintaining quality?*<br><span style="color:#8a8a8a">高頻度・低難度な問い合わせ分類タスクと、低頻度・高難度な契約書レビュータスクを同じシステムで扱う必要がある。コストを抑えつつ品質を維持する設計として最も適切なものはどれか。</span>
 
@@ -103,7 +103,7 @@ nav_order: 99
 
 ---
 
-### Q7 (02: Claude Models, Prompting & Context Engineering)
+### Q7 ([02: Claude Models, Prompting & Context Engineering](../topics/02-models-prompting-context-engineering/notes.html))
 
 *In a RAG-like system that answers user questions by including a large, static internal knowledge base document in the prompt every time, costs are higher than expected. Daily access frequency is high, and the document is updated infrequently. Which optimization is most effective?*<br><span style="color:#8a8a8a">社内ナレッジベース(長大な固定ドキュメント)を毎回プロンプトに含めてユーザーの質問に答えるRAG的システムで、コストが想定より高い。1日あたりのアクセス頻度は高く、ドキュメントの更新頻度は低い。最も有効な最適化策はどれか。</span>
 
@@ -118,7 +118,7 @@ nav_order: 99
 
 ---
 
-### Q8 (04: Evaluation, Testing & Optimization)
+### Q8 ([04: Evaluation, Testing & Optimization](../topics/04-evaluation-testing-optimization/notes.html))
 
 *You want to validate quality before deploying a new prompt to production. It's a summarization task with no single "correct answer," and you want to evaluate it along three axes: accuracy, completeness, and tone. Which evaluation method is most suitable?*<br><span style="color:#8a8a8a">新しいプロンプトを本番投入する前に品質を検証したい。要約タスクであり、「唯一の正解」がなく、正確性・網羅性・トーンの3軸で評価したい。最も適した評価方式はどれか。</span>
 
@@ -133,7 +133,7 @@ nav_order: 99
 
 ---
 
-### Q9 (04: Evaluation, Testing & Optimization)
+### Q9 ([04: Evaluation, Testing & Optimization](../topics/04-evaluation-testing-optimization/notes.html))
 
 *In a production agent system, costs suddenly spiked one day, and a later investigation found that some requests had fallen into an infinite loop of repeated tool calls. Which combination of measures is most directly effective for preventing recurrence?*<br><span style="color:#8a8a8a">本番のエージェントシステムで、ある日突然コストが急増し、後から調べると一部のリクエストがツール呼び出しを繰り返す無限ループに陥っていたことが判明した。再発防止のために最も直接的に有効な組み合わせはどれか。</span>
 
@@ -148,7 +148,7 @@ nav_order: 99
 
 ---
 
-### Q10 (05: Governance, Safety & Risk Management)
+### Q10 ([05: Governance, Safety & Risk Management](../topics/05-governance-safety-risk/notes.html))
 
 *A healthcare startup is building an agent that summarizes patient intake information to generate a draft medical chart. There's a risk that some of the generated draft gets adopted as-is before a doctor reviews it. Which governance design is most appropriate?*<br><span style="color:#8a8a8a">医療系スタートアップが、患者の問診内容を要約してカルテ下書きを生成するエージェントを構築している。生成された下書きは医師が確認前に一部そのまま採用されるリスクがある。ガバナンス設計として最も適切なものはどれか。</span>
 
@@ -163,7 +163,7 @@ nav_order: 99
 
 ---
 
-### Q11 (05: Governance, Safety & Risk Management)
+### Q11 ([05: Governance, Safety & Risk Management](../topics/05-governance-safety-risk/notes.html))
 
 *Multiple internal departments have begun independently connecting third-party MCP servers. One server had an unclear provider and vague documentation of its permission scope. As the architect, what is the most appropriate response?*<br><span style="color:#8a8a8a">社内で複数の部門が独自にサードパーティ製MCPサーバーを接続し始めている。あるサーバーは提供元が不明瞭で、権限スコープの説明も曖昧だった。アーキテクトとして取るべき最も適切な対応はどれか。</span>
 
@@ -178,7 +178,7 @@ nav_order: 99
 
 ---
 
-### Q12 (05: Governance, Safety & Risk Management)
+### Q12 ([05: Governance, Safety & Risk Management](../topics/05-governance-safety-risk/notes.html))
 
 *An incident occurred where a production agent mistakenly sent inappropriate content to a customer. What should be prioritized first in the initial response?*<br><span style="color:#8a8a8a">本番のエージェントが誤って顧客に不適切な内容を送信するインシデントが発生した。初動対応として最も優先すべきものはどれか。</span>
 
@@ -193,7 +193,7 @@ nav_order: 99
 
 ---
 
-### Q13 (06: Stakeholder Communication & Lifecycle Management)
+### Q13 ([06: Stakeholder Communication & Lifecycle Management](../topics/06-stakeholder-communication-lifecycle/notes.html))
 
 *An architect is going to propose adopting a new agent system at an executive meeting. Technically, the design uses a cutting-edge model, but leadership's main concerns are risk and cost. Which way of structuring the presentation is most effective?*<br><span style="color:#8a8a8a">エグゼクティブ会議で、あるアーキテクトが新しいエージェントシステムの導入を提案することになった。技術的には最先端モデルを使う設計だが、経営層の関心は主にリスクとコストにある。最も効果的なプレゼンの組み立て方はどれか。</span>
 
@@ -208,7 +208,7 @@ nav_order: 99
 
 ---
 
-### Q14 (06: Stakeholder Communication & Lifecycle Management)
+### Q14 ([06: Stakeholder Communication & Lifecycle Management](../topics/06-stakeholder-communication-lifecycle/notes.html))
 
 *For an AI assistant feature planned for company-wide rollout, frontline departments have already voiced concerns before launch that "people won't know how to use it and it won't stick." What is the most appropriate response?*<br><span style="color:#8a8a8a">全社展開を予定しているAIアシスタント機能について、現場部門から「使い方が分からず定着しない」という懸念が導入前から出ている。最も適切な対応はどれか。</span>
 
@@ -223,7 +223,7 @@ nav_order: 99
 
 ---
 
-### Q15 (06: Stakeholder Communication & Lifecycle Management)
+### Q15 ([06: Stakeholder Communication & Lifecycle Management](../topics/06-stakeholder-communication-lifecycle/notes.html))
 
 *Anthropic has announced that the model version currently in production use will be deprecated in a few months. What should the architect address first?*<br><span style="color:#8a8a8a">Anthropicが、現在本番で利用中のモデルバージョンについて数ヶ月後の廃止(deprecation)を予告した。アーキテクトとして最初に着手すべきことはどれか。</span>
 
@@ -238,7 +238,7 @@ nav_order: 99
 
 ---
 
-### Q16 (07: Developer Productivity & Operational Enablement)
+### Q16 ([07: Developer Productivity & Operational Enablement](../topics/07-developer-productivity-operational-enablement/notes.html))
 
 *Multiple development teams are each launching projects with their own agent implementation patterns, resulting in inconsistent implementation quality for authentication, logging, and guardrails. What is the most effective measure for the platform team to take?*<br><span style="color:#8a8a8a">複数の開発チームが、それぞれ独自のエージェント実装パターンでプロジェクトを立ち上げており、認証・ロギング・ガードレールの実装品質にばらつきが出ている。プラットフォームチームが取るべき最も効果的な施策はどれか。</span>
 
