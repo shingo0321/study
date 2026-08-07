@@ -15,17 +15,12 @@ nav_order: 99
 
 ### Q1 [03: Integration]
 
-社内の複数チームが、それぞれ独自にAnthropic直接APIキーを発行し、独自のリトライ・ロギング実装でClaudeを呼び出すようになっている。数ヶ月後、コスト超過とセキュリティ監査での指摘(APIキーがリポジトリに直書きされている事例あり)が問題化した。アーキテクトとして最も適切な次の一手はどれか。
-*Multiple internal teams have each independently issued their own direct Anthropic API keys and built their own retry/logging implementations to call Claude. Months later, cost overruns and a security audit finding (some cases of API keys hardcoded directly into repositories) have become a problem. As the architect, what is the most appropriate next step?*
+*Multiple internal teams have each independently issued their own direct Anthropic API keys and built their own retry/logging implementations to call Claude. Months later, cost overruns and a security audit finding (some cases of API keys hardcoded directly into repositories) have become a problem. As the architect, what is the most appropriate next step?*<br>社内の複数チームが、それぞれ独自にAnthropic直接APIキーを発行し、独自のリトライ・ロギング実装でClaudeを呼び出すようになっている。数ヶ月後、コスト超過とセキュリティ監査での指摘(APIキーがリポジトリに直書きされている事例あり)が問題化した。アーキテクトとして最も適切な次の一手はどれか。
 
-A. 全チームに対し、直接APIキーの利用を即時禁止し、Bedrock経由に強制移行させる
-*A. Immediately ban all teams from using direct API keys and force a migration to Bedrock.*
-B. 認証・ロギング・コスト計測・シークレット管理を共通化した社内ゲートウェイ/プラットフォーム層を用意し、各チームはそこ経由でアクセスする体制に移行する
-*B. Set up a shared internal gateway/platform layer that unifies authentication, logging, cost measurement, and secrets management, and move each team to access Claude through it.*
-C. 各チームにAPIキー管理のベストプラクティス資料を配布し、自己申告でのコンプライアンス確認に任せる
-*C. Distribute API-key-management best-practice documentation to each team and rely on self-reported compliance checks.*
-D. コスト超過が大きいチームからAPIアクセスを剥奪する
-*D. Revoke API access from the teams with the largest cost overruns.*
+*A. Immediately ban all teams from using direct API keys and force a migration to Bedrock.*<br>A. 全チームに対し、直接APIキーの利用を即時禁止し、Bedrock経由に強制移行させる
+*B. Set up a shared internal gateway/platform layer that unifies authentication, logging, cost measurement, and secrets management, and move each team to access Claude through it.*<br>B. 認証・ロギング・コスト計測・シークレット管理を共通化した社内ゲートウェイ/プラットフォーム層を用意し、各チームはそこ経由でアクセスする体制に移行する
+*C. Distribute API-key-management best-practice documentation to each team and rely on self-reported compliance checks.*<br>C. 各チームにAPIキー管理のベストプラクティス資料を配布し、自己申告でのコンプライアンス確認に任せる
+*D. Revoke API access from the teams with the largest cost overruns.*<br>D. コスト超過が大きいチームからAPIアクセスを剥奪する
 
 **正解: B**
 
@@ -35,17 +30,12 @@ D. コスト超過が大きいチームからAPIアクセスを剥奪する
 
 ### Q2 [03: Integration]
 
-金融機関が、リアルタイム性は不要だが夜間に数十万件のドキュメントを分類するバッチジョブをClaudeで構築している。レイテンシ要件は緩いが、コストを最小化したい。最も適した統合パターンはどれか。
-*A financial institution is building a batch job with Claude that classifies hundreds of thousands of documents overnight; real-time responsiveness is not required. Latency requirements are loose, but cost should be minimized. Which integration pattern is most suitable?*
+*A financial institution is building a batch job with Claude that classifies hundreds of thousands of documents overnight; real-time responsiveness is not required. Latency requirements are loose, but cost should be minimized. Which integration pattern is most suitable?*<br>金融機関が、リアルタイム性は不要だが夜間に数十万件のドキュメントを分類するバッチジョブをClaudeで構築している。レイテンシ要件は緩いが、コストを最小化したい。最も適した統合パターンはどれか。
 
-A. ストリーミングAPIで1件ずつリアルタイムに処理する
-*A. Process items one at a time in real time using the streaming API.*
-B. バッチ処理向けのAPI/割引を活用し、非同期でまとめて処理する
-*B. Use a batch-processing API/discount and process everything together asynchronously.*
-C. マルチエージェントのオーケストレーター・ワーカーパターンで並列化する
-*C. Parallelize with a multi-agent orchestrator-worker pattern.*
-D. 各ドキュメントごとに個別のMCPサーバーを起動する
-*D. Launch a separate MCP server for each individual document.*
+*A. Process items one at a time in real time using the streaming API.*<br>A. ストリーミングAPIで1件ずつリアルタイムに処理する
+*B. Use a batch-processing API/discount and process everything together asynchronously.*<br>B. バッチ処理向けのAPI/割引を活用し、非同期でまとめて処理する
+*C. Parallelize with a multi-agent orchestrator-worker pattern.*<br>C. マルチエージェントのオーケストレーター・ワーカーパターンで並列化する
+*D. Launch a separate MCP server for each individual document.*<br>D. 各ドキュメントごとに個別のMCPサーバーを起動する
 
 **正解: B**
 
@@ -55,17 +45,12 @@ D. 各ドキュメントごとに個別のMCPサーバーを起動する
 
 ### Q3 [03: Integration]
 
-あるエンタープライズが、Anthropic直接APIとAWS Bedrock経由のClaudeを併用するアーキテクチャを検討している。この設計の主な動機として最も適切なものはどれか。
-*An enterprise is considering an architecture that uses both the direct Anthropic API and Claude via AWS Bedrock together. What is the most appropriate primary motivation for this design?*
+*An enterprise is considering an architecture that uses both the direct Anthropic API and Claude via AWS Bedrock together. What is the most appropriate primary motivation for this design?*<br>あるエンタープライズが、Anthropic直接APIとAWS Bedrock経由のClaudeを併用するアーキテクチャを検討している。この設計の主な動機として最も適切なものはどれか。
 
-A. Bedrock経由の方が常に安価だから
-*A. Because going through Bedrock is always cheaper.*
-B. マルチプロバイダ冗長化によって単一障害点を避け、既存のAWS IAM/ガバナンス体制とも統合できるため
-*B. Because multi-provider redundancy avoids a single point of failure, and it also integrates with the existing AWS IAM/governance framework.*
-C. Bedrock経由でしか利用できないモデル機能があるため
-*C. Because some model capabilities are available only via Bedrock.*
-D. 直接APIはレート制限がないため、Bedrockのバックアップとしてのみ使う
-*D. Because the direct API has no rate limits, so it is used only as a backup for Bedrock.*
+*A. Because going through Bedrock is always cheaper.*<br>A. Bedrock経由の方が常に安価だから
+*B. Because multi-provider redundancy avoids a single point of failure, and it also integrates with the existing AWS IAM/governance framework.*<br>B. マルチプロバイダ冗長化によって単一障害点を避け、既存のAWS IAM/ガバナンス体制とも統合できるため
+*C. Because some model capabilities are available only via Bedrock.*<br>C. Bedrock経由でしか利用できないモデル機能があるため
+*D. Because the direct API has no rate limits, so it is used only as a backup for Bedrock.*<br>D. 直接APIはレート制限がないため、Bedrockのバックアップとしてのみ使う
 
 **正解: B**
 
@@ -75,17 +60,12 @@ D. 直接APIはレート制限がないため、Bedrockのバックアップと�
 
 ### Q4 [01: Solution Design & Architecture]
 
-社内問い合わせ対応エージェントを設計中。要件は「返金判断など金銭的影響のある処理は必ず人間が最終承認する」「対応履歴は監査可能でなければならない」というもの。最も適したアーキテクチャパターンはどれか。
-*You are designing an internal inquiry-response agent. The requirements are: "a human must always give final approval for processes with financial impact, such as refund decisions" and "the response history must be auditable." Which architecture pattern is most suitable?*
+*You are designing an internal inquiry-response agent. The requirements are: "a human must always give final approval for processes with financial impact, such as refund decisions" and "the response history must be auditable." Which architecture pattern is most suitable?*<br>社内問い合わせ対応エージェントを設計中。要件は「返金判断など金銭的影響のある処理は必ず人間が最終承認する」「対応履歴は監査可能でなければならない」というもの。最も適したアーキテクチャパターンはどれか。
 
-A. 完全自律のエージェント型ループで、全ての判断をエージェントに委ねる
-*A. A fully autonomous agentic loop that delegates all decisions to the agent.*
-B. 決定論的な制御フローを持つワークフロー型とし、金銭的影響のあるステップでのみ人間承認ステップを挟む設計
-*B. A workflow-based design with deterministic control flow, inserting a human-approval step only at steps with financial impact.*
-C. LLM-as-judgeで自動承認する
-*C. Automatically approve using LLM-as-judge.*
-D. ルールベースシステムのみで構築し、LLMを一切使わない
-*D. Build using only a rule-based system, with no LLM at all.*
+*A. A fully autonomous agentic loop that delegates all decisions to the agent.*<br>A. 完全自律のエージェント型ループで、全ての判断をエージェントに委ねる
+*B. A workflow-based design with deterministic control flow, inserting a human-approval step only at steps with financial impact.*<br>B. 決定論的な制御フローを持つワークフロー型とし、金銭的影響のあるステップでのみ人間承認ステップを挟む設計
+*C. Automatically approve using LLM-as-judge.*<br>C. LLM-as-judgeで自動承認する
+*D. Build using only a rule-based system, with no LLM at all.*<br>D. ルールベースシステムのみで構築し、LLMを一切使わない
 
 **正解: B**
 
@@ -95,17 +75,12 @@ D. ルールベースシステムのみで構築し、LLMを一切使わない
 
 ### Q5 [01: Solution Design & Architecture]
 
-あるチームが単一エージェントに20種類以上のツールを持たせて複雑なタスクを処理させたところ、ツール選択の精度が下がり、レイテンシも悪化した。次に検討すべき設計変更として最も妥当なものはどれか。
-*A team gave a single agent more than 20 different tools to handle a complex task, and tool-selection accuracy dropped while latency also worsened. What is the most reasonable design change to consider next?*
+*A team gave a single agent more than 20 different tools to handle a complex task, and tool-selection accuracy dropped while latency also worsened. What is the most reasonable design change to consider next?*<br>あるチームが単一エージェントに20種類以上のツールを持たせて複雑なタスクを処理させたところ、ツール選択の精度が下がり、レイテンシも悪化した。次に検討すべき設計変更として最も妥当なものはどれか。
 
-A. さらにツールを追加してカバレッジを上げる
-*A. Add even more tools to increase coverage.*
-B. タスクの性質ごとにサブエージェントへ機能を分割し、オーケストレーターが委譲するマルチエージェント構成を検討する
-*B. Consider splitting functionality into subagents by task nature, in a multi-agent configuration with an orchestrator delegating to them.*
-C. 全てのツールを常にプロンプトに含めるのをやめ、温度パラメータを上げる
-*C. Stop always including all tools in the prompt, and raise the temperature parameter.*
-D. モデルを最上位ティアに固定すれば自然に解決する
-*D. Fixing the model to the top tier will naturally solve it.*
+*A. Add even more tools to increase coverage.*<br>A. さらにツールを追加してカバレッジを上げる
+*B. Consider splitting functionality into subagents by task nature, in a multi-agent configuration with an orchestrator delegating to them.*<br>B. タスクの性質ごとにサブエージェントへ機能を分割し、オーケストレーターが委譲するマルチエージェント構成を検討する
+*C. Stop always including all tools in the prompt, and raise the temperature parameter.*<br>C. 全てのツールを常にプロンプトに含めるのをやめ、温度パラメータを上げる
+*D. Fixing the model to the top tier will naturally solve it.*<br>D. モデルを最上位ティアに固定すれば自然に解決する
 
 **正解: B**
 
@@ -115,17 +90,12 @@ D. モデルを最上位ティアに固定すれば自然に解決する
 
 ### Q6 [02: Claude Models, Prompting & Context Engineering]
 
-高頻度・低難度な問い合わせ分類タスクと、低頻度・高難度な契約書レビュータスクを同じシステムで扱う必要がある。コストを抑えつつ品質を維持する設計として最も適切なものはどれか。
-*A system needs to handle both a high-frequency, low-difficulty inquiry classification task and a low-frequency, high-difficulty contract review task. Which design is most appropriate for keeping costs down while maintaining quality?*
+*A system needs to handle both a high-frequency, low-difficulty inquiry classification task and a low-frequency, high-difficulty contract review task. Which design is most appropriate for keeping costs down while maintaining quality?*<br>高頻度・低難度な問い合わせ分類タスクと、低頻度・高難度な契約書レビュータスクを同じシステムで扱う必要がある。コストを抑えつつ品質を維持する設計として最も適切なものはどれか。
 
-A. 全リクエストに最上位モデルを一律適用する
-*A. Uniformly apply the top-tier model to every request.*
-B. 全リクエストに軽量モデルを一律適用し、コストを最優先する
-*B. Uniformly apply a lightweight model to every request, prioritizing cost above all.*
-C. 入力の難易度を判定し、定型的な分類は軽量モデルへ、複雑な契約書レビューは上位モデルへ振り分けるルーティング設計を行う
-*C. Design a routing scheme that assesses input difficulty, sending routine classification to a lightweight model and complex contract review to a higher tier.*
-D. ランダムにモデルを選択して負荷分散する
-*D. Select models randomly to balance load.*
+*A. Uniformly apply the top-tier model to every request.*<br>A. 全リクエストに最上位モデルを一律適用する
+*B. Uniformly apply a lightweight model to every request, prioritizing cost above all.*<br>B. 全リクエストに軽量モデルを一律適用し、コストを最優先する
+*C. Design a routing scheme that assesses input difficulty, sending routine classification to a lightweight model and complex contract review to a higher tier.*<br>C. 入力の難易度を判定し、定型的な分類は軽量モデルへ、複雑な契約書レビューは上位モデルへ振り分けるルーティング設計を行う
+*D. Select models randomly to balance load.*<br>D. ランダムにモデルを選択して負荷分散する
 
 **正解: C**
 
@@ -135,17 +105,12 @@ D. ランダムにモデルを選択して負荷分散する
 
 ### Q7 [02: Claude Models, Prompting & Context Engineering]
 
-社内ナレッジベース(長大な固定ドキュメント)を毎回プロンプトに含めてユーザーの質問に答えるRAG的システムで、コストが想定より高い。1日あたりのアクセス頻度は高く、ドキュメントの更新頻度は低い。最も有効な最適化策はどれか。
-*In a RAG-like system that answers user questions by including a large, static internal knowledge base document in the prompt every time, costs are higher than expected. Daily access frequency is high, and the document is updated infrequently. Which optimization is most effective?*
+*In a RAG-like system that answers user questions by including a large, static internal knowledge base document in the prompt every time, costs are higher than expected. Daily access frequency is high, and the document is updated infrequently. Which optimization is most effective?*<br>社内ナレッジベース(長大な固定ドキュメント)を毎回プロンプトに含めてユーザーの質問に答えるRAG的システムで、コストが想定より高い。1日あたりのアクセス頻度は高く、ドキュメントの更新頻度は低い。最も有効な最適化策はどれか。
 
-A. ドキュメントを要約して常に短縮版のみを使う(内容の劣化は許容する)
-*A. Summarize the document and always use only the shortened version (accepting some degradation in content).*
-B. プロンプトキャッシュを活用し、静的な大きいドキュメント部分をキャッシュ対象として固定順序でプロンプト先頭に配置する
-*B. Use prompt caching, placing the large, static document portion at a fixed position at the start of the prompt so it is cacheable.*
-C. ユーザーの質問文を毎回要約してトークン数を削れば十分
-*C. It's sufficient to summarize the user's question every time to reduce token count.*
-D. 出力トークンの最大値を減らす
-*D. Reduce the maximum output token count.*
+*A. Summarize the document and always use only the shortened version (accepting some degradation in content).*<br>A. ドキュメントを要約して常に短縮版のみを使う(内容の劣化は許容する)
+*B. Use prompt caching, placing the large, static document portion at a fixed position at the start of the prompt so it is cacheable.*<br>B. プロンプトキャッシュを活用し、静的な大きいドキュメント部分をキャッシュ対象として固定順序でプロンプト先頭に配置する
+*C. It's sufficient to summarize the user's question every time to reduce token count.*<br>C. ユーザーの質問文を毎回要約してトークン数を削れば十分
+*D. Reduce the maximum output token count.*<br>D. 出力トークンの最大値を減らす
 
 **正解: B**
 
@@ -155,17 +120,12 @@ D. 出力トークンの最大値を減らす
 
 ### Q8 [04: Evaluation, Testing & Optimization]
 
-新しいプロンプトを本番投入する前に品質を検証したい。要約タスクであり、「唯一の正解」がなく、正確性・網羅性・トーンの3軸で評価したい。最も適した評価方式はどれか。
-*You want to validate quality before deploying a new prompt to production. It's a summarization task with no single "correct answer," and you want to evaluate it along three axes: accuracy, completeness, and tone. Which evaluation method is most suitable?*
+*You want to validate quality before deploying a new prompt to production. It's a summarization task with no single "correct answer," and you want to evaluate it along three axes: accuracy, completeness, and tone. Which evaluation method is most suitable?*<br>新しいプロンプトを本番投入する前に品質を検証したい。要約タスクであり、「唯一の正解」がなく、正確性・網羅性・トーンの3軸で評価したい。最も適した評価方式はどれか。
 
-A. 出力の完全一致(exact match)による自動採点のみ
-*A. Automated scoring based solely on exact match of the output.*
-B. 複数軸のルーブリックを設計し、LLM-as-judgeまたは人手評価で採点する。人手評価はLLM-as-judgeの妥当性検証にも使う
-*B. Design a multi-axis rubric and score using LLM-as-judge or human evaluation. Human evaluation is also used to validate the LLM-as-judge itself.*
-C. ユーザーからの苦情件数だけを指標にする
-*C. Use only the number of user complaints as the metric.*
-D. 評価は不要で、目視確認のみで十分
-*D. No evaluation is needed; a visual check alone is sufficient.*
+*A. Automated scoring based solely on exact match of the output.*<br>A. 出力の完全一致(exact match)による自動採点のみ
+*B. Design a multi-axis rubric and score using LLM-as-judge or human evaluation. Human evaluation is also used to validate the LLM-as-judge itself.*<br>B. 複数軸のルーブリックを設計し、LLM-as-judgeまたは人手評価で採点する。人手評価はLLM-as-judgeの妥当性検証にも使う
+*C. Use only the number of user complaints as the metric.*<br>C. ユーザーからの苦情件数だけを指標にする
+*D. No evaluation is needed; a visual check alone is sufficient.*<br>D. 評価は不要で、目視確認のみで十分
 
 **正解: B**
 
@@ -175,17 +135,12 @@ D. 評価は不要で、目視確認のみで十分
 
 ### Q9 [04: Evaluation, Testing & Optimization]
 
-本番のエージェントシステムで、ある日突然コストが急増し、後から調べると一部のリクエストがツール呼び出しを繰り返す無限ループに陥っていたことが判明した。再発防止のために最も直接的に有効な組み合わせはどれか。
-*In a production agent system, costs suddenly spiked one day, and a later investigation found that some requests had fallen into an infinite loop of repeated tool calls. Which combination of measures is most directly effective for preventing recurrence?*
+*In a production agent system, costs suddenly spiked one day, and a later investigation found that some requests had fallen into an infinite loop of repeated tool calls. Which combination of measures is most directly effective for preventing recurrence?*<br>本番のエージェントシステムで、ある日突然コストが急増し、後から調べると一部のリクエストがツール呼び出しを繰り返す無限ループに陥っていたことが判明した。再発防止のために最も直接的に有効な組み合わせはどれか。
 
-A. モデルを軽量ティアに固定する
-*A. Fix the model to a lightweight tier.*
-B. 最大ツール呼び出し回数・最大実行時間などのガードレールを設け、異常なコスト急増を検知するアラートを監視基盤に追加する
-*B. Add guardrails such as a maximum tool-call count and maximum execution time, and add alerts to the monitoring infrastructure to detect abnormal cost spikes.*
-C. 全リクエストを人手レビューに切り替える
-*C. Switch all requests to manual human review.*
-D. プロンプトキャッシュを無効化する
-*D. Disable prompt caching.*
+*A. Fix the model to a lightweight tier.*<br>A. モデルを軽量ティアに固定する
+*B. Add guardrails such as a maximum tool-call count and maximum execution time, and add alerts to the monitoring infrastructure to detect abnormal cost spikes.*<br>B. 最大ツール呼び出し回数・最大実行時間などのガードレールを設け、異常なコスト急増を検知するアラートを監視基盤に追加する
+*C. Switch all requests to manual human review.*<br>C. 全リクエストを人手レビューに切り替える
+*D. Disable prompt caching.*<br>D. プロンプトキャッシュを無効化する
 
 **正解: B**
 
@@ -195,17 +150,12 @@ D. プロンプトキャッシュを無効化する
 
 ### Q10 [05: Governance, Safety & Risk Management]
 
-医療系スタートアップが、患者の問診内容を要約してカルテ下書きを生成するエージェントを構築している。生成された下書きは医師が確認前に一部そのまま採用されるリスクがある。ガバナンス設計として最も適切なものはどれか。
-*A healthcare startup is building an agent that summarizes patient intake information to generate a draft medical chart. There's a risk that some of the generated draft gets adopted as-is before a doctor reviews it. Which governance design is most appropriate?*
+*A healthcare startup is building an agent that summarizes patient intake information to generate a draft medical chart. There's a risk that some of the generated draft gets adopted as-is before a doctor reviews it. Which governance design is most appropriate?*<br>医療系スタートアップが、患者の問診内容を要約してカルテ下書きを生成するエージェントを構築している。生成された下書きは医師が確認前に一部そのまま採用されるリスクがある。ガバナンス設計として最も適切なものはどれか。
 
-A. 完全に人間の関与なし(human-out-of-the-loop)で運用し、生成速度を優先する
-*A. Operate with no human involvement at all (human-out-of-the-loop), prioritizing generation speed.*
-B. 影響度の高いユースケースとしてリスク階層化し、医師による最終確認を必須とするhuman-in-the-loop設計とし、PIIの取り扱い・保存期間についても医療規制要件を確認する
-*B. Classify it as a high-impact use case in the risk tiering, design it as human-in-the-loop with mandatory final review by a doctor, and also verify medical regulatory requirements around PII handling and retention period.*
-C. ガードレールは不要で、モデル自体の安全性に任せる
-*C. No guardrails are needed; leave it to the model's own safety.*
-D. 患者データはプロンプトに含めず、一般的な医学知識のみで応答させる
-*D. Don't include patient data in the prompt at all, and have it respond using only general medical knowledge.*
+*A. Operate with no human involvement at all (human-out-of-the-loop), prioritizing generation speed.*<br>A. 完全に人間の関与なし(human-out-of-the-loop)で運用し、生成速度を優先する
+*B. Classify it as a high-impact use case in the risk tiering, design it as human-in-the-loop with mandatory final review by a doctor, and also verify medical regulatory requirements around PII handling and retention period.*<br>B. 影響度の高いユースケースとしてリスク階層化し、医師による最終確認を必須とするhuman-in-the-loop設計とし、PIIの取り扱い・保存期間についても医療規制要件を確認する
+*C. No guardrails are needed; leave it to the model's own safety.*<br>C. ガードレールは不要で、モデル自体の安全性に任せる
+*D. Don't include patient data in the prompt at all, and have it respond using only general medical knowledge.*<br>D. 患者データはプロンプトに含めず、一般的な医学知識のみで応答させる
 
 **正解: B**
 
@@ -215,17 +165,12 @@ D. 患者データはプロンプトに含めず、一般的な医学知識の�
 
 ### Q11 [05: Governance, Safety & Risk Management]
 
-社内で複数の部門が独自にサードパーティ製MCPサーバーを接続し始めている。あるサーバーは提供元が不明瞭で、権限スコープの説明も曖昧だった。アーキテクトとして取るべき最も適切な対応はどれか。
-*Multiple internal departments have begun independently connecting third-party MCP servers. One server had an unclear provider and vague documentation of its permission scope. As the architect, what is the most appropriate response?*
+*Multiple internal departments have begun independently connecting third-party MCP servers. One server had an unclear provider and vague documentation of its permission scope. As the architect, what is the most appropriate response?*<br>社内で複数の部門が独自にサードパーティ製MCPサーバーを接続し始めている。あるサーバーは提供元が不明瞭で、権限スコープの説明も曖昧だった。アーキテクトとして取るべき最も適切な対応はどれか。
 
-A. MCPは標準プロトコルなので提供元を問わず自由に接続を許可する
-*A. Since MCP is a standard protocol, freely allow connections regardless of provider.*
-B. 中央でMCPサーバーの承認済みレジストリを整備し、提供元の信頼性・権限スコープ・監査可能性を事前レビューするガバナンスプロセスを導入する
-*B. Maintain a centrally-managed registry of approved MCP servers, and introduce a governance process that reviews provider trustworthiness, permission scope, and auditability beforehand.*
-C. MCPの利用自体を全社的に禁止する
-*C. Ban the use of MCP entirely, company-wide.*
-D. 各部門の裁量に完全に任せ、事後報告のみを求める
-*D. Leave it entirely to each department's discretion, requiring only after-the-fact reporting.*
+*A. Since MCP is a standard protocol, freely allow connections regardless of provider.*<br>A. MCPは標準プロトコルなので提供元を問わず自由に接続を許可する
+*B. Maintain a centrally-managed registry of approved MCP servers, and introduce a governance process that reviews provider trustworthiness, permission scope, and auditability beforehand.*<br>B. 中央でMCPサーバーの承認済みレジストリを整備し、提供元の信頼性・権限スコープ・監査可能性を事前レビューするガバナンスプロセスを導入する
+*C. Ban the use of MCP entirely, company-wide.*<br>C. MCPの利用自体を全社的に禁止する
+*D. Leave it entirely to each department's discretion, requiring only after-the-fact reporting.*<br>D. 各部門の裁量に完全に任せ、事後報告のみを求める
 
 **正解: B**
 
@@ -235,17 +180,12 @@ D. 各部門の裁量に完全に任せ、事後報告のみを求める
 
 ### Q12 [05: Governance, Safety & Risk Management]
 
-本番のエージェントが誤って顧客に不適切な内容を送信するインシデントが発生した。初動対応として最も優先すべきものはどれか。
-*An incident occurred where a production agent mistakenly sent inappropriate content to a customer. What should be prioritized first in the initial response?*
+*An incident occurred where a production agent mistakenly sent inappropriate content to a customer. What should be prioritized first in the initial response?*<br>本番のエージェントが誤って顧客に不適切な内容を送信するインシデントが発生した。初動対応として最も優先すべきものはどれか。
 
-A. 直ちに原因究明のための詳細な技術調査だけを開始し、システムは稼働継続させる
-*A. Immediately start only a detailed technical investigation into the cause, while keeping the system running.*
-B. 問題のあるプロンプト/モデルバージョンをロールバックまたはkill switchで停止し(封じ込め)、その後に事後分析(blameless postmortem)を行い、法務・広報等への適切なエスカレーションを行う
-*B. Roll back the problematic prompt/model version or stop it with a kill switch (containment), then conduct a blameless postmortem, and appropriately escalate to legal, PR, and other relevant parties.*
-C. 個人の責任追及を行い、再発防止は本人の注意力向上に委ねる
-*C. Pursue individual blame, and leave prevention of recurrence to that person improving their own attentiveness.*
-D. 何もアナウンスせず静観する
-*D. Say nothing and just watch quietly.*
+*A. Immediately start only a detailed technical investigation into the cause, while keeping the system running.*<br>A. 直ちに原因究明のための詳細な技術調査だけを開始し、システムは稼働継続させる
+*B. Roll back the problematic prompt/model version or stop it with a kill switch (containment), then conduct a blameless postmortem, and appropriately escalate to legal, PR, and other relevant parties.*<br>B. 問題のあるプロンプト/モデルバージョンをロールバックまたはkill switchで停止し(封じ込め)、その後に事後分析(blameless postmortem)を行い、法務・広報等への適切なエスカレーションを行う
+*C. Pursue individual blame, and leave prevention of recurrence to that person improving their own attentiveness.*<br>C. 個人の責任追及を行い、再発防止は本人の注意力向上に委ねる
+*D. Say nothing and just watch quietly.*<br>D. 何もアナウンスせず静観する
 
 **正解: B**
 
@@ -255,17 +195,12 @@ D. 何もアナウンスせず静観する
 
 ### Q13 [06: Stakeholder Communication & Lifecycle Management]
 
-エグゼクティブ会議で、あるアーキテクトが新しいエージェントシステムの導入を提案することになった。技術的には最先端モデルを使う設計だが、経営層の関心は主にリスクとコストにある。最も効果的なプレゼンの組み立て方はどれか。
-*An architect is going to propose adopting a new agent system at an executive meeting. Technically, the design uses a cutting-edge model, but leadership's main concerns are risk and cost. Which way of structuring the presentation is most effective?*
+*An architect is going to propose adopting a new agent system at an executive meeting. Technically, the design uses a cutting-edge model, but leadership's main concerns are risk and cost. Which way of structuring the presentation is most effective?*<br>エグゼクティブ会議で、あるアーキテクトが新しいエージェントシステムの導入を提案することになった。技術的には最先端モデルを使う設計だが、経営層の関心は主にリスクとコストにある。最も効果的なプレゼンの組み立て方はどれか。
 
-A. モデルのパラメータ数やベンチマークスコアなど技術的優位性を中心に説明する
-*A. Focus mainly on technical advantages, such as the model's parameter count and benchmark scores.*
-B. eval結果(成功率・エラー率)による品質の定量的根拠、想定コスト(TCOベース)、リスク階層と対応する人間関与レベルを、ビジネス影響の言葉で説明する
-*B. Explain, in terms of business impact, the quantitative basis for quality from eval results (success rate/error rate), the projected cost (on a TCO basis), and the risk tier with its corresponding level of human involvement.*
-C. 技術詳細は伏せ、「AIだから大丈夫」という前提で説明を省略する
-*C. Withhold technical details and skip the explanation on the premise that "it's fine because it's AI."*
-D. 競合他社も導入しているという事実のみを根拠にする
-*D. Base the argument solely on the fact that competitors have also adopted it.*
+*A. Focus mainly on technical advantages, such as the model's parameter count and benchmark scores.*<br>A. モデルのパラメータ数やベンチマークスコアなど技術的優位性を中心に説明する
+*B. Explain, in terms of business impact, the quantitative basis for quality from eval results (success rate/error rate), the projected cost (on a TCO basis), and the risk tier with its corresponding level of human involvement.*<br>B. eval結果(成功率・エラー率)による品質の定量的根拠、想定コスト(TCOベース)、リスク階層と対応する人間関与レベルを、ビジネス影響の言葉で説明する
+*C. Withhold technical details and skip the explanation on the premise that "it's fine because it's AI."*<br>C. 技術詳細は伏せ、「AIだから大丈夫」という前提で説明を省略する
+*D. Base the argument solely on the fact that competitors have also adopted it.*<br>D. 競合他社も導入しているという事実のみを根拠にする
 
 **正解: B**
 
@@ -275,17 +210,12 @@ D. 競合他社も導入しているという事実のみを根拠にする
 
 ### Q14 [06: Stakeholder Communication & Lifecycle Management]
 
-全社展開を予定しているAIアシスタント機能について、現場部門から「使い方が分からず定着しない」という懸念が導入前から出ている。最も適切な対応はどれか。
-*For an AI assistant feature planned for company-wide rollout, frontline departments have already voiced concerns before launch that "people won't know how to use it and it won't stick." What is the most appropriate response?*
+*For an AI assistant feature planned for company-wide rollout, frontline departments have already voiced concerns before launch that "people won't know how to use it and it won't stick." What is the most appropriate response?*<br>全社展開を予定しているAIアシスタント機能について、現場部門から「使い方が分からず定着しない」という懸念が導入前から出ている。最も適切な対応はどれか。
 
-A. 展開後にFAQを作成すれば十分であり、事前の対応は不要
-*A. It's sufficient to create an FAQ after rollout; no advance action is needed.*
-B. 設計初期段階から対象部門を巻き込み(co-design)、各部門にチェンジチャンピオンを置いてトレーニングと草の根の定着支援を行う体制を展開計画に組み込む
-*B. Involve the target departments from the earliest design stage (co-design), and build into the rollout plan a structure with change champions in each department providing training and grassroots adoption support.*
-C. 現場の懸念は無視し、経営トップダウンで強制利用させる
-*C. Ignore frontline concerns and force adoption via top-down executive mandate.*
-D. 定着しない部門は展開対象から除外する
-*D. Exclude departments where adoption doesn't stick from the rollout.*
+*A. It's sufficient to create an FAQ after rollout; no advance action is needed.*<br>A. 展開後にFAQを作成すれば十分であり、事前の対応は不要
+*B. Involve the target departments from the earliest design stage (co-design), and build into the rollout plan a structure with change champions in each department providing training and grassroots adoption support.*<br>B. 設計初期段階から対象部門を巻き込み(co-design)、各部門にチェンジチャンピオンを置いてトレーニングと草の根の定着支援を行う体制を展開計画に組み込む
+*C. Ignore frontline concerns and force adoption via top-down executive mandate.*<br>C. 現場の懸念は無視し、経営トップダウンで強制利用させる
+*D. Exclude departments where adoption doesn't stick from the rollout.*<br>D. 定着しない部門は展開対象から除外する
 
 **正解: B**
 
@@ -295,17 +225,12 @@ D. 定着しない部門は展開対象から除外する
 
 ### Q15 [06: Stakeholder Communication & Lifecycle Management]
 
-Anthropicが、現在本番で利用中のモデルバージョンについて数ヶ月後の廃止(deprecation)を予告した。アーキテクトとして最初に着手すべきことはどれか。
-*Anthropic has announced that the model version currently in production use will be deprecated in a few months. What should the architect address first?*
+*Anthropic has announced that the model version currently in production use will be deprecated in a few months. What should the architect address first?*<br>Anthropicが、現在本番で利用中のモデルバージョンについて数ヶ月後の廃止(deprecation)を予告した。アーキテクトとして最初に着手すべきことはどれか。
 
-A. 廃止予告を無視し、廃止日まで何もしない
-*A. Ignore the deprecation notice and do nothing until the deprecation date.*
-B. 影響を受けるプロンプト・評価セット・システムプロンプトの棚卸しを行い、後継モデルでの回帰テスト・段階的移行計画を早期に立てる
-*B. Take inventory of the affected prompts, evaluation sets, and system prompts, and draw up an early plan for regression testing on the successor model and a phased migration.*
-C. 直ちに全システムを停止する
-*C. Immediately shut down all systems.*
-D. 廃止予告に対し、独自にモデルをフォークして自社運用に切り替える
-*D. In response to the deprecation notice, independently fork the model and switch to running it in-house.*
+*A. Ignore the deprecation notice and do nothing until the deprecation date.*<br>A. 廃止予告を無視し、廃止日まで何もしない
+*B. Take inventory of the affected prompts, evaluation sets, and system prompts, and draw up an early plan for regression testing on the successor model and a phased migration.*<br>B. 影響を受けるプロンプト・評価セット・システムプロンプトの棚卸しを行い、後継モデルでの回帰テスト・段階的移行計画を早期に立てる
+*C. Immediately shut down all systems.*<br>C. 直ちに全システムを停止する
+*D. In response to the deprecation notice, independently fork the model and switch to running it in-house.*<br>D. 廃止予告に対し、独自にモデルをフォークして自社運用に切り替える
 
 **正解: B**
 
@@ -315,17 +240,12 @@ D. 廃止予告に対し、独自にモデルをフォークして自社運用�
 
 ### Q16 [07: Developer Productivity & Operational Enablement]
 
-複数の開発チームが、それぞれ独自のエージェント実装パターンでプロジェクトを立ち上げており、認証・ロギング・ガードレールの実装品質にばらつきが出ている。プラットフォームチームが取るべき最も効果的な施策はどれか。
-*Multiple development teams are each launching projects with their own agent implementation patterns, resulting in inconsistent implementation quality for authentication, logging, and guardrails. What is the most effective measure for the platform team to take?*
+*Multiple development teams are each launching projects with their own agent implementation patterns, resulting in inconsistent implementation quality for authentication, logging, and guardrails. What is the most effective measure for the platform team to take?*<br>複数の開発チームが、それぞれ独自のエージェント実装パターンでプロジェクトを立ち上げており、認証・ロギング・ガードレールの実装品質にばらつきが出ている。プラットフォームチームが取るべき最も効果的な施策はどれか。
 
-A. 全チームに個別に実装レビューを行い、都度指摘する場当たり的な対応を続ける
-*A. Continue an ad hoc approach of conducting individual implementation reviews for every team and pointing out issues each time.*
-B. 認証・ロギング・評価フック・ガードレールをあらかじめ組み込んだゴールデンパス(標準テンプレート)を整備し、標準から外れる場合のみ軽量な例外プロセスを設ける
-*B. Establish a golden path (standard template) with authentication, logging, evaluation hooks, and guardrails built in from the start, with a lightweight exception process only for cases that deviate from the standard.*
-C. 新規プロジェクトの立ち上げを一時的に全面禁止する
-*C. Temporarily ban launching new projects entirely.*
-D. 各チームの裁量を最大化するため、標準化は行わない
-*D. Don't standardize at all, in order to maximize each team's discretion.*
+*A. Continue an ad hoc approach of conducting individual implementation reviews for every team and pointing out issues each time.*<br>A. 全チームに個別に実装レビューを行い、都度指摘する場当たり的な対応を続ける
+*B. Establish a golden path (standard template) with authentication, logging, evaluation hooks, and guardrails built in from the start, with a lightweight exception process only for cases that deviate from the standard.*<br>B. 認証・ロギング・評価フック・ガードレールをあらかじめ組み込んだゴールデンパス(標準テンプレート)を整備し、標準から外れる場合のみ軽量な例外プロセスを設ける
+*C. Temporarily ban launching new projects entirely.*<br>C. 新規プロジェクトの立ち上げを一時的に全面禁止する
+*D. Don't standardize at all, in order to maximize each team's discretion.*<br>D. 各チームの裁量を最大化するため、標準化は行わない
 
 **正解: B**
 
