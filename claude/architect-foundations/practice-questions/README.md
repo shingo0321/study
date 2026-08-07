@@ -17,9 +17,9 @@ nav_order: 99
 
 *A team wants to automate an internal research task (investigating multiple independent web sources and producing a report that synthesizes the key points) using Claude. Research on each source is independent of the others, and there are typically 5-10 sources. As the architect, which configuration should you recommend?*<br>あるチームが、社内のリサーチタスク(複数の独立したWebソースを調査し、要点を統合したレポートを作る)をClaudeで自動化しようとしている。各ソースの調査は互いに依存せず、調査対象は5〜10件になることが多い。アーキテクトとして推奨すべき構成は?
 
-*A. A single agent investigates all sources sequentially, accumulating all findings in one conversation context.*<br>A. 1つのエージェントが全ソースを順番に調査し、そのまま1つの会話コンテキストにすべての調査結果を蓄積していく
-*B. An orchestrator agent delegates each source's investigation to subagents in parallel, and each subagent returns only a summarized report to the orchestrator.*<br>B. オーケストレーターエージェントが各ソースの調査をサブエージェントに並列委譲し、各サブエージェントは要約したレポートのみをオーケストレーターに返す
-*C. A human manually summarizes all sources in advance before passing them to Claude.*<br>C. 人間がすべてのソースを事前に手動で要約してからClaudeに渡す
+*A. A single agent investigates all sources sequentially, accumulating all findings in one conversation context.*<br>A. 1つのエージェントが全ソースを順番に調査し、そのまま1つの会話コンテキストにすべての調査結果を蓄積していく<br>
+*B. An orchestrator agent delegates each source's investigation to subagents in parallel, and each subagent returns only a summarized report to the orchestrator.*<br>B. オーケストレーターエージェントが各ソースの調査をサブエージェントに並列委譲し、各サブエージェントは要約したレポートのみをオーケストレーターに返す<br>
+*C. A human manually summarizes all sources in advance before passing them to Claude.*<br>C. 人間がすべてのソースを事前に手動で要約してからClaudeに渡す<br>
 *D. A single agent first creates a list of URLs for all sources, then processes them one at a time while including the full list in context every time.*<br>D. 1つのエージェントがまず全ソースのURLリストを作成し、それを毎回全文コンテキストに含めながら1件ずつ処理する
 
 **正解: B**
@@ -32,9 +32,9 @@ nav_order: 99
 
 *A production agent is being given the ability to call an external payment API to process refunds. This same agent also autonomously performs many other low-risk operations, such as order history lookups and FAQ answers. From an architecture standpoint, which design is most appropriate?*<br>本番稼働中のエージェントが、外部の決済APIを呼び出して返金処理を行う機能を持つことになった。このエージェントは他にも、注文履歴の検索やFAQ回答など多数の低リスクな操作を自律的に行っている。アーキテクチャ上、最も適切な設計はどれか?
 
-*A. Require human approval for every tool call, every time.*<br>A. すべてのツール呼び出しについて、毎回人間の承認を必須にする
-*B. Add a human approval gate only for irreversible, financially-impactful operations like refunds, while allowing autonomous execution for order history lookups and FAQ answers.*<br>B. 返金処理のような不可逆・金銭的影響のある操作にのみ人間の承認ゲートを設け、注文履歴検索やFAQ回答は自律実行を許可する
-*C. Execute everything, including refunds, fully autonomously and audit the logs afterward.*<br>C. 返金処理も含めてすべて完全自律で実行し、事後にログを監査する
+*A. Require human approval for every tool call, every time.*<br>A. すべてのツール呼び出しについて、毎回人間の承認を必須にする<br>
+*B. Add a human approval gate only for irreversible, financially-impactful operations like refunds, while allowing autonomous execution for order history lookups and FAQ answers.*<br>B. 返金処理のような不可逆・金銭的影響のある操作にのみ人間の承認ゲートを設け、注文履歴検索やFAQ回答は自律実行を許可する<br>
+*C. Execute everything, including refunds, fully autonomously and audit the logs afterward.*<br>C. 返金処理も含めてすべて完全自律で実行し、事後にログを監査する<br>
 *D. Remove the refund tool from the agent entirely and have a human process refunds in a separate system.*<br>D. 返金処理を行うツール自体をエージェントから完全に削除し、人間が別システムで処理する
 
 **正解: B**
@@ -47,9 +47,9 @@ nav_order: 99
 
 *You are designing a code migration agent that runs continuously for several hours. You want it to be able to resume from where it left off if the process crashes partway through, rather than starting over. Which design element is most appropriate?*<br>数時間にわたって動作し続けるコード移行エージェントを設計している。途中でプロセスがクラッシュした場合でも、最初からやり直さずに続きから再開できるようにしたい。最も適切な設計要素はどれか?
 
-*A. Reserve as large a context window as possible.*<br>A. コンテキストウィンドウを可能な限り大きく確保する
-*B. Periodically persist progress and completed tasks as checkpoints to an external store (a file, database, etc.).*<br>B. 進捗状況や完了済みタスクを外部(ファイルやDBなど)に定期的にチェックポイントとして永続化する
-*C. Have the model create as detailed a plan as possible, just once at the start.*<br>C. モデルにできるだけ詳細な計画を最初に一度だけ立てさせる
+*A. Reserve as large a context window as possible.*<br>A. コンテキストウィンドウを可能な限り大きく確保する<br>
+*B. Periodically persist progress and completed tasks as checkpoints to an external store (a file, database, etc.).*<br>B. 進捗状況や完了済みタスクを外部(ファイルやDBなど)に定期的にチェックポイントとして永続化する<br>
+*C. Have the model create as detailed a plan as possible, just once at the start.*<br>C. モデルにできるだけ詳細な計画を最初に一度だけ立てさせる<br>
 *D. Set no upper limit on the number of retries.*<br>D. リトライ回数の上限を設けない
 
 **正解: B**
@@ -62,9 +62,9 @@ nav_order: 99
 
 *An agent system adopted a multi-agent configuration (an orchestrator plus several specialized subagents) for a simple, repetitive task (classifying a few dozen documents), and token cost increased substantially compared to when it was handled by a single agent, with little latency improvement. What is the most plausible explanation?*<br>あるエージェントシステムが、同じような単純作業(数十件の書類の分類)にマルチエージェント構成(オーケストレーター+専用サブエージェント数体)を採用したところ、シングルエージェントで処理していた頃よりトークンコストが大幅に増加し、レイテンシもさほど改善しなかった。原因として最も妥当な説明はどれか?
 
-*A. Multi-agent configurations should always be cheaper than single-agent ones, so there must be a bug in the implementation.*<br>A. マルチエージェント構成は常にシングルエージェントよりコストが安くなるはずなので、実装にバグがある
-*B. The task was simply split too finely; there is no inherent problem with going multi-agent.*<br>B. タスクの分割粒度が細かすぎるだけで、マルチエージェント化自体に問題はない
-*C. The task lacked genuine independence/specialization to separate, so the benefit of parallelization was minimal, while the overhead of inter-agent delegation and context duplication was still incurred.*<br>C. タスクに真の独立性・専門性の分離が乏しく、並列化のメリットが薄いのにエージェント間の委譲・コンテキスト複製のオーバーヘッドだけが乗った
+*A. Multi-agent configurations should always be cheaper than single-agent ones, so there must be a bug in the implementation.*<br>A. マルチエージェント構成は常にシングルエージェントよりコストが安くなるはずなので、実装にバグがある<br>
+*B. The task was simply split too finely; there is no inherent problem with going multi-agent.*<br>B. タスクの分割粒度が細かすぎるだけで、マルチエージェント化自体に問題はない<br>
+*C. The task lacked genuine independence/specialization to separate, so the benefit of parallelization was minimal, while the overhead of inter-agent delegation and context duplication was still incurred.*<br>C. タスクに真の独立性・専門性の分離が乏しく、並列化のメリットが薄いのにエージェント間の委譲・コンテキスト複製のオーバーヘッドだけが乗った<br>
 *D. The model version is outdated.*<br>D. モデルのバージョンが古い
 
 **正解: C**
@@ -77,9 +77,9 @@ nav_order: 99
 
 *You are designing a tool, `update_record`, for Claude to call against an internal system. It is designed generically, taking an arbitrary table name and an arbitrary SQL statement as parameters and executing them against the database. As the architect reviewing this design, what is the most important concern?*<br>社内システム用に、Claudeが呼び出すツール `update_record` を設計している。このツールは任意のテーブル名・任意のSQL文をパラメータとして受け取り、DBに対して実行する汎用設計になっている。アーキテクトとしてこの設計をレビューするとき、最も重要な懸念点は何か?
 
-*A. The tool name is in English.*<br>A. ツール名が英語であること
-*B. The schema allows free-form input (an arbitrary SQL string), which violates the principle of least privilege and carries a high risk of misuse or abuse.*<br>B. スキーマが自由入力(任意のSQL文字列)を許しており、最小権限の原則に反し誤用・悪用のリスクが高い
-*C. Response speed is slow.*<br>C. レスポンス速度が遅いこと
+*A. The tool name is in English.*<br>A. ツール名が英語であること<br>
+*B. The schema allows free-form input (an arbitrary SQL string), which violates the principle of least privilege and carries a high risk of misuse or abuse.*<br>B. スキーマが自由入力(任意のSQL文字列)を許しており、最小権限の原則に反し誤用・悪用のリスクが高い<br>
+*C. Response speed is slow.*<br>C. レスポンス速度が遅いこと<br>
 *D. The tool's description text is too long.*<br>D. ツールの説明文が長すぎること
 
 **正解: B**
@@ -92,9 +92,9 @@ nav_order: 99
 
 *Multiple internal teams want to access the same internal knowledge base from different applications (Claude Desktop, a custom internal web tool, Claude Code). Access to the knowledge base is provided over the network and shared by multiple clients. Which direction is appropriate for the MCP server's transport, and why?*<br>社内の複数チームがそれぞれ異なるアプリケーション(Claude Desktop、独自の社内Webツール、Claude Code)から同じ社内ナレッジベースにアクセスできるようにしたい。ナレッジベースへのアクセスはネットワーク越しに提供され、複数クライアントから共有される想定である。MCPサーバーのトランスポートとして適切なのはどちらの方向性か、また理由は?
 
-*A. stdio transport, because it's a local process and the implementation is simple.*<br>A. stdioトランスポート。ローカルプロセスなので実装がシンプルだから
-*B. Remote (HTTP-based) transport, because it is shared by multiple clients/users and authentication/authorization must be handled over the network.*<br>B. リモート(HTTPベース)トランスポート。複数クライアント・複数ユーザーから共有アクセスされ、認証・認可をネットワーク越しに扱う必要があるため
-*C. The choice of transport doesn't affect MCP's design, so either works.*<br>C. トランスポートの選択はMCPの設計に影響しないので、どちらでもよい
+*A. stdio transport, because it's a local process and the implementation is simple.*<br>A. stdioトランスポート。ローカルプロセスなので実装がシンプルだから<br>
+*B. Remote (HTTP-based) transport, because it is shared by multiple clients/users and authentication/authorization must be handled over the network.*<br>B. リモート(HTTPベース)トランスポート。複数クライアント・複数ユーザーから共有アクセスされ、認証・認可をネットワーク越しに扱う必要があるため<br>
+*C. The choice of transport doesn't affect MCP's design, so either works.*<br>C. トランスポートの選択はMCPの設計に影響しないので、どちらでもよい<br>
 *D. Duplicate a dedicated MCP server locally for each individual client.*<br>D. 各クライアントごとに専用のMCPサーバーをローカルに複製する
 
 **正解: B**
@@ -107,9 +107,9 @@ stdioはクライアントと同一マシン上で完結するローカル用途
 
 *A development team is building an automated code review pipeline on CI using Claude Code. Since it runs in a non-interactive environment with no human watching, they want a mechanical guarantee that dangerous commands (e.g., direct access to the production database) can never be executed accidentally. Which design element is most appropriate?*<br>開発チームがClaude Codeを使ったCI上の自動コードレビューパイプラインを構築している。人間が張り付いていない非対話環境で実行するため、危険なコマンド(本番DBへの直接アクセスなど)が誤って実行されないことを機械的に保証したい。最も適切な設計要素はどれか?
 
-*A. Simply adding an instruction to the system prompt saying "do not execute dangerous commands" is sufficient.*<br>A. システムプロンプトに「危険なコマンドは実行しないこと」という指示を追加するだけで十分とする
-*B. Implement a mechanism using hooks that detects and blocks dangerous command patterns, independent of the model's judgment.*<br>B. フック(hooks)で危険なコマンドパターンを検知しブロックする仕組みを、モデルの判断とは独立に実装する
-*C. Switch to a more capable model.*<br>C. モデルをより高性能なものに変更する
+*A. Simply adding an instruction to the system prompt saying "do not execute dangerous commands" is sufficient.*<br>A. システムプロンプトに「危険なコマンドは実行しないこと」という指示を追加するだけで十分とする<br>
+*B. Implement a mechanism using hooks that detects and blocks dangerous command patterns, independent of the model's judgment.*<br>B. フック(hooks)で危険なコマンドパターンを検知しブロックする仕組みを、モデルの判断とは独立に実装する<br>
+*C. Switch to a more capable model.*<br>C. モデルをより高性能なものに変更する<br>
 *D. Have the pipeline wait until a human reviews the results each time (this contradicts the non-interactive premise, but accept it anyway).*<br>D. レビュー結果を毎回人間が確認するまでパイプラインを待機させる(非対話運用の前提と矛盾するが許容する)
 
 **正解: B**
@@ -122,9 +122,9 @@ stdioはクライアントと同一マシン上で完結するローカル用途
 
 *A development team working across multiple repositories wants to unify Claude Code's "list of allowed tools" and "MCP server configuration" across the whole team. They want to avoid variation between individual settings, so that anyone can reproduce the same configuration just by looking at the repository. Which approach is most appropriate?*<br>複数リポジトリを横断して働く開発チームが、Claude Codeの「許可するツール一覧」や「使用するMCPサーバー構成」をチーム全員で統一したい。個人ごとの設定のばらつきを避け、リポジトリを見れば誰でも同じ構成を再現できるようにしたいとき、最も適切なアプローチはどれか?
 
-*A. Each developer manually leaves notes in their own user-level settings and shares them verbally.*<br>A. 各開発者が自分のユーザーレベル設定に手動でメモを残し、口頭で共有する
-*B. Commit the allowed-tools and MCP server configuration that the team should standardize on as project-level settings in the repository.*<br>B. チームで統一すべき許可ツール・MCPサーバー構成をプロジェクトレベルの設定としてリポジトリにコミットする
-*C. Have everyone use the same PC to keep settings aligned.*<br>C. 全員が同じPCを使うことで設定を揃える
+*A. Each developer manually leaves notes in their own user-level settings and shares them verbally.*<br>A. 各開発者が自分のユーザーレベル設定に手動でメモを残し、口頭で共有する<br>
+*B. Commit the allowed-tools and MCP server configuration that the team should standardize on as project-level settings in the repository.*<br>B. チームで統一すべき許可ツール・MCPサーバー構成をプロジェクトレベルの設定としてリポジトリにコミットする<br>
+*C. Have everyone use the same PC to keep settings aligned.*<br>C. 全員が同じPCを使うことで設定を揃える<br>
 *D. Sharing settings is impossible, so leave it to each individual's discretion.*<br>D. 設定の共有は不可能なので個々人の裁量に任せる
 
 **正解: B**
@@ -137,9 +137,9 @@ stdioはクライアントと同一マシン上で完結するローカル用途
 
 *An organization is planning a phased rollout of Claude Code. In the first phase, a few developers tried it individually, and good configuration patterns (allowed tools, hooks, how to write CLAUDE.md) began to emerge. What is the most reasonable action for the next phase?*<br>ある組織でClaude Codeを段階的に導入する計画を立てている。最初のフェーズでは一部の開発者が個人利用で試し、良い設定パターン(許可ツール、フック、CLAUDE.mdの書き方)が見えてきた。次のフェーズとして最も妥当なアクションはどれか?
 
-*A. Immediately force-apply a uniform configuration across every repository company-wide.*<br>A. いきなり全社の全リポジトリに一律の設定を強制適用する
-*B. Codify the effective configuration patterns into the repository as project settings, hooks, and CLAUDE.md, standardize at the team level, and then gradually widen the rollout.*<br>B. 有効だった設定パターンをプロジェクト設定・フック・CLAUDE.mdとしてリポジトリに定着させ、チーム単位で標準化してから段階的に展開範囲を広げる
-*C. Discard the knowledge gained from the individual-use phase, since it's not needed for the rollout.*<br>C. 個人利用のフェーズで得られた知見は展開時に不要なので破棄する
+*A. Immediately force-apply a uniform configuration across every repository company-wide.*<br>A. いきなり全社の全リポジトリに一律の設定を強制適用する<br>
+*B. Codify the effective configuration patterns into the repository as project settings, hooks, and CLAUDE.md, standardize at the team level, and then gradually widen the rollout.*<br>B. 有効だった設定パターンをプロジェクト設定・フック・CLAUDE.mdとしてリポジトリに定着させ、チーム単位で標準化してから段階的に展開範囲を広げる<br>
+*C. Discard the knowledge gained from the individual-use phase, since it's not needed for the rollout.*<br>C. 個人利用のフェーズで得られた知見は展開時に不要なので破棄する<br>
 *D. Leave adoption to individual discretion and don't standardize at the organizational level.*<br>D. 導入は個人の自由に任せ、組織としての標準化は行わない
 
 **正解: B**
@@ -152,9 +152,9 @@ stdioはクライアントと同一マシン上で完結するローカル用途
 
 *A team operating a production customer-support agent's system prompt left the prompt unchanged after a model version upgrade, and later noticed that some response quality had subtly shifted. As the architect, what mechanism should be introduced to prevent this kind of risk going forward?*<br>本番のカスタマーサポートエージェントのシステムプロンプトを運用しているチームが、モデルのバージョンアップ後にプロンプトを変更せずそのままにしていたところ、一部の応答品質が微妙に変化していることに気づいた。今後このようなリスクを防ぐために、アーキテクトとして導入すべき仕組みはどれか?
 
-*A. Ban model version upgrades entirely going forward.*<br>A. モデルのバージョンアップ自体を今後禁止する
-*B. Put the prompt under version control, and establish a practice of running regression tests (evals) against a representative set of inputs — including at model update time — to verify quality.*<br>B. プロンプトをバージョン管理下に置き、モデル更新時にも代表的な入力群に対する回帰テスト(evals)を実行して品質を検証する運用を整備する
-*C. Make the system prompt as short and uniform as possible.*<br>C. システムプロンプトをできるだけ短く一律にする
+*A. Ban model version upgrades entirely going forward.*<br>A. モデルのバージョンアップ自体を今後禁止する<br>
+*B. Put the prompt under version control, and establish a practice of running regression tests (evals) against a representative set of inputs — including at model update time — to verify quality.*<br>B. プロンプトをバージョン管理下に置き、モデル更新時にも代表的な入力群に対する回帰テスト(evals)を実行して品質を検証する運用を整備する<br>
+*C. Make the system prompt as short and uniform as possible.*<br>C. システムプロンプトをできるだけ短く一律にする<br>
 *D. Quality change is a subjective matter, so no particular action is needed.*<br>D. 品質変化は主観の問題なので特に対処しない
 
 **正解: B**
@@ -167,9 +167,9 @@ stdioはクライアントと同一マシン上で完結するローカル用途
 
 *A downstream system is designed to parse Claude's output directly as JSON and pass it to another system. It turns out that, on rare occasions, the model's output mixes in explanatory text, causing parse errors. As the architect, what is the most appropriate response?*<br>下流システムがClaudeの出力をJSONとしてそのままパースして別システムに連携する設計になっている。まれにモデルの出力に説明文が混ざりパースエラーが起きることが分かった。アーキテクトとして取るべき対応として最も適切なものはどれか?
 
-*A. When a parse error occurs, let the downstream system crash so a human notices.*<br>A. パースエラーが起きたら下流システムをクラッシュさせ、人間が気づけるようにする
-*B. Clearly specify the output format in the prompt, while also adding schema validation and a fallback (retry or error handling) on the application side for parse failures.*<br>B. 出力形式をプロンプトで明確に指示しつつ、アプリケーション側にスキーマ検証とパース失敗時のフォールバック(再試行やエラーハンドリング)を用意する
-*C. Trust that the model's output is always correct, skip the validation layer, and prioritize latency.*<br>C. モデルの出力は常に正しいと信頼し、検証層を省略してレイテンシを優先する
+*A. When a parse error occurs, let the downstream system crash so a human notices.*<br>A. パースエラーが起きたら下流システムをクラッシュさせ、人間が気づけるようにする<br>
+*B. Clearly specify the output format in the prompt, while also adding schema validation and a fallback (retry or error handling) on the application side for parse failures.*<br>B. 出力形式をプロンプトで明確に指示しつつ、アプリケーション側にスキーマ検証とパース失敗時のフォールバック(再試行やエラーハンドリング)を用意する<br>
+*C. Trust that the model's output is always correct, skip the validation layer, and prioritize latency.*<br>C. モデルの出力は常に正しいと信頼し、検証層を省略してレイテンシを優先する<br>
 *D. Stop using JSON output altogether and have a human manually convert everything.*<br>D. JSON出力の利用自体をやめ、すべて人間が目視で変換する
 
 **正解: B**
@@ -182,9 +182,9 @@ stdioはクライアントと同一マシン上で完結するローカル用途
 
 *In a customer support agent that maintains a long-running conversation, the system prompt and tool definitions are the same on every turn, but the user's message content differs each time. To reduce latency and cost, you want to make maximum use of prompt caching. How should the prompt structure be designed?*<br>長時間の会話を続けるカスタマーサポートエージェントで、システムプロンプトとツール定義は毎ターン共通だが、ユーザーの発言内容は毎回異なる。レイテンシとコストを削減するために、プロンプトキャッシュを最大限活用したい。プロンプト構造をどう設計すべきか?
 
-*A. Always place the user's message first, with the system prompt and tool definitions at the end.*<br>A. ユーザーの発言を常に先頭に置き、システムプロンプト・ツール定義を末尾に置く
-*B. Place the unchanging system prompt and tool definitions first (as a fixed prefix), with the user input that changes every time at the end.*<br>B. 変化しないシステムプロンプト・ツール定義を先頭(固定プレフィックス)に置き、毎回変わるユーザー入力を末尾に置く
-*C. Cache efficiency doesn't depend on prompt structure, so ordering doesn't matter.*<br>C. キャッシュ効率はプロンプト構造に依存しないので、順序は気にしなくてよい
+*A. Always place the user's message first, with the system prompt and tool definitions at the end.*<br>A. ユーザーの発言を常に先頭に置き、システムプロンプト・ツール定義を末尾に置く<br>
+*B. Place the unchanging system prompt and tool definitions first (as a fixed prefix), with the user input that changes every time at the end.*<br>B. 変化しないシステムプロンプト・ツール定義を先頭(固定プレフィックス)に置き、毎回変わるユーザー入力を末尾に置く<br>
+*C. Cache efficiency doesn't depend on prompt structure, so ordering doesn't matter.*<br>C. キャッシュ効率はプロンプト構造に依存しないので、順序は気にしなくてよい<br>
 *D. Rewrite the system prompt's content as the conversation progresses.*<br>D. 会話が進むたびにシステムプロンプトの内容を書き換える
 
 **正解: B**
@@ -197,9 +197,9 @@ stdioはクライアントと同一マシン上で完結するローカル用途
 
 *You are designing an agent that involves searching internal documents. Since a long-context strategy that includes the entire document set (thousands of pages' worth) in context every time is unacceptable for cost and latency, you decide to adopt a RAG architecture. Which design decision is most appropriate for improving retrieval accuracy?*<br>社内文書検索を伴うエージェントを設計している。文書全体(数千ページ相当)を毎回コンテキストに含めるロングコンテキスト戦略ではコストとレイテンシが許容できないため、RAGアーキテクチャを採用することにした。検索精度を高めるための設計判断として最も適切なものはどれか?
 
-*A. Mechanically split documents into the smallest possible fixed length (e.g., every 50 characters) to create chunks.*<br>A. 文書をできるだけ小さい固定長(例: 50文字ごと)に機械的に分割してチャンク化する
-*B. Chunk by semantically coherent units (such as sections), and perform hybrid search combining vector search with keyword search and metadata filters.*<br>B. 意味的にまとまりのある単位(セクションなど)でチャンキングし、ベクトル検索とキーワード検索・メタデータフィルタを組み合わせたハイブリッド検索を行う
-*C. Don't chunk at all, and always search the entire document.*<br>C. チャンキングは行わず、常に文書全体を検索対象とする
+*A. Mechanically split documents into the smallest possible fixed length (e.g., every 50 characters) to create chunks.*<br>A. 文書をできるだけ小さい固定長(例: 50文字ごと)に機械的に分割してチャンク化する<br>
+*B. Chunk by semantically coherent units (such as sections), and perform hybrid search combining vector search with keyword search and metadata filters.*<br>B. 意味的にまとまりのある単位(セクションなど)でチャンキングし、ベクトル検索とキーワード検索・メタデータフィルタを組み合わせたハイブリッド検索を行う<br>
+*C. Don't chunk at all, and always search the entire document.*<br>C. チャンキングは行わず、常に文書全体を検索対象とする<br>
 *D. Don't perform retrieval at all, and rely only on the model's pretrained knowledge.*<br>D. 検索は行わず、モデルの事前学習知識だけに頼る
 
 **正解: B**
@@ -212,9 +212,9 @@ stdioはクライアントと同一マシン上で完結するローカル用途
 
 *When an agent calls an external API, it may encounter both a rate-limit error (429) and an invalid-credentials error (401). As the architect, how should the error recovery strategies for these two differ?*<br>あるエージェントが外部APIを呼び出す際、レート制限エラー(429)と、認証情報が無効というエラー(401)の両方に遭遇する可能性がある。アーキテクトとして設計すべきエラー回復戦略の違いは何か?
 
-*A. Keep retrying both errors uniformly with the same retry logic.*<br>A. どちらのエラーも同じリトライロジックで一律に再試行し続ける
-*B. Automatically retry transient errors like 429 with exponential backoff, while not auto-retrying permanent errors like 401 — instead escalate to a human or prompt a configuration fix.*<br>B. 429のような一過性エラーは指数バックオフで自動リトライし、401のような恒久的エラーは自動リトライせず人間へエスカレーションまたは設定修正を促す
-*C. Immediately escalate every error to a human, with no automatic retries at all.*<br>C. すべてのエラーを即座に人間にエスカレーションし、自動リトライは一切行わない
+*A. Keep retrying both errors uniformly with the same retry logic.*<br>A. どちらのエラーも同じリトライロジックで一律に再試行し続ける<br>
+*B. Automatically retry transient errors like 429 with exponential backoff, while not auto-retrying permanent errors like 401 — instead escalate to a human or prompt a configuration fix.*<br>B. 429のような一過性エラーは指数バックオフで自動リトライし、401のような恒久的エラーは自動リトライせず人間へエスカレーションまたは設定修正を促す<br>
+*C. Immediately escalate every error to a human, with no automatic retries at all.*<br>C. すべてのエラーを即座に人間にエスカレーションし、自動リトライは一切行わない<br>
 *D. Ignore all errors and continue the task.*<br>D. すべてのエラーを無視してタスクを続行する
 
 **正解: B**

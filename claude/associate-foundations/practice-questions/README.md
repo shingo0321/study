@@ -17,9 +17,9 @@ nav_order: 99
 
 *When asked about internal company regulations, Claude confidently answered by citing a non-existent article number. Which of the following is the LEAST appropriate measure to prevent this?*<br>Claudeに社内規程に関する質問をしたところ、実在しない条項番号を挙げて自信満々に回答した。この現象を防ぐための対策として**最も適切でないもの**はどれか。
 
-*A. Include the actual text of the relevant regulation in the prompt and instruct Claude to answer only within that scope.*<br>A. 該当する社内規程の原文をプロンプトに含め、その範囲内で回答するよう指示する
-*B. Add an instruction allowing Claude to explicitly say "I don't know" when it doesn't know.*<br>B. 「わからない場合は分からないと明記してよい」と指示に加える
-*C. Instruct Claude to quote the specific clause that supports its answer.*<br>C. 回答の根拠となる条文箇所を引用させるよう指示する
+*A. Include the actual text of the relevant regulation in the prompt and instruct Claude to answer only within that scope.*<br>A. 該当する社内規程の原文をプロンプトに含め、その範囲内で回答するよう指示する<br>
+*B. Add an instruction allowing Claude to explicitly say "I don't know" when it doesn't know.*<br>B. 「わからない場合は分からないと明記してよい」と指示に加える<br>
+*C. Instruct Claude to quote the specific clause that supports its answer.*<br>C. 回答の根拠となる条文箇所を引用させるよう指示する<br>
 *D. Strengthen the prompt's tone to make Claude answer more assertively.*<br>D. より断定的な口調で回答するようプロンプトの語調を強める
 
 **正解: D**
@@ -32,9 +32,9 @@ nav_order: 99
 
 *Which of the following is NOT an appropriate criterion for evaluating the quality of Claude's output? Choose one.*<br>Claudeの出力品質を評価する際の観点として**適切でないもの**を1つ選べ。
 
-*A. Accuracy (whether it is factually correct)*<br>A. 正確性(事実として正しいか)
-*B. Completeness (whether all required elements are included without omission)*<br>B. 完全性(求められた要素が漏れなく含まれているか)
-*C. The number of tokens used to generate the output*<br>C. 生成に要したトークン数の多さ
+*A. Accuracy (whether it is factually correct)*<br>A. 正確性(事実として正しいか)<br>
+*B. Completeness (whether all required elements are included without omission)*<br>B. 完全性(求められた要素が漏れなく含まれているか)<br>
+*C. The number of tokens used to generate the output*<br>C. 生成に要したトークン数の多さ<br>
 *D. Relevance (whether it accurately addresses the request)*<br>D. 関連性(依頼内容に的確に答えているか)
 
 **正解: C**
@@ -47,9 +47,9 @@ nav_order: 99
 
 *Before adopting Claude's output for business use, select ALL cases where careful human fact-checking should be especially prioritized.*<br>Claudeの出力を業務で採用する前に、人間による入念なファクトチェックを特に優先すべきケースを**すべて**選べ。
 
-*A. A press release draft containing figures to be published externally*<br>A. 社外に公開する数値を含むプレスリリースの下書き
-*B. Brainstorming for personal reading notes*<br>B. 個人的な読書メモのブレインストーミング
-*C. Draft clauses for a legally binding contract*<br>C. 法的拘束力を持つ契約書の条項案
+*A. A press release draft containing figures to be published externally*<br>A. 社外に公開する数値を含むプレスリリースの下書き<br>
+*B. Brainstorming for personal reading notes*<br>B. 個人的な読書メモのブレインストーミング<br>
+*C. Draft clauses for a legally binding contract*<br>C. 法的拘束力を持つ契約書の条項案<br>
 *D. A bullet-point list for internal idea generation*<br>D. 社内向けアイデア出しの箇条書き
 
 **正解: A, C**
@@ -62,9 +62,9 @@ nav_order: 99
 
 *You are designing a workflow that triages a high daily volume of inquiry emails by urgency, while a human staff member makes the final decision on how to respond. Which of the following best describes this design approach?*<br>毎日大量に届く問い合わせメールを、緊急度別に一次仕分けし、対応方針の最終決定は担当者が行う、というワークフローを設計している。この設計の考え方として最も適切なものはどれか。
 
-*A. Claude should be left to fully automate the process, including sending the final reply.*<br>A. Claudeに最終的な返信送付まで完全に自動で任せるべきである
-*B. It is appropriate to have Claude handle only initial classification and draft creation, while a human makes the final decision.*<br>B. Claudeには一次分類・下書き作成のみを任せ、最終判断は人間が担う役割分担が適切である
-*C. Using AI for inquiry handling should be avoided altogether.*<br>C. 問い合わせ対応にAIを使うこと自体避けるべきである
+*A. Claude should be left to fully automate the process, including sending the final reply.*<br>A. Claudeに最終的な返信送付まで完全に自動で任せるべきである<br>
+*B. It is appropriate to have Claude handle only initial classification and draft creation, while a human makes the final decision.*<br>B. Claudeには一次分類・下書き作成のみを任せ、最終判断は人間が担う役割分担が適切である<br>
+*C. Using AI for inquiry handling should be avoided altogether.*<br>C. 問い合わせ対応にAIを使うこと自体避けるべきである<br>
 *D. Every case must be processed with a top-tier model such as Opus.*<br>D. 全件を必ずOpusクラスの最上位モデルで処理すべきである
 
 **正解: B**
@@ -77,9 +77,9 @@ nav_order: 99
 
 *When incorporating Claude into a complex business process, which design approach most increases reliability?*<br>複雑な業務プロセスにClaudeを組み込む際の設計として、最も信頼性を高める考え方はどれか。
 
-*A. Combine instructions for the entire process into one giant prompt and process it all at once.*<br>A. 一つの巨大なプロンプトに全工程の指示をまとめて一括処理させる
-*B. Break the task down by step and verify the output of each step before moving to the next.*<br>B. 工程ごとにタスクを分解し、各工程の出力を検証してから次工程に進める
-*C. It is sufficient to verify only the final deliverable.*<br>C. 検証は最終成果物に対してのみ行えば十分である
+*A. Combine instructions for the entire process into one giant prompt and process it all at once.*<br>A. 一つの巨大なプロンプトに全工程の指示をまとめて一括処理させる<br>
+*B. Break the task down by step and verify the output of each step before moving to the next.*<br>B. 工程ごとにタスクを分解し、各工程の出力を検証してから次工程に進める<br>
+*C. It is sufficient to verify only the final deliverable.*<br>C. 検証は最終成果物に対してのみ行えば十分である<br>
 *D. Breaking the process into steps should be avoided because it slows processing down.*<br>D. 工程分解すると処理が遅くなるため避けるべきである
 
 **正解: B**
@@ -92,9 +92,9 @@ nav_order: 99
 
 *Which of the following best describes a type of task that is NOT well-suited to adopting Claude?*<br>Claudeの導入に**向いていない**業務の特徴として最も適切なものはどれか。
 
-*A. Drafting routine email text*<br>A. 定型的なメール文面の下書き作成
-*B. Recurring document summarization work*<br>B. 繰り返し発生する文書の要約作業
-*C. A final, standalone safety judgment with an extremely low tolerance for error*<br>C. 誤りの許容度が極めて低い、単独での最終的な安全性判断
+*A. Drafting routine email text*<br>A. 定型的なメール文面の下書き作成<br>
+*B. Recurring document summarization work*<br>B. 繰り返し発生する文書の要約作業<br>
+*C. A final, standalone safety judgment with an extremely low tolerance for error*<br>C. 誤りの許容度が極めて低い、単独での最終的な安全性判断<br>
 *D. Generating an initial draft based on past similar documents*<br>D. 過去の類似文書を参考にした一次案の生成
 
 **正解: C**
@@ -107,9 +107,9 @@ nav_order: 99
 
 *When you want to keep the format and level of detail of outputs consistent, which prompting technique is most effective?*<br>出力のフォーマットや粒度を一定に揃えたい場合に、最も効果的なプロンプト技法はどれか。
 
-*A. Instructing only chain-of-thought reasoning*<br>A. 思考の連鎖(Chain-of-thought)のみを指示する
-*B. Few-shot prompting: showing 2-3 examples of desired input/output*<br>B. 望ましい入出力例を2〜3個示す少数例示(Few-shot prompting)
-*C. Keeping the prompt as short as possible*<br>C. できるだけ短いプロンプトにする
+*A. Instructing only chain-of-thought reasoning*<br>A. 思考の連鎖(Chain-of-thought)のみを指示する<br>
+*B. Few-shot prompting: showing 2-3 examples of desired input/output*<br>B. 望ましい入出力例を2〜3個示す少数例示(Few-shot prompting)<br>
+*C. Keeping the prompt as short as possible*<br>C. できるだけ短いプロンプトにする<br>
 *D. Not using a system prompt*<br>D. システムプロンプトを使わない
 
 **正解: B**
@@ -122,9 +122,9 @@ nav_order: 99
 
 *When you want to improve the accuracy of an analytical task involving complex, multi-step calculations, which approach is most suitable?*<br>複雑な多段階の計算を含む分析タスクの精度を上げたい場合に、最も適した工夫はどれか。
 
-*A. Making the prompt as short and abstract as possible*<br>A. プロンプトを可能な限り短く抽象的にする
-*B. Instructing "think step by step before concluding" to make the reasoning process explicit (chain-of-thought)*<br>B. 「ステップごとに考えてから結論を出して」と指示し、推論過程を明示させる(Chain-of-thought)
-*C. Omitting the output format specification*<br>C. 出力フォーマットの指定を省く
+*A. Making the prompt as short and abstract as possible*<br>A. プロンプトを可能な限り短く抽象的にする<br>
+*B. Instructing "think step by step before concluding" to make the reasoning process explicit (chain-of-thought)*<br>B. 「ステップごとに考えてから結論を出して」と指示し、推論過程を明示させる(Chain-of-thought)<br>
+*C. Omitting the output format specification*<br>C. 出力フォーマットの指定を省く<br>
 *D. Omitting the role specification*<br>D. 役割指定を省略する
 
 **正解: B**
@@ -137,9 +137,9 @@ nav_order: 99
 
 *When creating a complex prompt that includes lengthy reference material and multiple instructions, which technique is most appropriate for preventing Claude from confusing which parts are reference material and which are instructions?*<br>長文の参考資料と複数の指示を含む複雑なプロンプトを作成する際に、Claudeが「どこが参考資料でどこが指示か」を混同しないようにするための工夫として最も適切なものはどれか。
 
-*A. Writing everything as one continuous block of text with no line breaks*<br>A. すべて改行なしの一続きの文章にする
-*B. Delimiting each element with XML tags (e.g., `<document>`, `<instructions>`)*<br>B. XMLタグ(例: `<document>`, `<instructions>`)で要素ごとに区切る
-*C. Splitting the material and instructions into separate chat sessions*<br>C. 資料と指示を別々のチャットセッションに分ける
+*A. Writing everything as one continuous block of text with no line breaks*<br>A. すべて改行なしの一続きの文章にする<br>
+*B. Delimiting each element with XML tags (e.g., `<document>`, `<instructions>`)*<br>B. XMLタグ(例: `<document>`, `<instructions>`)で要素ごとに区切る<br>
+*C. Splitting the material and instructions into separate chat sessions*<br>C. 資料と指示を別々のチャットセッションに分ける<br>
 *D. Only being careful to paste the material in full without summarizing it*<br>D. 資料の内容を要約せず全文貼り付けることだけを意識する
 
 **正解: B**
@@ -167,9 +167,9 @@ C. Opus
 
 *When you want to continuously interact with Claude in the same work context while having it reference a collection of internal documents, which Claude.ai feature is most suitable?*<br>社内資料をまとめて参照させながら、同じ業務文脈で継続的にClaudeとやり取りしたい場合、Claude.aiで最も適した機能はどれか。
 
-*A. Using one-off chats and deleting the history each time*<br>A. 単発のチャット履歴を都度削除しながら使う
-*B. Setting up knowledge and custom instructions in a Project*<br>B. Projects(プロジェクト)にナレッジとカスタム指示を設定する
-*C. Pasting all background information from scratch every time*<br>C. 毎回すべての背景情報をゼロから貼り付ける
+*A. Using one-off chats and deleting the history each time*<br>A. 単発のチャット履歴を都度削除しながら使う<br>
+*B. Setting up knowledge and custom instructions in a Project*<br>B. Projects(プロジェクト)にナレッジとカスタム指示を設定する<br>
+*C. Pasting all background information from scratch every time*<br>C. 毎回すべての背景情報をゼロから貼り付ける<br>
 *D. Using only Artifacts and not chat*<br>D. Artifactsだけを使い、チャットは使わない
 
 **正解: B**
@@ -182,9 +182,9 @@ C. Opus
 
 *Which of the following best explains the difference in role between "custom instructions" and "knowledge" in Projects?*<br>Projectsの「カスタム指示」と「ナレッジ」の役割の違いとして最も適切な説明はどれか。
 
-*A. Custom instructions are an API key management feature, and knowledge is an output-format specification feature.*<br>A. カスタム指示はAPIキーの管理機能であり、ナレッジは出力フォーマットの指定機能である
-*B. Custom instructions are ongoing rules applied across the whole project (role, tone, output rules, etc.), while knowledge is material that Claude references.*<br>B. カスタム指示はプロジェクト全体に適用される継続的なルール(役割・トーン・出力ルールなど)、ナレッジはClaudeが参照する資料である
-*C. Custom instructions and knowledge are just two names for the same feature; there is no difference.*<br>C. カスタム指示とナレッジは同じ機能の別名であり違いはない
+*A. Custom instructions are an API key management feature, and knowledge is an output-format specification feature.*<br>A. カスタム指示はAPIキーの管理機能であり、ナレッジは出力フォーマットの指定機能である<br>
+*B. Custom instructions are ongoing rules applied across the whole project (role, tone, output rules, etc.), while knowledge is material that Claude references.*<br>B. カスタム指示はプロジェクト全体に適用される継続的なルール(役割・トーン・出力ルールなど)、ナレッジはClaudeが参照する資料である<br>
+*C. Custom instructions and knowledge are just two names for the same feature; there is no difference.*<br>C. カスタム指示とナレッジは同じ機能の別名であり違いはない<br>
 *D. Knowledge is a feature for switching model tiers (Haiku/Sonnet/Opus).*<br>D. ナレッジはモデルの階層(Haiku/Sonnet/Opus)を切り替える機能である
 
 **正解: B**
@@ -197,9 +197,9 @@ C. Opus
 
 *Which of the following best describes the "Constitutional AI" approach used by Anthropic?*<br>Anthropicが用いる「Constitutional AI」という手法の説明として最も適切なものはどれか。
 
-*A. Another name for the terms of service that customers must agree to when using Claude.*<br>A. Claudeの利用にあたって顧客が同意すべき利用規約の別名である
-*B. An approach that trains the model itself to evaluate and improve its own outputs against a defined set of principles ("constitution").*<br>B. モデル自身が定められた原則(憲法)に照らして自らの出力を評価・改善するように訓練するアプローチ
-*C. An external audit feature that checks whether Claude automatically complies with the constitutions and laws of various countries.*<br>C. 各国の憲法・法律をClaudeが自動的に遵守しているかチェックする外部監査機能
+*A. Another name for the terms of service that customers must agree to when using Claude.*<br>A. Claudeの利用にあたって顧客が同意すべき利用規約の別名である<br>
+*B. An approach that trains the model itself to evaluate and improve its own outputs against a defined set of principles ("constitution").*<br>B. モデル自身が定められた原則(憲法)に照らして自らの出力を評価・改善するように訓練するアプローチ<br>
+*C. An external audit feature that checks whether Claude automatically complies with the constitutions and laws of various countries.*<br>C. 各国の憲法・法律をClaudeが自動的に遵守しているかチェックする外部監査機能<br>
 *D. An additional security feature available only in the Enterprise plan.*<br>D. Enterpriseプランにのみ搭載されている追加のセキュリティ機能
 
 **正解: B**
@@ -212,9 +212,9 @@ C. Opus
 
 *Select ALL of the following that are appropriate principles of responsible AI use to keep in mind when using Claude for work within an organization.*<br>組織でClaudeを業務利用する際に踏まえるべき責任あるAI利用の原則として**適切なもの**をすべて選べ。
 
-*A. A human must always give final review and approval for important decisions and external communications.*<br>A. 重要な意思決定や対外的な発信は必ず人間が最終確認・承認する
-*B. Actively include confidential or personal information in prompts even when it is not necessary for the task.*<br>B. タスク遂行に不要な機密情報・個人情報まで積極的にプロンプトへ含める
-*C. Ultimate responsibility for the consequences of using AI output in business rests with the person/organization that used it.*<br>C. AIの出力を業務に利用した結果の最終的な責任は利用した人間・組織にある
+*A. A human must always give final review and approval for important decisions and external communications.*<br>A. 重要な意思決定や対外的な発信は必ず人間が最終確認・承認する<br>
+*B. Actively include confidential or personal information in prompts even when it is not necessary for the task.*<br>B. タスク遂行に不要な機密情報・個人情報まで積極的にプロンプトへ含める<br>
+*C. Ultimate responsibility for the consequences of using AI output in business rests with the person/organization that used it.*<br>C. AIの出力を業務に利用した結果の最終的な責任は利用した人間・組織にある<br>
 *D. Recognize that data-training-use policies may differ between consumer and business plans, and check the contract terms.*<br>D. コンシューマー向けプランとビジネス向けプランでデータの学習利用ポリシーが異なりうることを踏まえ、契約内容を確認する
 
 **正解: A, C, D**
@@ -227,9 +227,9 @@ C. Opus
 
 *When Claude's output isn't what you expected, which of the following is the most likely cause to check first?*<br>Claudeの出力が期待通りでないとき、最初に見直すべき原因として最も可能性が高いものはどれか。
 
-*A. An Anthropic server outage*<br>A. Anthropicのサーバー障害
-*B. The prompt's instructions are ambiguous, or necessary context/success criteria are missing.*<br>B. プロンプトの指示が曖昧、または必要な文脈・成功基準が不足している
-*C. Insufficient specs on the PC being used*<br>C. 使用しているPCのスペック不足
+*A. An Anthropic server outage*<br>A. Anthropicのサーバー障害<br>
+*B. The prompt's instructions are ambiguous, or necessary context/success criteria are missing.*<br>B. プロンプトの指示が曖昧、または必要な文脈・成功基準が不足している<br>
+*C. Insufficient specs on the PC being used*<br>C. 使用しているPCのスペック不足<br>
 *D. Internet connection speed*<br>D. インターネット回線の速度
 
 **正解: B**
