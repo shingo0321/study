@@ -36,8 +36,9 @@
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
     text-align: center;
   }
-  #gate-overlay h1 {
-    font-size: 1.1rem;
+  #gate-overlay .gate-title {
+    font-size: 0.95rem !important;
+    font-weight: 600;
     margin: 0 0 1rem;
     color: #1a1a1a;
   }
@@ -88,7 +89,7 @@
       overlay.id = "gate-overlay";
       overlay.innerHTML =
         '<div class="gate-box">' +
-        '<h1>パスワードを入力してください</h1>' +
+        '<div class="gate-title">パスワードを入力してください</div>' +
         '<form id="gate-form">' +
         '<input type="password" id="gate-password" autocomplete="off" autofocus />' +
         '<button type="submit">開く</button>' +
