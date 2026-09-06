@@ -38,6 +38,7 @@ Anthropic公式の技術認定「Claude Certified Developer – Foundations」(C
   - `07-security-and-safety/` — プロンプトインジェクション対策、最小権限、入出力検証
   - `08-tools-and-mcp/` — Model Context Protocol (サーバー/クライアント、ツール/リソース、トランスポート)
 - `practice-questions/` — 練習問題・模擬問題（オリジナル、非公式）
+- `mock-exam/` — `practice-questions/`と同じ問題セットを使った採点機能付きの模擬試験(出題順・選択肢順をランダム化し、解答後に自動採点)
 
 ## 参考リンク
 
@@ -47,3 +48,4 @@ Anthropic公式の技術認定「Claude Certified Developer – Foundations」(C
 
 1. `topics/`の8ドメインを比重の高いものから順に読み進め、要点をノートにまとめる
 2. `practice-questions/`で理解度を確認する
+3. `mock-exam/`で本番同様の通し形式で解き、採点結果とドメイン別正答数で弱点を確認する

@@ -32,6 +32,7 @@ Anthropic公式「Claude Certification Program」の学習用フォルダ。全4
 
 - `topics/` — 公式ドメインごとのノート
 - `practice-questions/` — 練習問題・模擬問題(独自作成、実際の試験問題ではない)
+- `mock-exam/` — `practice-questions/`と同じ問題セットを使った採点機能付きの模擬試験(ブラウザ上で解答し、自動採点・ドメイン別の正答数を表示)
 
 ## 参考リンク
 

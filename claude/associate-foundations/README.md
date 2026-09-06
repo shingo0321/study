@@ -36,6 +36,7 @@ Anthropic公式の技術認定「Claude Certified Associate – Foundations」(C
   - `06-governance-risk-responsible-use/`
   - `07-troubleshooting-escalation/`
 - `practice-questions/` — 練習問題・模擬問題(オリジナル自作、実際の試験問題ではない)
+- `mock-exam/` — `practice-questions/`と同じ問題セットを使った採点機能付きの模擬試験(出題順・選択肢順をランダム化し、解答後に自動採点)
 
 ## 参考リンク
 
@@ -45,3 +46,4 @@ Anthropic公式の技術認定「Claude Certified Associate – Foundations」(C
 
 1. `topics/`の7分野を配点の大きい順(2→4→6→1→3・5→7)に読み進め、要点をノートにまとめる
 2. `practice-questions/`で理解度を確認する
+3. `mock-exam/`で本番同様の通し形式で解き、採点結果とドメイン別正答数で弱点を確認する

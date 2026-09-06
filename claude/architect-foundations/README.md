@@ -20,6 +20,7 @@ Anthropic公式の技術認定「Claude Certified Architect – Foundations」�
   - `04-prompt-engineering/` — Prompt Engineering(20%。本番向けシステムプロンプト設計、バージョニング/テスト、構造化出力、曖昧さへの対処、few-shot戦略)
   - `05-context-management/` — Context Management(15%。コンテキストウィンドウ予算設計、プロンプトキャッシュ戦略、RAGアーキテクチャ、要約/圧縮、マルチターン状態管理)
 - `practice-questions/` — 練習問題・模擬問題(オリジナル作成、実試験の問題そのものではない)
+- `mock-exam/` — `practice-questions/`と同じ問題セットを使った採点機能付きの模擬試験(出題順・選択肢順をランダム化し、解答後に自動採点)
 
 ## 参考リンク
 
@@ -29,3 +30,4 @@ Anthropic公式の技術認定「Claude Certified Architect – Foundations」�
 
 1. `topics/`の5ドメインをそれぞれ読み進め、要点をノートにまとめる(配点の高い`01-agentic-architecture/`を優先)
 2. `practice-questions/`で理解度を確認する
+3. `mock-exam/`で本番同様の通し形式で解き、採点結果とドメイン別正答数で弱点を確認する

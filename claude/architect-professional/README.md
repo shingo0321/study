@@ -31,6 +31,7 @@ Claude認定プログラムの中で最も配点の分散が緩やか(最小7%�
 
 - `topics/` — 上表7ドメインごとのノート(各`notes.md`)
 - `practice-questions/` — 練習問題・模擬問題(オリジナル、7ドメインに配点比率で対応)
+- `mock-exam/` — `practice-questions/`と同じ問題セットを使った採点機能付きの模擬試験(出題順・選択肢順をランダム化し、解答後に自動採点)
 
 ## 参考リンク
 
@@ -41,3 +42,4 @@ Claude認定プログラムの中で最も配点の分散が緩やか(最小7%�
 1. (任意・推奨)[`../architect-foundations/`](../architect-foundations/) で基礎(Claude Code / Agent SDK / API / MCP)を復習する
 2. `topics/`の7ドメインを、本番運用・アーキテクチャ設計・ガバナンスの観点で読み進める。特に配点の大きいIntegration(19%)、Solution Design(17%)、Evaluation(16%)を重点的に
 3. `practice-questions/`で理解度を確認する
+4. `mock-exam/`で本番同様の通し形式で解き、採点結果とドメイン別正答数で弱点を確認する
