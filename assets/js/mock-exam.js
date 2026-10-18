@@ -70,14 +70,12 @@
     + "#mock-exam-app .me-domain-tag { font-size: 0.78rem; color: #0969da; background: #ddf4ff; padding: 0.1rem 0.5rem; border-radius: 999px; text-decoration: none; }\n"
     + "#mock-exam-app .me-domain-tag:hover { text-decoration: underline; }\n"
     + "#mock-exam-app .me-multi-hint { font-size: 0.78rem; color: #9a6700; background: #fff8c5; padding: 0.1rem 0.5rem; border-radius: 999px; }\n"
-    + "#mock-exam-app .me-stem-en { margin: 0.2rem 0; font-style: italic; }\n"
-    + "#mock-exam-app .me-stem-ja { margin: 0.2rem 0 0.8rem; color: #57606a; }\n"
+    + "#mock-exam-app .me-stem-ja { margin: 0.2rem 0 0.8rem; }\n"
     + "#mock-exam-app .me-options { display: flex; flex-direction: column; gap: 0.4rem; }\n"
     + "#mock-exam-app .me-option { display: flex; gap: 0.6rem; align-items: flex-start; border: 1px solid #d0d7de; border-radius: 8px; padding: 0.5rem 0.7rem; cursor: pointer; }\n"
     + "#mock-exam-app .me-option:hover { background: #f6f8fa; }\n"
     + "#mock-exam-app .me-option input { margin-top: 0.25rem; flex: none; }\n"
-    + "#mock-exam-app .me-option-en { display: block; font-style: italic; }\n"
-    + "#mock-exam-app .me-option-ja { display: block; color: #57606a; font-size: 0.92rem; }\n"
+    + "#mock-exam-app .me-option-ja { display: block; }\n"
     + "#mock-exam-app .me-option.me-correct { border-color: #1a7f37; background: #dafbe1; }\n"
     + "#mock-exam-app .me-option.me-incorrect { border-color: #cf222e; background: #ffebe9; }\n"
     + "#mock-exam-app .me-feedback { margin-top: 0.8rem; padding-top: 0.7rem; border-top: 1px dashed #d0d7de; }\n"
@@ -102,14 +100,13 @@
     var questions = shuffle(data.questions).map(function (q) {
       var options = shuffle(
         q.options.map(function (o) {
-          return { origLetter: o.letter, en: o.en, ja: o.ja };
+          return { origLetter: o.letter, ja: o.ja };
         })
       );
       return {
         id: q.id,
         domainLabel: q.domainLabel,
         domainLink: q.domainLink,
-        stemEn: q.stemEn,
         stemJa: q.stemJa,
         options: options,
         correct: q.correct.slice(),
@@ -165,8 +162,7 @@
               '<label class="me-option" data-letter="' + o.origLetter + '">'
               + '<input type="' + inputType + '" name="q-' + q.id + '" value="' + o.origLetter + '">'
               + '<span class="me-option-text">'
-              + '<span class="me-option-en">' + displayLetter + ". " + formatText(o.en) + "</span>"
-              + '<span class="me-option-ja">' + formatText(o.ja) + "</span>"
+              + '<span class="me-option-ja">' + displayLetter + ". " + formatText(o.ja) + "</span>"
               + "</span>"
               + "</label>"
             );
@@ -181,7 +177,6 @@
           + multiHint
           + "</div>"
           + '<div class="me-stem">'
-          + '<p class="me-stem-en">' + formatText(q.stemEn) + "</p>"
           + '<p class="me-stem-ja">' + formatText(q.stemJa) + "</p>"
           + "</div>"
           + '<div class="me-options">' + optionsHtml + "</div>"
