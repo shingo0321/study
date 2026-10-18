@@ -8,7 +8,7 @@ permalink: /claude/
 
 # Claude認定資格 学習サイト
 
-Anthropic公式「Claude Certification Program」の学習用フォルダ。全4試験、いずれもPearson VUE経由のproctored試験(120分、合格ラインはスケール100〜1000中720点)。前提資格は4試験とも**なし**(Architect – ProfessionalもFoundations合格は必須ではない)。実際の試験は英語で実施されるため、練習問題には英訳を併記しています。
+Anthropic公式「Claude Certification Program」の学習用フォルダ。全4試験、いずれもPearson VUE経由のproctored試験(120分、合格ラインはスケール100〜1000中720点)。前提資格は4試験とも**なし**(Architect – ProfessionalもFoundations合格は必須ではない)。試験・準備用コンテンツは英語と日本語で提供されています(公式FAQ)。
 
 > 練習問題はすべて自己学習用に作成したオリジナル問題であり、Anthropic公式の実際の試験問題ではありません。
 
@@ -20,6 +20,23 @@ Anthropic公式「Claude Certification Program」の学習用フォルダ。全4
 | [`developer-foundations/`](developer-foundations/) | Claude Certified Developer – Foundations (CCDV-F) | $125 | 53問 | 8 |
 | [`architect-foundations/`](architect-foundations/) | Claude Certified Architect – Foundations (CCAR-F) | $125 | 60問(シナリオ形式) | 5 |
 | [`architect-professional/`](architect-professional/) | Claude Certified Architect – Professional (CCAR-P) | $175 | 63問 | 7 |
+
+## 受験の流れ・ルール
+
+Pearson VUEの公式ページ(最終更新日: 2026-10-02)とAnthropic Partner AcademyのFAQに基づく。
+
+- 対象: Claude Partner Networkに所属する組織が対象。認定はパートナー資格の評価にも反映される。
+- 事前学習: Anthropic Partner Academyで自己学習型コースを受講できる(Claude Partner Network会員向け)。
+- 申込み: Partner Academyに登録後、Pearsonアカウントで受験予約する。
+- 受験形式: テストセンター、またはOnVUE(オンライン監督付き)から選べる。
+- 再受験: 不合格後、1回目の後は14日、2回目の後は30日、3回目の後は90日で再受験できる。ローリング12か月で最大4回まで(試験ごとに適用)。
+- 予約の変更・キャンセル: 予約の48時間前までに行う。遅れると受験料は没収される。
+- 氏名の訂正: 試験の24時間前までに申請する。
+- デジタルバッジ: Credlyを通じて発行される。
+- 提供言語: 試験・準備用コンテンツとも英語と日本語(Partner Academy FAQ)。
+- 試験中のルール: クローズドブック。メモ・資料・AIアシスタント・ブラウザの翻訳ツールは使用不可。解答時間は120分で、チェックイン等を含め約135分の着席時間が必要。
+- 受験資格: パートナー組織の従業員で、18歳以上、認定されたパートナーのメールドメインを使用すること。
+- 受験料: Architect – Foundationsは2026年6月30日以降$125(それ以前は$99)。いずれもパートナー割引適用前。
 
 各資格で対象読者・出題ドメインが異なるため、`topics/`配下のフォルダ構成は資格ごとに公式ドメイン名で揃えている(詳細は各フォルダの`README.md`を参照)。
 
@@ -37,3 +54,4 @@ Anthropic公式「Claude Certification Program」の学習用フォルダ。全4
 ## 参考リンク
 
 - [Pearson VUE: Claude Certification Program](https://www.pearsonvue.com/us/en/anthropic.html)
+- [Anthropic Partner Academy: 認定FAQ](https://anthropic-partners.skilljar.com/page/faq-certifications)
