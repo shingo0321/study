@@ -56,6 +56,53 @@ Claude Code(公式CLIエージェント)そのもののアーキテクチャと�
 - **監査・再現性**: チームで使う場合、誰が何を実行させ、どんな変更が生まれたかを追跡できることが重要。フックによるログ記録、Git履歴との紐付けが実務上の設計ポイントになる。
 - **ロールアウト戦略**: 個人利用から始めて、フック・許可設定をチーム標準として固め、CLAUDE.mdやプロジェクト設定をリポジトリに定着させてから組織全体に展開する、という段階的な導入が典型的な現実解。
 
+## 公式ドキュメントに基づく詳細(2026年10月時点)
+
+出典: Claude Code公式ドキュメントの[フック](https://code.claude.com/docs/en/hooks)・[権限](https://code.claude.com/docs/en/permissions)・[サブエージェント](https://code.claude.com/docs/en/sub-agents)。機能は更新が速いため、最新の仕様は公式ドキュメントで確認すること。
+
+### フックの種類と終了コード
+
+- **イベントは多数ある**: `PreToolUse`(ツール実行前)、`PostToolUse`(成功後)、`UserPromptSubmit`(プロンプト送信時)、`Stop`(応答完了時)、`SubagentStart`/`SubagentStop`、`PreCompact`/`PostCompact`(コンテキスト圧縮の前後)、`SessionStart`/`SessionEnd`、`PermissionRequest`、`ConfigChange` など。
+- **設定の構造**は「イベント → マッチャー → ハンドラー」の3階層。マッチャーはツール名で絞り込む(`Bash`、`Edit|Write`、MCPツールは`mcp__<server>__.*`)。
+- **ハンドラーの種類**は`command`(シェル実行)、`http`(JSONをPOST)、`mcp_tool`、`prompt`(モデルに単発で判断させる)、`agent`(サブエージェントで検証、実験的)。
+- **終了コードの意味**(commandハンドラー):
+  - `0`: 成功。stdoutがJSONならそのフィールドが適用される
+  - `2`: **ブロッキングエラー**。`PreToolUse`ならツール呼び出しを止め、stderrがClaudeにフィードバックされる
+  - その他(`1`を含む): **非ブロッキングエラー**。処理は続行されるので、ブロックしたいときに`exit 1`を使うのは典型的な誤り
+- **`PostToolUse`はツール実行後**に動くため、実行を止める用途には使えない(出力の書き換えやClaudeへのフィードバック用)。
+- **JSON出力による制御**: `PreToolUse`は`permissionDecision`(`allow`/`deny`/`ask`/`defer`)、`permissionDecisionReason`、`updatedInput`(引数の書き換え)を返せる。終了コードとJSONは1つのフックで併用しない。
+- **保存場所**: `~/.claude/settings.json`(個人・全プロジェクト)、`.claude/settings.json`(プロジェクト・コミット可)、`.claude/settings.local.json`(個人・gitignore)、managed policy settings(組織全体)、プラグイン、スキル/サブエージェントのfrontmatter。
+
+### 権限ルールの評価と優先順位
+
+- **ルールは deny → ask → allow の順に評価**され、最初に一致したものが結果を決める。範囲の狭いallowでdenyの例外は作れない(例: `Bash(aws *)`がdenyなら、`Bash(aws s3 ls)`をallowしても拒否される)。
+- **スコープをまたいでも同じ**: どのレベルかでdenyされたツールは、他のレベルでallowできない。managed settingsのdenyは、コマンドライン引数(`--allowedTools`)でも覆せない。ユーザー設定のallowもプロジェクト設定のdenyに負ける。
+- **managed settings**は組織管理者が配布する最上位の設定で、ユーザー・プロジェクト設定では上書きできない。`permissions.disableBypassPermissionsMode`を`"disable"`にすれば`bypassPermissions`の利用を封じられる。
+- **フックと権限ルールの関係**: `PreToolUse`フックの`allow`は、denyルール・askルールを回避しない(denyは拒否、askは確認が出る)。一方、フックが終了コード2で止めた場合は、allowルールがあってもブロックが優先される。「ほぼ全部許可しつつ特定のコマンドだけ止めたい」場合は、`Bash`をallowに入れ、止めたいコマンドを`PreToolUse`フックで弾く構成が使える。
+
+### 権限モード
+
+| モード | 挙動 |
+| --- | --- |
+| `default` | 各ツールの初回使用時に確認(CLIでは「Manual」表記) |
+| `acceptEdits` | 作業ディレクトリ内のファイル編集と`mkdir`・`touch`・`mv`・`cp`などを自動承認 |
+| `plan` | 調査用の読み取りのみ。ソースの編集はしない |
+| `auto` | 通常の確認なしで進み、バックグラウンドの分類器がユーザーの依頼に沿った操作かを確認する |
+| `dontAsk` | 確認が必要になる操作をすべて**自動で拒否**する。事前にallowされたツールは動く |
+| `bypassPermissions` | 確認をすべて省略する。コンテナやVMなど隔離環境でのみ使う |
+
+- 起動時のモードは設定の`defaultMode`で決める。
+- **CIなどの非対話実行**で止まらせたくない場合、`dontAsk`+必要なツールだけのallowリストなら、許可外の操作は確認待ちで止まらず拒否される。`bypassPermissions`を共有ランナーで使うのは危険。
+
+### サブエージェントの定義
+
+- **定義ファイル**はMarkdown+YAMLのfrontmatter。必須は`name`と`description`で、本文がシステムプロンプトになる。
+- **場所と優先度**(高い順): managed設定 → `--agents`フラグ(セッションのみ) → `.claude/agents/`(プロジェクト) → `~/.claude/agents/`(ユーザー) → プラグインの`agents/`。チームで共有するものは`.claude/agents/`に置いてコミットする。
+- **主なフィールド**: `tools`(許可ツール。省略すると継承)、`disallowedTools`、`model`、`permissionMode`、`maxTurns`、`skills`、`mcpServers`、`hooks`、`isolation: worktree`(一時的なgit worktreeに隔離)。
+- **コンテキストの分離**: 各サブエージェントは独立したコンテキストウィンドウで動き、メインの会話に戻るのは最終的な要約だけ。
+- **組み込み**: `Explore`(読み取り専用の高速検索)、`Plan`(プランモード用の読み取り専用調査)、`general-purpose`(探索と変更の両方)。
+- **並列実行と入れ子**: 同時実行数の上限はデフォルト20。サブエージェントが別のサブエージェントを起動することもでき、デフォルトで最大3階層。ただし大量の結果を返すサブエージェントを多数走らせると、メインのコンテキストを圧迫する。
+
 ## 押さえておくべきポイント
 
 - 設定はユーザーレベル/プロジェクトレベルで階層化し、チーム共有すべきルールはプロジェクト設定(リポジトリにコミット)に置く
@@ -64,3 +111,6 @@ Claude Code(公式CLIエージェント)そのもののアーキテクチャと�
 - 権限モードはリスクベースで段階設計し、CI等の非対話実行では自動承認範囲を事前に厳密化する
 - プロジェクト単位のMCP構成は認証情報を分離し、最小権限の原則をチームガバナンスとして適用する
 - 組織導入は個人利用→設定の標準化→チーム展開という段階的ロールアウトが現実的
+- 終了コード2だけがブロッキングエラー。`exit 1`などは非ブロッキングで処理が続行される。`PostToolUse`はツール実行後なので止める用途には使えない
+- 権限ルールはdeny→ask→allowの順に評価され、どのスコープでもdenyは他のレベルのallowで覆せない。managed settingsが最上位
+- 非対話実行(CI)では、`dontAsk`+必要最小限のallowリストで、確認待ちの停止もバイパスの危険も避ける

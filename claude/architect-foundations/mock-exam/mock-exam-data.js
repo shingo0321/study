@@ -397,6 +397,118 @@ window.MOCK_EXAM_DATA = {
         "B"
       ],
       "explanation": "エラーの性質(一過性か恒久的か)によって回復戦略を分けるのがエージェントのエラー回復設計の基本。認証エラーのように再試行しても解決しない恒久的エラーを自動リトライし続けるのは無駄であり、無限ループのリスクもある。"
+    },
+    {
+      "id": 15,
+      "domainLabel": "ドメイン03: Claude Code",
+      "domainLink": "../topics/03-claude-code/notes.html",
+      "stemJa": "Claude Codeで、`rm -rf`を含むBashコマンドの実行をプロンプトの指示に頼らず確実に止めたい。`PreToolUse`フックとして実装するコマンドは、どのように終了すべきか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "常に終了コード0で終了し、警告メッセージだけをstdoutに出力する"
+        },
+        {
+          "letter": "B",
+          "ja": "危険なコマンドを検出したら終了コード1で終了する"
+        },
+        {
+          "letter": "C",
+          "ja": "危険なコマンドを検出したら終了コード2で終了し、理由をstderrに出力する"
+        },
+        {
+          "letter": "D",
+          "ja": "`PostToolUse`フックで終了コード2を返す"
+        }
+      ],
+      "correct": [
+        "C"
+      ],
+      "explanation": "`PreToolUse`フックが終了コード2で終了するとツール呼び出しがブロックされ、stderrの内容がClaudeにフィードバックされる。終了コード1などは非ブロッキングエラーで、処理は続行されてしまう(B)。`PostToolUse`はツール実行後に動くため、実行を止められない(D)。警告を出すだけでは止まらない(A)。"
+    },
+    {
+      "id": 16,
+      "domainLabel": "ドメイン03: Claude Code",
+      "domainLink": "../topics/03-claude-code/notes.html",
+      "stemJa": "組織のmanaged settingsで`Bash(aws *)`がdenyに設定されている。ある開発者が、プロジェクト設定で`Bash(aws s3 ls)`をallowに追加し、さらに`--allowedTools`で同じコマンドを指定して実行した。`aws s3 ls`はどうなるか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "範囲の狭いallowルールが優先されるため、許可される"
+        },
+        {
+          "letter": "B",
+          "ja": "コマンドライン引数はすべての設定より優先されるため、許可される"
+        },
+        {
+          "letter": "C",
+          "ja": "denyルールが優先されるため、拒否される"
+        },
+        {
+          "letter": "D",
+          "ja": "ユーザーに確認が表示され、承認すれば実行できる"
+        }
+      ],
+      "correct": [
+        "C"
+      ],
+      "explanation": "権限ルールはdeny→ask→allowの順に評価され、どのレベルでdenyされたツールも他のレベルのallowでは許可できない。managed settingsのdenyは、狭いallowルールやコマンドライン引数でも覆せない。"
+    },
+    {
+      "id": 17,
+      "domainLabel": "ドメイン03: Claude Code",
+      "domainLink": "../topics/03-claude-code/notes.html",
+      "stemJa": "チームでコードレビュー専用のサブエージェントを共有したい。誤ってソースを書き換えるリスクを最小にするには、どの構成が最も適切か?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "システムプロンプトに「ファイルを編集しないこと」と書き、全ツールを継承させる"
+        },
+        {
+          "letter": "B",
+          "ja": "frontmatterの`tools`を`Read, Grep, Glob`に限定した定義ファイルを、リポジトリの`.claude/agents/`にコミットする"
+        },
+        {
+          "letter": "C",
+          "ja": "各開発者の`~/.claude/agents/`に、同じ内容を手動でコピーしてもらう"
+        },
+        {
+          "letter": "D",
+          "ja": "`permissionMode`を`bypassPermissions`にして、編集時の確認を省略する"
+        }
+      ],
+      "correct": [
+        "B"
+      ],
+      "explanation": "ツールを機械的に絞ることで誤編集のリスクを局所化できる。プロンプトの指示だけでは強制力がない(A)。プロジェクトの`.claude/agents/`に置いてコミットすれば、チーム全員に同じ定義を配れる(C は手動でばらつく)。`bypassPermissions`は確認を省くため逆効果(D)。"
+    },
+    {
+      "id": 18,
+      "domainLabel": "ドメイン03: Claude Code",
+      "domainLink": "../topics/03-claude-code/notes.html",
+      "stemJa": "人間が張り付かないCIパイプラインでClaude Codeを実行する。確認待ちでパイプラインが止まらず、かつ想定外の操作が実行されないようにしたい。最も適切な設定はどれか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "`dontAsk`モードにして、必要なツールだけを`permissions.allow`に明示する"
+        },
+        {
+          "letter": "B",
+          "ja": "共有ランナー上で`bypassPermissions`モードを使う"
+        },
+        {
+          "letter": "C",
+          "ja": "`default`モードのまま実行し、確認が出たら待つ"
+        },
+        {
+          "letter": "D",
+          "ja": "`acceptEdits`モードにして、Bashコマンドも自動承認されるものとみなす"
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "`dontAsk`は確認が必要な操作を自動で拒否するので、許可外の操作で止まらずに安全に進む。`bypassPermissions`は隔離環境でのみ使うべきで、共有ランナーでは危険(B)。`default`は確認待ちで止まる(C)。`acceptEdits`が自動承認するのはファイル編集と一部のファイル操作コマンドで、Bash全般ではない(D)。"
     }
   ]
 };
