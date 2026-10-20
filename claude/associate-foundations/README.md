@@ -13,7 +13,7 @@ Anthropic公式の技術認定「Claude Certified Associate – Foundations」(C
 
 ## 出題分野(ドメイン)
 
-| # | ドメイン | 出題比率(目安) |
+| # | ドメイン | 出題比率 |
 |---|---|---|
 | 1 | Prompting and Task Execution(プロンプト設計とタスク実行) | 14% |
 | 2 | Output Evaluation and Validation(出力の評価と検証) | 21%(最大配点) |
@@ -21,9 +21,9 @@ Anthropic公式の技術認定「Claude Certified Associate – Foundations」(C
 | 4 | Workflow Integration and Solution Design(ワークフロー統合とソリューション設計) | 16% |
 | 5 | Configuration and Knowledge Management(設定とナレッジ管理) | 12% |
 | 6 | Governance, Risk, and Responsible Use(ガバナンス・リスク・責任あるAI利用) | 15% |
-| 7 | Troubleshooting and Escalation(トラブルシューティングとエスカレーション、名称は非公式・推定) | 残り約10% |
+| 7 | Troubleshooting and Optimization(トラブルシューティングと最適化) | 10% |
 
-比率は公開情報をもとにした目安であり、実際の試験で厳密に保証されるものではない。ドメイン7の名称はAnthropic公式で明言されたものではなく推定(詳細は `topics/07-troubleshooting-escalation/notes.md` の注記を参照)。
+比率は公式の試験ガイド(バージョン1.0)に基づく。
 
 ## フォルダ構成
 
