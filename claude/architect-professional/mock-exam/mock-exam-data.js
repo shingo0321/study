@@ -1611,6 +1611,230 @@ window.MOCK_EXAM_DATA = {
         "A"
       ],
       "explanation": "ログ、再現手順、期待する挙動、関連するコードなど、具体的な情報を与えるほど、原因の切り分けの精度が上がる。"
+    },
+    {
+      "id": 58,
+      "domainLabel": "03: Integration",
+      "domainLink": "../topics/03-integration/notes.html",
+      "stemJa": "あなたは、アーキテクトです。社内のナレッジベースに対する質問応答を、RAGで実装します。社内の文書には、更新が頻繁なものがあります。回答が古い情報に基づかないようにするための、最も適切な設計はどれですか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "古い文書も新しい文書も区別せず、同じ重みで扱う"
+        },
+        {
+          "letter": "B",
+          "ja": "文書の更新をインデックスに反映する仕組みを設け、日付などのメタデータで鮮度を扱えるようにする"
+        },
+        {
+          "letter": "C",
+          "ja": "更新は、ユーザーからの報告があるまで待つ"
+        },
+        {
+          "letter": "D",
+          "ja": "最初に一度だけインデックスを作り、以後は更新しない"
+        }
+      ],
+      "correct": [
+        "B"
+      ],
+      "explanation": "RAGでは、検索対象の鮮度が回答の品質に直結する。更新の反映と、鮮度を扱うメタデータが必要。"
+    },
+    {
+      "id": 59,
+      "domainLabel": "03: Integration",
+      "domainLink": "../topics/03-integration/notes.html",
+      "stemJa": "あなたは、アーキテクトです。エージェントが、複数の外部サービス(チケット、チャット、カレンダー)を操作します。接続の方式を選ぶ際、最も適切な考え方はどれですか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "どの連携も、管理者権限の認証情報を共有して使う"
+        },
+        {
+          "letter": "B",
+          "ja": "再利用・共有したい連携にはMCPを使い、既存のAPIやCLIで足りる箇所は、それを直接使う"
+        },
+        {
+          "letter": "C",
+          "ja": "すべてを、必ず独自のプロトコルで実装する"
+        },
+        {
+          "letter": "D",
+          "ja": "すべてを、人が手作業でコピーして連携する"
+        }
+      ],
+      "correct": [
+        "B"
+      ],
+      "explanation": "接続プロトコルは用途に応じて選ぶ。再利用・共有にはMCP、単純な連携は既存のAPIやCLIで十分なこともある。"
+    },
+    {
+      "id": 60,
+      "domainLabel": "01: Solution Design & Architecture",
+      "domainLink": "../topics/01-solution-design-architecture/notes.html",
+      "stemJa": "あなたは、アーキテクトです。顧客向けの申込審査のシステムを、Claudeで設計します。審査基準は法令で決まっており、判断の理由を後から説明できる必要があります。最も適切な設計はどれですか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "基準に沿ったワークフローで処理し、判断の根拠を記録して、最終判断は人が確認できるようにする"
+        },
+        {
+          "letter": "B",
+          "ja": "審査は、すべてモデルに任せて、人は関与しない"
+        },
+        {
+          "letter": "C",
+          "ja": "モデルに自由に判断させ、理由は残さない"
+        },
+        {
+          "letter": "D",
+          "ja": "判断の結果だけを保存して、根拠は破棄する"
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "説明責任が必要な処理は、基準に沿ったワークフローと根拠の記録、人による確認が重要。"
+    },
+    {
+      "id": 61,
+      "domainLabel": "04: Evaluation, Testing & Optimization",
+      "domainLink": "../topics/04-evaluation-testing-optimization/notes.html",
+      "stemJa": "あなたは、アーキテクトです。ある問い合わせ対応AIで、特定の話題(返品)の回答の質が低い、という報告があります。改善の進め方として最も適切なのはどれですか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "全体のプロンプトを、無作為に書き換える"
+        },
+        {
+          "letter": "B",
+          "ja": "モデルを、確認せずに最も大きいものに替える"
+        },
+        {
+          "letter": "C",
+          "ja": "返品に関する失敗例を集めて評価セットに追加し、原因(プロンプト、検索、モデルの特性)を切り分けてから、1つずつ改善して再評価する"
+        },
+        {
+          "letter": "D",
+          "ja": "報告は一部の意見として、無視する"
+        }
+      ],
+      "correct": [
+        "C"
+      ],
+      "explanation": "失敗例を評価セットに加え、原因を切り分けて、変更を1つずつ評価するのが、改善の基本。"
+    },
+    {
+      "id": 62,
+      "domainLabel": "05: Governance, Safety & Risk Management",
+      "domainLink": "../topics/05-governance-safety-risk/notes.html",
+      "stemJa": "あなたは、アーキテクトです。金融機関の顧客向けAIアシスタントを設計します。顧客の個人情報を扱い、回答を後から検証できる必要があります。ガバナンス上の最も適切な設計はどれですか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "アクセス制御と、データの保持期間の設計、操作の監査ログ、リスクの高い回答への人の確認を組み合わせる"
+        },
+        {
+          "letter": "B",
+          "ja": "すべてのやりとりを、無期限に、誰でも見られる状態で保存する"
+        },
+        {
+          "letter": "C",
+          "ja": "ログを残さず、個人情報も扱わない前提で設計する"
+        },
+        {
+          "letter": "D",
+          "ja": "ガバナンスは、リリース後に検討する"
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "個人情報を扱う場合は、アクセス制御、保持期間、監査ログ、リスクに応じた人の確認を、設計の段階から組み込む。"
+    },
+    {
+      "id": 63,
+      "domainLabel": "06: Stakeholder Communication & Lifecycle Management",
+      "domainLink": "../topics/06-stakeholder-communication-lifecycle/notes.html",
+      "stemJa": "あなたは、アーキテクトです。プロジェクトの途中で、顧客の要望が大きく変わり、スコープが膨らんでいます。最も適切な対応はどれですか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "黙って要望をすべて受け入れる"
+        },
+        {
+          "letter": "B",
+          "ja": "合意なしに、設計だけを変更する"
+        },
+        {
+          "letter": "C",
+          "ja": "変更の影響(コスト、スケジュール、リスク)を示して関係者と合意し、要件とSLAを更新して文書化する"
+        },
+        {
+          "letter": "D",
+          "ja": "要望の変更は、一切受け付けない"
+        }
+      ],
+      "correct": [
+        "C"
+      ],
+      "explanation": "要件が変わったときは、影響を示して合意し、要件とSLAを文書化して更新する。"
+    },
+    {
+      "id": 64,
+      "domainLabel": "02: Claude Models, Prompting & Context Engineering",
+      "domainLink": "../topics/02-models-prompting-context-engineering/notes.html",
+      "stemJa": "あなたは、アーキテクトです。顧客向けチャットで、システムプロンプトに書いたルール(禁止事項など)が、長い会話の後半で守られにくくなっています。最も適切な対策はどれですか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "ルールを書いた量を、2倍に増やす"
+        },
+        {
+          "letter": "B",
+          "ja": "会話が長いのは仕方ないので、放置する"
+        },
+        {
+          "letter": "C",
+          "ja": "ルールは書かず、モデルの判断に任せる"
+        },
+        {
+          "letter": "D",
+          "ja": "重要なルールをプロンプトの構造の中で明確に区切り、必要に応じて会話の途中でも再掲し、出力を検証する仕組みを加える"
+        }
+      ],
+      "correct": [
+        "D"
+      ],
+      "explanation": "長い会話ではルールが薄れることがある。構造化と再掲、出力の検証で守らせる。"
+    },
+    {
+      "id": 65,
+      "domainLabel": "07: Developer Productivity & Operational Enablement",
+      "domainLink": "../topics/07-developer-productivity-operational-enablement/notes.html",
+      "stemJa": "あなたは、アーキテクトです。社内の開発者向けに、Claude Codeの利用ルールを定めます。最も適切なのはどれですか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "ルールは、口頭で伝える"
+        },
+        {
+          "letter": "B",
+          "ja": "許可するツールと操作の範囲、承認が必要な操作、フックによる禁止事項を、プロジェクト設定として共有する"
+        },
+        {
+          "letter": "C",
+          "ja": "ルールは作らず、各自の判断に任せる"
+        },
+        {
+          "letter": "D",
+          "ja": "すべての操作を、常に自動承認にする"
+        }
+      ],
+      "correct": [
+        "B"
+      ],
+      "explanation": "チーム共通の利用ルールは、設定として明文化し、リポジトリで共有する。"
     }
   ]
 };
