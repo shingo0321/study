@@ -509,6 +509,118 @@ window.MOCK_EXAM_DATA = {
         "A"
       ],
       "explanation": "`dontAsk`は確認が必要な操作を自動で拒否するので、許可外の操作で止まらずに安全に進む。`bypassPermissions`は隔離環境でのみ使うべきで、共有ランナーでは危険(B)。`default`は確認待ちで止まる(C)。`acceptEdits`が自動承認するのはファイル編集と一部のファイル操作コマンドで、Bash全般ではない(D)。"
+    },
+    {
+      "id": 19,
+      "domainLabel": "ドメイン02: Tool Design & MCP",
+      "domainLink": "../topics/02-tool-design-mcp/notes.html",
+      "stemJa": "チームで共有する社内のMCPサーバー(HTTP)をClaude Codeに設定する。接続にはAPIキーが必要である。設定ファイルをリポジトリにコミットしてよい構成として、最も適切なのはどれか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "`.mcp.json`のheadersにAPIキーを直接書いてコミットする"
+        },
+        {
+          "letter": "B",
+          "ja": "`.mcp.json`のheadersで`${API_KEY}`のように環境変数を参照し、各開発者が自分の環境変数にキーを設定する"
+        },
+        {
+          "letter": "C",
+          "ja": "`local`スコープに登録し、各開発者にキーごと設定ファイルをチャットで配布する"
+        },
+        {
+          "letter": "D",
+          "ja": "`user`スコープに登録し、リポジトリにはサーバーの存在を伝えない"
+        }
+      ],
+      "correct": [
+        "B"
+      ],
+      "explanation": "`project`スコープの`.mcp.json`はGitで共有できる。認証情報は設定に直書きせず`${VAR}`の環境変数展開で渡し、接続設定だけをリポジトリに残す。直書きは漏えいリスクが高い(A)。`local`や`user`スコープはチームに共有されない(C・D)。"
+    },
+    {
+      "id": 20,
+      "domainLabel": "ドメイン02: Tool Design & MCP",
+      "domainLink": "../topics/02-tool-design-mcp/notes.html",
+      "stemJa": "あるMCPサーバーが、チーム共有の`.mcp.json`(`project`スコープ)と、開発者個人の`local`スコープの両方に同じ名前で登録されていて、設定内容が異なっている。Claude Codeはどう動作するか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "`project`の設定が優先され、`local`は無視される"
+        },
+        {
+          "letter": "B",
+          "ja": "両方の設定のフィールドがマージされて使われる"
+        },
+        {
+          "letter": "C",
+          "ja": "`local`の定義が丸ごと使われ、フィールドはマージされない"
+        },
+        {
+          "letter": "D",
+          "ja": "同名の登録が競合するため、どちらも読み込まれない"
+        }
+      ],
+      "correct": [
+        "C"
+      ],
+      "explanation": "同じサーバーが複数のスコープにある場合、優先順位は`local` → `project` → `user`の順で、最も優先度の高い定義のエントリ全体が使われ、フィールドはスコープ間でマージされない。"
+    },
+    {
+      "id": 21,
+      "domainLabel": "ドメイン02: Tool Design & MCP",
+      "domainLink": "../topics/02-tool-design-mcp/notes.html",
+      "stemJa": "社内のログ検索MCPサーバーのツールが、1回の呼び出しで数十万行のログをそのまま返しており、Claude Codeで出力が上限を超えて保存先パスだけが会話に残ってしまう。サーバー側の設計として最も適切な改善はどれか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "クライアント側の`MAX_MCP_OUTPUT_TOKENS`を最大まで引き上げ、結果を丸ごと返し続ける"
+        },
+        {
+          "letter": "B",
+          "ja": "ページングや期間・キーワードなどの絞り込み引数をツールに追加し、モデルが必要な分だけ取得できるようにする"
+        },
+        {
+          "letter": "C",
+          "ja": "ツールの説明文を短くして、出力トークン数を減らす"
+        },
+        {
+          "letter": "D",
+          "ja": "タイムアウトを延ばして、結果の取得を待つ"
+        }
+      ],
+      "correct": [
+        "B"
+      ],
+      "explanation": "巨大な結果を1回で返すのではなく、サーバー側でページングや絞り込みを提供するのが推奨される。上限の引き上げはコンテキストを圧迫する対症療法にすぎない(A)。説明文の長さは結果の大きさと関係がない(C)。タイムアウトの延長は出力サイズの問題を解決しない(D)。"
+    },
+    {
+      "id": 22,
+      "domainLabel": "ドメイン02: Tool Design & MCP",
+      "domainLink": "../topics/02-tool-design-mcp/notes.html",
+      "stemJa": "サードパーティが公開するMCPサーバーが、すべてのツールに「読み取り専用」を示すannotationsを付けている。この情報だけを根拠に、クライアント側のツール承認を省略してよいか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "省略してよい。annotationsは仕様上、挙動の保証である"
+        },
+        {
+          "letter": "B",
+          "ja": "省略すべきでない。annotationsは、信頼できるサーバーから得たものでない限り信頼しない"
+        },
+        {
+          "letter": "C",
+          "ja": "省略してよい。読み取り専用のツールにはそもそも承認が不要である"
+        },
+        {
+          "letter": "D",
+          "ja": "省略すべきでない。annotationsはClaudeがすべて無視するため、記載する意味がない"
+        }
+      ],
+      "correct": [
+        "B"
+      ],
+      "explanation": "MCP仕様は、ツールの挙動を説明するannotationsなどを、信頼できるサーバーから得たものでない限り信頼しないよう求めている。ホストはツール呼び出し前にユーザーの明示的な同意を得るのが原則であり、サーバーの自己申告だけで承認を省かない。"
     }
   ]
 };
