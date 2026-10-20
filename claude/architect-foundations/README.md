@@ -25,6 +25,7 @@ Anthropic公式の技術認定「Claude Certified Architect – Foundations」�
 ## 参考リンク
 
 - [Pearson VUE: Claude Certification Program](https://www.pearsonvue.com/us/en/anthropic.html)
+- [Architect – Foundations 認定ページ(Partner Academy)](https://anthropic-partners.skilljar.com/claude-certified-architect-foundations-certification) — 公式の試験ガイド(PDF、日本語版あり)へのリンクがある。`topics/`のノートはこのガイドのタスク記述に沿っている
 
 ## 進め方(たたき台)
 
