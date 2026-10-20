@@ -130,7 +130,23 @@
     });
     rest = shuffle(rest);
     while (picked.length < total && rest.length) picked.push(rest.shift());
-    return shuffle(picked.slice(0, total));
+    // 丸めで超過した分は、最も多く選ばれた分野から外す(特定の分野が丸ごと消えないようにする)
+    while (picked.length > total) {
+      var counts = {};
+      picked.forEach(function (q) {
+        var k = domainKey(q.domainLabel);
+        counts[k] = (counts[k] || 0) + 1;
+      });
+      var maxKey = Object.keys(counts).sort(function (x, y) {
+        return counts[y] - counts[x];
+      })[0];
+      var idxs = [];
+      picked.forEach(function (q, i) {
+        if (domainKey(q.domainLabel) === maxKey) idxs.push(i);
+      });
+      picked.splice(idxs[Math.floor(Math.random() * idxs.length)], 1);
+    }
+    return shuffle(picked);
   }
 
   // シナリオ形式の試験は、問題を持つシナリオからランダムに選び、シナリオごとにまとめて出題する。
