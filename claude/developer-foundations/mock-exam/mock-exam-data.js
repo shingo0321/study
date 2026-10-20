@@ -5,6 +5,17 @@ window.MOCK_EXAM_DATA = {
   "passScore": 720,
   "scoreMin": 100,
   "scoreMax": 1000,
+  "officialQuestionCount": 53,
+  "domainWeights": {
+    "ドメイン01": 14.7,
+    "ドメイン02": 33.1,
+    "ドメイン03": 3.1,
+    "ドメイン04": 2.6,
+    "ドメイン05": 16.8,
+    "ドメイン06": 11.0,
+    "ドメイン07": 8.1,
+    "ドメイン08": 10.6
+  },
   "questions": [
     {
       "id": 1,

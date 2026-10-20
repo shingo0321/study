@@ -5,6 +5,16 @@ window.MOCK_EXAM_DATA = {
   "passScore": 720,
   "scoreMin": 100,
   "scoreMax": 1000,
+  "officialQuestionCount": 63,
+  "domainWeights": {
+    "01": 17,
+    "02": 13,
+    "03": 19,
+    "04": 16,
+    "05": 14,
+    "06": 14,
+    "07": 7
+  },
   "questions": [
     {
       "id": 1,

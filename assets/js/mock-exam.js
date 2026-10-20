@@ -64,6 +64,8 @@
     + "#mock-exam-app .me-domain-table { width: 100%; border-collapse: collapse; margin: 0 0 1.2rem; font-size: 0.9rem; }\n"
     + "#mock-exam-app .me-domain-table th, #mock-exam-app .me-domain-table td { border: 1px solid #d0d7de; padding: 0.35rem 0.6rem; text-align: left; }\n"
     + "#mock-exam-app .me-domain-table th { background: #f6f8fa; }\n"
+    + "#mock-exam-app .me-scenario { border-left: 4px solid #0969da; background: #f6f8fa; border-radius: 6px; padding: 0.7rem 1rem; margin: 1.4rem 0 0.8rem; }\n"
+    + "#mock-exam-app .me-scenario p { margin: 0.3rem 0 0; font-size: 0.92rem; }\n"
     + "#mock-exam-app .me-question { border: 1px solid #d0d7de; border-radius: 10px; padding: 1.1rem 1.2rem; margin-bottom: 1rem; }\n"
     + "#mock-exam-app .me-question-head { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem; flex-wrap: wrap; }\n"
     + "#mock-exam-app .me-qnum { font-weight: 700; }\n"
@@ -96,8 +98,67 @@
     document.head.appendChild(style);
   }
 
+  function domainKey(label) {
+    return String(label).split(":")[0];
+  }
+
+  // 公式の問題数に満たない問題プールでは、時間を問題数に比例して短縮する。
+  function timeLimitFor(data, count) {
+    var official = data.officialQuestionCount || count;
+    if (count >= official) return data.timeLimitMinutes;
+    return Math.max(1, Math.ceil((data.timeLimitMinutes * count) / official));
+  }
+
+  // 配点比率に応じて、問題プールから公式の問題数まで抽出する(プールが足りないときは全問)。
+  function sampleByWeights(data) {
+    var pool = data.questions;
+    var total = data.officialQuestionCount;
+    var weights = data.domainWeights;
+    if (!total || !weights || pool.length <= total) return shuffle(pool);
+    var byDomain = {};
+    pool.forEach(function (q) {
+      var k = domainKey(q.domainLabel);
+      (byDomain[k] = byDomain[k] || []).push(q);
+    });
+    var picked = [];
+    var rest = [];
+    Object.keys(byDomain).forEach(function (k) {
+      var list = shuffle(byDomain[k]);
+      var want = Math.round(((weights[k] || 0) * total) / 100);
+      picked = picked.concat(list.slice(0, want));
+      rest = rest.concat(list.slice(want));
+    });
+    rest = shuffle(rest);
+    while (picked.length < total && rest.length) picked.push(rest.shift());
+    return shuffle(picked.slice(0, total));
+  }
+
+  // シナリオ形式の試験は、問題を持つシナリオからランダムに選び、シナリオごとにまとめて出題する。
+  function selectQuestions(data) {
+    if (data.scenarios && data.scenarioCount) {
+      var usable = data.scenarios.filter(function (sc) {
+        return data.questions.some(function (q) {
+          return q.scenario === sc.id;
+        });
+      });
+      var chosen = shuffle(usable).slice(0, data.scenarioCount);
+      var out = [];
+      chosen.forEach(function (sc) {
+        out = out.concat(
+          shuffle(
+            data.questions.filter(function (q) {
+              return q.scenario === sc.id;
+            })
+          )
+        );
+      });
+      return out;
+    }
+    return sampleByWeights(data);
+  }
+
   function prepareAttempt(data) {
-    var questions = shuffle(data.questions).map(function (q) {
+    var questions = selectQuestions(data).map(function (q) {
       var options = shuffle(
         q.options.map(function (o) {
           return { origLetter: o.letter, ja: o.ja };
@@ -105,6 +166,7 @@
       );
       return {
         id: q.id,
+        scenario: q.scenario,
         domainLabel: q.domainLabel,
         domainLink: q.domainLink,
         stemJa: q.stemJa,
@@ -118,16 +180,34 @@
 
   function renderIntro(root, data, onStart) {
     injectStyle();
-    var totalMinutes = data.timeLimitMinutes;
+    var official = data.officialQuestionCount;
+    var pool = data.questions.length;
+    var scenarioMode = !!(data.scenarios && data.scenarioCount);
+    var planned = scenarioMode ? null : official && pool > official ? official : pool;
+    var countText = scenarioMode
+      ? "開始時に決まります(" + data.scenarioCount + "シナリオを、" + data.scenarios.length + "シナリオからランダムに選択)"
+      : planned + "問";
+    var timeText = scenarioMode
+      ? "出題数に応じて決まります(公式は" + data.timeLimitMinutes + "分)"
+      : timeLimitFor(data, planned) + "分(公式は" + data.timeLimitMinutes + "分)";
+    var officialText = official
+      ? "<dt>公式の問題数</dt><dd>" + official + "問" + (scenarioMode ? "(" + data.scenarioCount + "シナリオ)" : "") + "</dd>"
+      : "";
+    var shortNote =
+      official && pool < official
+        ? '<p class="me-note">現在の問題プールは' + pool + "問で、公式の問題数(" + official + "問)に届いていません。問題数に比例して制限時間を短縮しています。問題の追加に合わせて、公式の問題数に近づけていきます。</p>"
+        : "";
     root.innerHTML =
       '<div class="me-intro">'
-      + "<p>" + escapeHtml(data.examTitle) + " の模擬試験です。全" + data.questions.length + "問を通しで解答し、最後にまとめて自動採点します。</p>"
+      + "<p>" + escapeHtml(data.examTitle) + " の模擬試験です。公式の試験ガイドの出題形式(問題数・配点比率・制限時間)に合わせて出題し、最後にまとめて自動採点します。</p>"
       + "<dl>"
-      + "<dt>問題数</dt><dd>" + data.questions.length + "問</dd>"
-      + "<dt>制限時間</dt><dd>" + totalMinutes + "分(自動採点あり)</dd>"
-      + "<dt>合格ラインの目安</dt><dd>スケールスコア " + data.passScore + " / " + data.scoreMax + "</dd>"
+      + officialText
+      + "<dt>今回の問題数</dt><dd>" + countText + "</dd>"
+      + "<dt>制限時間</dt><dd>" + timeText + "</dd>"
+      + "<dt>合格ライン</dt><dd>スケールスコア " + data.passScore + " / " + data.scoreMax + "</dd>"
       + "</dl>"
-      + '<p class="me-note">出題順・選択肢の順序は開始のたびにランダムに入れ替わります。制限時間になると自動的に採点されます。スケールスコアは正答率を100〜1000の範囲に単純換算した自己学習用の目安であり、実際の採点方式(非公開)を再現するものではありません。</p>'
+      + shortNote
+      + '<p class="me-note">出題順・選択肢の順序は開始のたびにランダムに入れ替わります。複数選択の問題は、選ぶ数が明記されます。制限時間になると自動的に採点されます。スケールスコアは正答率を100〜1000の範囲に単純換算した自己学習用の目安であり、実際の採点方式(非公開)を再現するものではありません。</p>'
       + '<button type="button" class="me-btn" id="me-start-btn">模擬試験を開始する</button>'
       + "</div>";
     root.querySelector("#me-start-btn").addEventListener("click", onStart);
@@ -142,14 +222,26 @@
 
     var panelHtml =
       '<div class="me-panel" id="me-panel">'
-      + '<div class="me-panel-item">残り時間: <strong class="me-timer" id="me-timer">' + formatClock(data.timeLimitMinutes * 60) + "</strong></div>"
+      + '<div class="me-panel-item">残り時間: <strong class="me-timer" id="me-timer">' + formatClock(timeLimitFor(data, questions.length) * 60) + "</strong></div>"
       + '<div class="me-panel-item" id="me-progress">回答済み: <strong>0</strong> / ' + questions.length + "</div>"
       + '<div class="me-panel-spacer"></div>'
       + '<button type="button" class="me-btn" id="me-grade-btn">採点する</button>'
       + "</div>";
 
+    var lastScenario = null;
     var questionsHtml = questions
       .map(function (q, idx) {
+        var scenarioHtml = "";
+        if (data.scenarios && q.scenario !== lastScenario) {
+          lastScenario = q.scenario;
+          var sc = data.scenarios.filter(function (x) {
+            return x.id === q.scenario;
+          })[0];
+          if (sc) {
+            scenarioHtml =
+              '<div class="me-scenario"><strong>シナリオ: ' + escapeHtml(sc.title) + "</strong><p>" + formatText(sc.description) + "</p></div>";
+          }
+        }
         var inputType = optionInputType(q);
         var multiHint =
           q.correct.length > 1
@@ -170,7 +262,8 @@
           .join("");
 
         return (
-          '<div class="me-question" data-qid="' + q.id + '">'
+          scenarioHtml
+          + '<div class="me-question" data-qid="' + q.id + '">'
           + '<div class="me-question-head">'
           + '<span class="me-qnum">問' + (idx + 1) + "</span>"
           + '<a class="me-domain-tag" href="' + escapeHtml(q.domainLink) + '" target="_blank" rel="noopener">' + escapeHtml(q.domainLabel) + "</a>"
@@ -202,7 +295,7 @@
     });
 
     var timerEl = root.querySelector("#me-timer");
-    var remaining = data.timeLimitMinutes * 60;
+    var remaining = timeLimitFor(data, questions.length) * 60;
     var timerId = setInterval(function () {
       remaining -= 1;
       timerEl.textContent = formatClock(remaining);
@@ -276,7 +369,13 @@
       .sort()
       .map(function (label) {
         var s = result.domainStats[label];
-        return "<tr><td>" + escapeHtml(label) + "</td><td>" + s.correct + " / " + s.total + "</td></tr>";
+        var w = data.domainWeights ? data.domainWeights[domainKey(label)] : null;
+        var pctText = s.total ? Math.round((s.correct / s.total) * 100) + "%" : "-";
+        return (
+          "<tr><td>" + escapeHtml(label) + "</td><td>" + s.correct + " / " + s.total + "</td><td>" + pctText + "</td>"
+          + (data.domainWeights ? "<td>" + (w != null ? w + "%" : "-") + "</td>" : "")
+          + "</tr>"
+        );
       })
       .join("");
 
@@ -290,7 +389,7 @@
 
     var table = document.createElement("table");
     table.className = "me-domain-table";
-    table.innerHTML = "<thead><tr><th>出題分野</th><th>正答数</th></tr></thead><tbody>" + domainRows + "</tbody>";
+    table.innerHTML = "<thead><tr><th>出題分野</th><th>正答数</th><th>正答率</th>" + (data.domainWeights ? "<th>公式の配点比率</th>" : "") + "</tr></thead><tbody>" + domainRows + "</tbody>";
     panel.insertAdjacentElement("afterend", table);
 
     panel.querySelector("#me-retry-btn").addEventListener("click", function () {
