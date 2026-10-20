@@ -463,6 +463,1154 @@ window.MOCK_EXAM_DATA = {
         "B"
       ],
       "explanation": "ゴールデンパス/テンプレートにガバナンス要件を組み込み「安全な作り方が最も簡単な作り方」にすることが、開発者生産性とガバナンスを両立させる07章の中核パターン。個別レビューの都度対応はスケールしない。"
+    },
+    {
+      "id": 17,
+      "domainLabel": "01: Solution Design & Architecture",
+      "domainLink": "../topics/01-solution-design-architecture/notes.html",
+      "stemJa": "あなたは、保険会社のソリューションアーキテクトです。保険金請求の書類を読み取り、不足書類を指摘する処理を自動化します。手順は事前に決まっており、ほぼ毎回同じです。最も適切なアーキテクチャパターンはどれですか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "最初から、複数のサブエージェントと動的な計画を備えた構成"
+        },
+        {
+          "letter": "B",
+          "ja": "Claudeは使わず、ルールベースだけで処理する"
+        },
+        {
+          "letter": "C",
+          "ja": "モデルに経路をすべて決めさせる、自律的なマルチエージェントの階層"
+        },
+        {
+          "letter": "D",
+          "ja": "コードで経路を定義したワークフロー(プロンプトチェイニング)で、各ステップをClaudeに担当させる"
+        }
+      ],
+      "correct": [
+        "D"
+      ],
+      "explanation": "手順が予測できる処理は、ワークフローが最も単純で信頼しやすい。複雑さは、必要になったときだけ増やす。"
+    },
+    {
+      "id": 18,
+      "domainLabel": "01: Solution Design & Architecture",
+      "domainLink": "../topics/01-solution-design-architecture/notes.html",
+      "stemJa": "あなたは、調査会社のアーキテクトです。多数の市場について、独立した調査を並行して行い、最後に統合するレポートシステムを設計します。メインのコンテキストを汚さずに、スループットも上げたいです。最も適切な設計はどれですか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "1つのエージェントが、すべての調査結果を1つのコンテキストに積んで順番に処理する"
+        },
+        {
+          "letter": "B",
+          "ja": "人が各市場の調査を手作業で行う"
+        },
+        {
+          "letter": "C",
+          "ja": "オーケストレーターが調査をサブエージェントに並列に委譲し、各サブエージェントは要約した結果を返す"
+        },
+        {
+          "letter": "D",
+          "ja": "サブエージェントを使わず、1回のプロンプトにすべてを詰め込む"
+        }
+      ],
+      "correct": [
+        "C"
+      ],
+      "explanation": "独立していて並列化できるサブタスクは、サブエージェントに委譲すると、コンテキストを分離しつつスループットが上がる。代償としてトークンコストは増える。"
+    },
+    {
+      "id": 19,
+      "domainLabel": "01: Solution Design & Architecture",
+      "domainLink": "../topics/01-solution-design-architecture/notes.html",
+      "stemJa": "あなたは、ある企業のアーキテクトです。経営層は「コストを最優先で下げたい」、現場は「応答は常に数秒以内」を求めています。Claudeの導入設計を進める際、最初に行うべきことは何ですか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "どちらも満たせるはずなので、基準は決めずに設計を始める"
+        },
+        {
+          "letter": "B",
+          "ja": "要件が衝突しているので、導入を見送る"
+        },
+        {
+          "letter": "C",
+          "ja": "コスト、パフォーマンスSLAなどの優先順位を関係者と合意し、設計の判断基準にする"
+        },
+        {
+          "letter": "D",
+          "ja": "技術的に最も高性能な構成を、先に決める"
+        }
+      ],
+      "correct": [
+        "C"
+      ],
+      "explanation": "ビジネス価値の柱(コスト、パフォーマンスSLAなど)の優先順位を合意すると、設計上のトレードオフを一貫して判断できる。"
+    },
+    {
+      "id": 20,
+      "domainLabel": "01: Solution Design & Architecture",
+      "domainLink": "../topics/01-solution-design-architecture/notes.html",
+      "stemJa": "あなたは、アーキテクトです。顧客向けの問い合わせ回答システムで、回答の品質を継続的に改善したい要件があります。エンドツーエンドの設計として最も適切なのはどれですか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "入力 → 処理 → 出力に加えて、出力の評価とフィードバックを収集し、改善に戻すループを含める"
+        },
+        {
+          "letter": "B",
+          "ja": "フィードバックは、手作業のメールで集める"
+        },
+        {
+          "letter": "C",
+          "ja": "品質の改善は、リリース後に検討する"
+        },
+        {
+          "letter": "D",
+          "ja": "入力から出力までの一方向の流れだけを設計する"
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "エンドツーエンドの設計には、出力の品質を測り、改善に戻すフィードバックループを含める。"
+    },
+    {
+      "id": 21,
+      "domainLabel": "01: Solution Design & Architecture",
+      "domainLink": "../topics/01-solution-design-architecture/notes.html",
+      "stemJa": "あなたは、アーキテクトです。コードの大規模な調査を伴うタスクで、手順が事前に決められず、途中の発見に応じて次の調査対象が変わります。最も適切な分解の手法はどれですか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "事前に固定した手順を、必ず順番に実行する"
+        },
+        {
+          "letter": "B",
+          "ja": "発見に応じて次のサブタスクを生成する、動的で適応的な分解"
+        },
+        {
+          "letter": "C",
+          "ja": "すべてを1つのプロンプトで依頼する"
+        },
+        {
+          "letter": "D",
+          "ja": "調査は行わず、推測で結論を出す"
+        }
+      ],
+      "correct": [
+        "B"
+      ],
+      "explanation": "オープンエンドな調査は、途中の発見に応じて計画を調整する動的な分解が向く。固定の逐次処理は、手順が予測できる場合に向く。"
+    },
+    {
+      "id": 22,
+      "domainLabel": "01: Solution Design & Architecture",
+      "domainLink": "../topics/01-solution-design-architecture/notes.html",
+      "stemJa": "あなたは、アーキテクトです。単純なFAQ回答を行うシステムに、マルチエージェントのオーケストレーションを導入する提案がありました。この提案への最も適切な評価はどれですか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "エージェントの数が多いほど、信頼性が高まる"
+        },
+        {
+          "letter": "B",
+          "ja": "FAQでも、必ずサブエージェントを5つ以上にすべき"
+        },
+        {
+          "letter": "C",
+          "ja": "マルチエージェントは常に品質が高いので、導入すべき"
+        },
+        {
+          "letter": "D",
+          "ja": "タスクが単純であれば、複雑さとトークンコストの増加に見合わないため、単一の呼び出しやワークフローで十分"
+        }
+      ],
+      "correct": [
+        "D"
+      ],
+      "explanation": "複雑さは必要なときだけ増やす。単純なタスクにマルチエージェントを使うと、コストと保守の負担だけが増える。"
+    },
+    {
+      "id": 23,
+      "domainLabel": "01: Solution Design & Architecture",
+      "domainLink": "../topics/01-solution-design-architecture/notes.html",
+      "stemJa": "あなたは、アーキテクトです。ユーザーの質問に対して、必要な社内文書を検索してから回答する機能を設計します。LLM単体の知識だけでは不十分です。最も適切なパターンはどれですか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "検索を組み合わせた拡張LLM(RAGなど)で、取得した文書をコンテキストに渡して回答させる"
+        },
+        {
+          "letter": "B",
+          "ja": "ユーザーに、文書を探して貼り付けさせる"
+        },
+        {
+          "letter": "C",
+          "ja": "LLM単体に、社内文書を暗記させる"
+        },
+        {
+          "letter": "D",
+          "ja": "検索結果を使わず、質問に対して一般論だけを答える"
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "社内の情報が必要な場合は、検索を組み合わせた拡張LLMが適する。"
+    },
+    {
+      "id": 24,
+      "domainLabel": "02: Claude Models, Prompting & Context Engineering",
+      "domainLink": "../topics/02-models-prompting-context-engineering/notes.html",
+      "stemJa": "あなたは、アーキテクトです。毎日大量のメールを「緊急度」で分類する処理と、少数の複雑な契約書の法的リスクを分析する処理があります。モデルの選び方として最も適切なのはどれですか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "モデルは固定せず、毎回ランダムに選ぶ"
+        },
+        {
+          "letter": "B",
+          "ja": "両方とも、最も軽量なモデルを使う"
+        },
+        {
+          "letter": "C",
+          "ja": "分類には高速・低コストのモデル、契約書の分析には高い推論能力のモデルを使い分ける"
+        },
+        {
+          "letter": "D",
+          "ja": "両方とも、最も高性能なモデルを使う"
+        }
+      ],
+      "correct": [
+        "C"
+      ],
+      "explanation": "処理の性質(量、複雑さ、誤りの影響)に応じてモデルを使い分けると、コストと品質のバランスがとれる。"
+    },
+    {
+      "id": 25,
+      "domainLabel": "02: Claude Models, Prompting & Context Engineering",
+      "domainLink": "../topics/02-models-prompting-context-engineering/notes.html",
+      "stemJa": "あなたは、アーキテクトです。8,000トークンの同じシステムプロンプトとポリシーを毎回送り、その後に短いユーザーメッセージが続きます。遅延とコストの両方を下げたいです。最も効果的な最適化はどれですか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "静的なシステムプロンプトとポリシーを動的な内容の前に置き、プロンプトキャッシュを有効にする"
+        },
+        {
+          "letter": "B",
+          "ja": "ポリシーをfew-shotの例のブロックに移す"
+        },
+        {
+          "letter": "C",
+          "ja": "最も小さいモデルに、必ず切り替える"
+        },
+        {
+          "letter": "D",
+          "ja": "ポリシーを、最初の1,000トークンに切り詰める"
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "変わらない部分を先頭にまとめてキャッシュすれば、遅延とコストの両方を下げられる。内容を削ったり、無関係なモデルへ替えたりしても、同じ効果は得られない。"
+    },
+    {
+      "id": 26,
+      "domainLabel": "02: Claude Models, Prompting & Context Engineering",
+      "domainLink": "../topics/02-models-prompting-context-engineering/notes.html",
+      "stemJa": "あなたは、アーキテクトです。多段階の論理的な判断(複数の条件を順に評価して結論を出す)で、モデルが結論を急いで誤ることがあります。最も効果的なプロンプト手法はどれですか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "ゼロショットで、結論だけを求める"
+        },
+        {
+          "letter": "B",
+          "ja": "思考の連鎖を使い、段階的に考えさせてから結論を出させる"
+        },
+        {
+          "letter": "C",
+          "ja": "温度を最大にする"
+        },
+        {
+          "letter": "D",
+          "ja": "出力の長さを、極端に短く制限する"
+        }
+      ],
+      "correct": [
+        "B"
+      ],
+      "explanation": "多段階の推論には、思考の連鎖(段階的に考えさせる)が有効。結論だけを求めると、誤りやすくなる。"
+    },
+    {
+      "id": 27,
+      "domainLabel": "02: Claude Models, Prompting & Context Engineering",
+      "domainLink": "../topics/02-models-prompting-context-engineering/notes.html",
+      "stemJa": "あなたは、アーキテクトです。複数のプロダクトで共通の指示(口調、禁止事項)と、プロダクト固有の指示があります。保守しやすく再利用できるプロンプト設計はどれですか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "すべてを1つの巨大なプロンプトにまとめて、全プロダクトで共有する"
+        },
+        {
+          "letter": "B",
+          "ja": "指示は書かず、モデルの判断に任せる"
+        },
+        {
+          "letter": "C",
+          "ja": "プロダクトごとに、全文を別々に書いてコピーする"
+        },
+        {
+          "letter": "D",
+          "ja": "共通部分と固有部分をモジュール化して、組み合わせて使う"
+        }
+      ],
+      "correct": [
+        "D"
+      ],
+      "explanation": "プロンプトをモジュール化して再利用すると、共通部分の変更が一貫して反映され、保守しやすい。"
+    },
+    {
+      "id": 28,
+      "domainLabel": "02: Claude Models, Prompting & Context Engineering",
+      "domainLink": "../topics/02-models-prompting-context-engineering/notes.html",
+      "stemJa": "あなたは、アーキテクトです。エージェントが長時間動作し、ツール出力が積み上がって、応答の質が落ちてきました。コンテキストの管理として最も適切なのはどれですか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "すべての履歴を、そのまま保持する"
+        },
+        {
+          "letter": "B",
+          "ja": "コンテキストの管理は、不要である"
+        },
+        {
+          "letter": "C",
+          "ja": "履歴をすべて削除して、毎回ゼロから始める"
+        },
+        {
+          "letter": "D",
+          "ja": "ツール出力を必要な項目に絞り、古い履歴を要約し、重要な事実は別に保持する"
+        }
+      ],
+      "correct": [
+        "D"
+      ],
+      "explanation": "ツール出力の絞り込みと、古い履歴の要約で、コンテキストを保つ。重要な事実は要約で失われないように、別に保持する。"
+    },
+    {
+      "id": 29,
+      "domainLabel": "03: Integration",
+      "domainLink": "../topics/03-integration/notes.html",
+      "stemJa": "あなたは、アーキテクトです。カスタマーサポートのエージェントに、チケットの閲覧、返信の下書き、返金の実行、アカウントの削除のツールを与えています。この業務に必要なのは、閲覧と下書きだけです。最小権限の原則に沿って、リスクを最も下げる変更はどれですか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "より大きなモデルに替えて、指示により確実に従わせる"
+        },
+        {
+          "letter": "B",
+          "ja": "返金とアカウント削除のツールを、エージェントの構成から外す"
+        },
+        {
+          "letter": "C",
+          "ja": "返金と削除のツールにログを追加して、後から監査できるようにする"
+        },
+        {
+          "letter": "D",
+          "ja": "すべてのツールを残し、実行前に確認のプロンプトを追加する"
+        }
+      ],
+      "correct": [
+        "B"
+      ],
+      "explanation": "不要な権限は付与しないのが最小権限の原則。ログや確認は事後・事前の補助で、権限そのものを減らす方がリスクを確実に下げる。"
+    },
+    {
+      "id": 30,
+      "domainLabel": "03: Integration",
+      "domainLink": "../topics/03-integration/notes.html",
+      "stemJa": "あなたは、アーキテクトです。あるエージェントに、40個のツールを与えたところ、ツールの選択を誤ることが増え、コストも上がっています。最も適切な対応はどれですか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "役割ごとに必要なツールだけに絞り、不要なツールを外す(機能の肥大を解消する)"
+        },
+        {
+          "letter": "B",
+          "ja": "ツールをさらに増やして、カバー範囲を広げる"
+        },
+        {
+          "letter": "C",
+          "ja": "ツールの説明を、すべて削除する"
+        },
+        {
+          "letter": "D",
+          "ja": "モデルの温度を、上げる"
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "ツールを増やしすぎると、選択精度が下がり、コストと保守の負担が増える。役割に応じて絞るのが適切。"
+    },
+    {
+      "id": 31,
+      "domainLabel": "03: Integration",
+      "domainLink": "../topics/03-integration/notes.html",
+      "stemJa": "あなたは、アーキテクトです。社内の規程集(数万ページ)を検索して回答するRAGを設計します。回答が、関連のない部分を引用することがあります。チャンキングの方針として最も適切なのはどれですか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "各文書を、1つの巨大なチャンクにする"
+        },
+        {
+          "letter": "B",
+          "ja": "文書を、固定の1文字ごとに機械的に分割する"
+        },
+        {
+          "letter": "C",
+          "ja": "見出しや段落など意味の区切りで分割し、前後に重なりを持たせ、出典や日付などのメタデータを付ける"
+        },
+        {
+          "letter": "D",
+          "ja": "チャンクを分けず、全文をそのままプロンプトに入れる"
+        }
+      ],
+      "correct": [
+        "C"
+      ],
+      "explanation": "意味の区切りで分け、重なりとメタデータを持たせると、検索の精度が上がり、出典も追える。極端に小さい・大きいチャンクは、精度を下げる。"
+    },
+    {
+      "id": 32,
+      "domainLabel": "03: Integration",
+      "domainLink": "../topics/03-integration/notes.html",
+      "stemJa": "あなたは、アーキテクトです。製品の型番(例: AX-2043-B)での問い合わせが多く、ベクトル検索では完全一致の型番を取り逃すことがあります。最も適切な検索戦略はどれですか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "ベクトル検索だけを、さらに調整する"
+        },
+        {
+          "letter": "B",
+          "ja": "検索はやめて、全文書を毎回プロンプトに入れる"
+        },
+        {
+          "letter": "C",
+          "ja": "型番での問い合わせを、受け付けない"
+        },
+        {
+          "letter": "D",
+          "ja": "キーワード検索(完全一致)を組み合わせ、意味検索との併用(ハイブリッド)にする"
+        }
+      ],
+      "correct": [
+        "D"
+      ],
+      "explanation": "型番やIDの完全一致にはキーワード検索が強く、言い換えを含む自然文には意味検索が強い。データとクエリの性質に合わせて併用する。"
+    },
+    {
+      "id": 33,
+      "domainLabel": "03: Integration",
+      "domainLink": "../topics/03-integration/notes.html",
+      "stemJa": "あなたは、アーキテクトです。数十万件のドキュメントがある環境で、エージェントに調査をさせます。毎回すべてを最初にコンテキストへ入れるのは、コスト的にも規模的にも現実的ではありません。最も適切な方針はどれですか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "必要になったときに検索・読み込みを行い、段階的にコンテキストを増やす(段階的ディスカバリー)"
+        },
+        {
+          "letter": "B",
+          "ja": "ドキュメントを、まったく使わない"
+        },
+        {
+          "letter": "C",
+          "ja": "最初にすべてのドキュメントを、コンテキストに入れる"
+        },
+        {
+          "letter": "D",
+          "ja": "最初の100件だけを使い、残りは無視する"
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "規模の大きいデータには、必要に応じて検索・読み込みする段階的ディスカバリーが向く。一括で入れる方式は、単純だがコストと規模に限界がある。"
+    },
+    {
+      "id": 34,
+      "domainLabel": "03: Integration",
+      "domainLink": "../topics/03-integration/notes.html",
+      "stemJa": "あなたは、アーキテクトです。社内の複数の業務システムを、Claude Desktop、Claude Code、自社アプリから共通で使えるようにしたいです。最も適切な統合メカニズムはどれですか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "MCPサーバーとして公開して、各クライアントから共通に接続する"
+        },
+        {
+          "letter": "B",
+          "ja": "アプリごとに、同じ連携を別々に実装する"
+        },
+        {
+          "letter": "C",
+          "ja": "連携は行わず、手作業でデータをコピーする"
+        },
+        {
+          "letter": "D",
+          "ja": "各アプリに、業務システムの管理者認証情報を直接埋め込む"
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "複数のクライアントで再利用・共有する連携には、標準的なプロトコルであるMCPが向く。アプリごとの個別実装は保守負担が増える。"
+    },
+    {
+      "id": 35,
+      "domainLabel": "03: Integration",
+      "domainLink": "../topics/03-integration/notes.html",
+      "stemJa": "あなたは、アーキテクトです。エージェントが、ユーザーの代わりに複数のSaaSを操作します。現在は、1つの強力なサービスアカウントで、すべてのユーザーの操作を実行しています。セキュリティ上の最も大きな問題は何ですか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "サービスアカウントを使うと、トークン数が増える"
+        },
+        {
+          "letter": "B",
+          "ja": "ユーザーごとの認可が反映されず、権限を超えたデータにアクセスされるおそれがある"
+        },
+        {
+          "letter": "C",
+          "ja": "処理が速すぎることで、ログが読みにくくなる"
+        },
+        {
+          "letter": "D",
+          "ja": "ユーザーが増えると、モデルの精度が下がる"
+        }
+      ],
+      "correct": [
+        "B"
+      ],
+      "explanation": "強力な共有アカウントで動かすと、ユーザーの権限を超える操作を許してしまう。ユーザーごとの認可を確認する設計が必要。"
+    },
+    {
+      "id": 36,
+      "domainLabel": "03: Integration",
+      "domainLink": "../topics/03-integration/notes.html",
+      "stemJa": "あなたは、アーキテクトです。本番のエージェントが大規模に稼働しており、応答の遅延とエラーが時々増えます。原因を早く特定できる状態にしたいです。最も適切な対策はどれですか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "ユーザーからの報告だけを、待つ"
+        },
+        {
+          "letter": "B",
+          "ja": "ログは、個人情報を避けるため、一切記録しない"
+        },
+        {
+          "letter": "C",
+          "ja": "問題が起きたときだけ、ログを手作業で探す"
+        },
+        {
+          "letter": "D",
+          "ja": "リクエストごとのトレースと、トークン数・遅延・エラー率・コスト・ツール呼び出しの成否を記録し、ダッシュボードとアラートで監視する"
+        }
+      ],
+      "correct": [
+        "D"
+      ],
+      "explanation": "大規模環境では、トレースとメトリクスを継続的に収集し、監視とアラートで異常を早期に検知できるようにする。"
+    },
+    {
+      "id": 37,
+      "domainLabel": "04: Evaluation, Testing & Optimization",
+      "domainLink": "../topics/04-evaluation-testing-optimization/notes.html",
+      "stemJa": "あなたは、アーキテクトです。RAGシステムが、文書を更新した後から、自信ありげな誤った回答を返すようになりました。レイテンシとモデルのバージョンは変わっていません。最初に調べる箇所として最も可能性が高いのはどれですか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "コンテキストウィンドウが、縮小した"
+        },
+        {
+          "letter": "B",
+          "ja": "検索とインデックスの処理が、関連のない、または古いチャンクを返していないか"
+        },
+        {
+          "letter": "C",
+          "ja": "temperatureの設定が低すぎる"
+        },
+        {
+          "letter": "D",
+          "ja": "モデルの重みが、気づかないうちに変更された"
+        }
+      ],
+      "correct": [
+        "B"
+      ],
+      "explanation": "文書の更新後に誤答が増えたなら、検索・インデックスの結果(関連性や鮮度)が最初の疑いどころ。モデルやパラメータは変わっていない。"
+    },
+    {
+      "id": 38,
+      "domainLabel": "04: Evaluation, Testing & Optimization",
+      "domainLink": "../topics/04-evaluation-testing-optimization/notes.html",
+      "stemJa": "あなたは、アーキテクトです。プロンプトを改善して、本番に展開したいです。変更の効果を確認する方法として最も適切なのはどれですか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "同じ評価データセットで、変更前後を比べ、A/Bテストで一部の利用者に先に展開して確認する"
+        },
+        {
+          "letter": "B",
+          "ja": "評価は、展開後にユーザーの苦情が出てから行う"
+        },
+        {
+          "letter": "C",
+          "ja": "感覚で、良くなったと判断して、全体に展開する"
+        },
+        {
+          "letter": "D",
+          "ja": "複数の変更を一度に行い、全体の結果だけを見る"
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "変更の効果は、同じ評価セットでの比較と、一部への段階的な展開(A/Bテスト)で確認する。複数の変更を同時に行うと、原因が分からなくなる。"
+    },
+    {
+      "id": 39,
+      "domainLabel": "04: Evaluation, Testing & Optimization",
+      "domainLink": "../topics/04-evaluation-testing-optimization/notes.html",
+      "stemJa": "あなたは、アーキテクトです。評価データセットを設計します。実運用で起きる失敗を、もれなく検出できる評価にしたいです。最も適切なデータセットの構成はどれですか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "代表的なケース、エッジケース、過去の失敗例を含め、自動採点と人によるレビューを組み合わせる"
+        },
+        {
+          "letter": "B",
+          "ja": "モデルが過去に学習していそうな、有名な例だけにする"
+        },
+        {
+          "letter": "C",
+          "ja": "簡単なケースだけを集める"
+        },
+        {
+          "letter": "D",
+          "ja": "評価は、1回の試行だけで判断する"
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "代表例とエッジケース、過去の失敗例を含め、採点方法も組み合わせることで、実運用に近い評価ができる。"
+    },
+    {
+      "id": 40,
+      "domainLabel": "04: Evaluation, Testing & Optimization",
+      "domainLink": "../topics/04-evaluation-testing-optimization/notes.html",
+      "stemJa": "あなたは、アーキテクトです。月次のAPIコストが急増しました。最適化の最初の一歩として最も適切なのはどれですか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "利用を、全面的に停止する"
+        },
+        {
+          "letter": "B",
+          "ja": "原因を調べずに、すべてのモデルを最小のものに変更する"
+        },
+        {
+          "letter": "C",
+          "ja": "出力トークンの上限を、無作為に下げる"
+        },
+        {
+          "letter": "D",
+          "ja": "トークン使用量とコストを、機能・モデル・入出力・キャッシュ別に分析して、支出の大きい部分を特定する"
+        }
+      ],
+      "correct": [
+        "D"
+      ],
+      "explanation": "最適化は、まず計測して内訳を把握してから。原因を特定せずに変更すると、品質を損なうおそれがある。"
+    },
+    {
+      "id": 41,
+      "domainLabel": "04: Evaluation, Testing & Optimization",
+      "domainLink": "../topics/04-evaluation-testing-optimization/notes.html",
+      "stemJa": "あなたは、アーキテクトです。カスタマーサポートのAIの品質を測る指標を決めます。顧客満足度だけを見ていると、安全性やコストの問題に気づきにくいです。最も適切な指標の設計はどれですか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "精度、レイテンシ、コスト、安全性、セキュリティの観点から複数の指標を定義する"
+        },
+        {
+          "letter": "B",
+          "ja": "顧客満足度の1つだけを、毎月確認する"
+        },
+        {
+          "letter": "C",
+          "ja": "指標は定めず、担当者の印象で判断する"
+        },
+        {
+          "letter": "D",
+          "ja": "モデルのパラメータ数を、指標にする"
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "評価指標は、精度、レイテンシ、コスト、安全性、セキュリティなど複数の観点で定義し、バランスを見る。"
+    },
+    {
+      "id": 42,
+      "domainLabel": "04: Evaluation, Testing & Optimization",
+      "domainLink": "../topics/04-evaluation-testing-optimization/notes.html",
+      "stemJa": "あなたは、アーキテクトです。本番で、出力の品質が徐々に落ちている可能性があります。早期に検知する方法として最も適切なのはどれですか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "ロギングとオブザーバビリティのツールで、本番のパフォーマンス指標を継続的に監視し、しきい値でアラートを出す"
+        },
+        {
+          "letter": "B",
+          "ja": "モデルを、毎週入れ替える"
+        },
+        {
+          "letter": "C",
+          "ja": "四半期に1回、手作業でサンプルを確認する"
+        },
+        {
+          "letter": "D",
+          "ja": "利用者が減るのを、待つ"
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "継続的な監視とアラートで、品質やコストの劣化を早期に検知できる。"
+    },
+    {
+      "id": 43,
+      "domainLabel": "05: Governance, Safety & Risk Management",
+      "domainLink": "../topics/05-governance-safety-risk/notes.html",
+      "stemJa": "あなたは、医療機関向けのアーキテクトです。患者情報を含むデータをClaudeで処理する設計を進めています。コンプライアンスの観点で、最初に行うべきことはどれですか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "規制は気にせず、まず動くものを作る"
+        },
+        {
+          "letter": "B",
+          "ja": "患者情報を、すべて外部のチャットに貼り付ける"
+        },
+        {
+          "letter": "C",
+          "ja": "監査ログは、取らないことにする"
+        },
+        {
+          "letter": "D",
+          "ja": "HIPAAなどの適用される規制の要件を確認し、データの所在、保持、アクセス制御、監査ログの設計に反映する"
+        }
+      ],
+      "correct": [
+        "D"
+      ],
+      "explanation": "対象の規制の要件を、データの所在、保持期間、アクセス制御、監査ログの設計に反映する。後から付け足すと、手戻りが大きい。"
+    },
+    {
+      "id": 44,
+      "domainLabel": "05: Governance, Safety & Risk Management",
+      "domainLink": "../topics/05-governance-safety-risk/notes.html",
+      "stemJa": "あなたは、アーキテクトです。顧客サポートのAIが、返金や契約変更に関わる回答を行います。リスクに応じた人の確認(ヒューマン・イン・ザ・ループ)の設計として、最も適切なのはどれですか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "金銭や契約に影響する不可逆な操作と、確信度の低いケースに人の承認を入れ、低リスクな問い合わせは自律で処理する"
+        },
+        {
+          "letter": "B",
+          "ja": "すべての回答に、人の承認を必須にする"
+        },
+        {
+          "letter": "C",
+          "ja": "人の確認は一切入れず、事後の苦情で対応する"
+        },
+        {
+          "letter": "D",
+          "ja": "人の確認は、ランダムに行う"
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "リスクに応じて人の確認を配分する。全件の承認は形骸化・遅延を招き、確認なしはリスクが大きい。"
+    },
+    {
+      "id": 45,
+      "domainLabel": "05: Governance, Safety & Risk Management",
+      "domainLink": "../topics/05-governance-safety-risk/notes.html",
+      "stemJa": "あなたは、アーキテクトです。採用の一次選考にAIを使う提案があります。倫理的な観点から、最も適切な設計はどれですか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "AIの判断を客観的とみなして、最終判断まで自動化する"
+        },
+        {
+          "letter": "B",
+          "ja": "応募者に、AIを使っていることを隠す"
+        },
+        {
+          "letter": "C",
+          "ja": "バイアスと公平性を、属性別の結果の比較で検証し、判断の根拠を説明できるようにし、最終判断は人が行う"
+        },
+        {
+          "letter": "D",
+          "ja": "検証は行わず、運用を始める"
+        }
+      ],
+      "correct": [
+        "C"
+      ],
+      "explanation": "バイアスの検証、判断の透明性・説明可能性、人による最終判断が、倫理的な設計の基本。"
+    },
+    {
+      "id": 46,
+      "domainLabel": "05: Governance, Safety & Risk Management",
+      "domainLink": "../topics/05-governance-safety-risk/notes.html",
+      "stemJa": "あなたは、アーキテクトです。LLMシステムに、悪意のあるユーザーが、システムの指示を上書きしようとする入力を送ってくるリスクがあります。最も適切な対策はどれですか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "システムプロンプトに「指示を無視しないこと」と1行書く"
+        },
+        {
+          "letter": "B",
+          "ja": "ユーザー入力を、そのままシステムプロンプトに連結する"
+        },
+        {
+          "letter": "C",
+          "ja": "入力の検査、出力の検査、権限の制限、重要な操作の承認といった、多層のガードレールを組み合わせる"
+        },
+        {
+          "letter": "D",
+          "ja": "ガードレールは、モデルの能力に任せる"
+        }
+      ],
+      "correct": [
+        "C"
+      ],
+      "explanation": "プロンプトインジェクションは、単一の対策では防ぎきれない。入力・出力の検査、最小権限、承認などを多層に重ねる。"
+    },
+    {
+      "id": 47,
+      "domainLabel": "05: Governance, Safety & Risk Management",
+      "domainLink": "../topics/05-governance-safety-risk/notes.html",
+      "stemJa": "あなたは、アーキテクトです。LLMシステムの、監査や事後検証ができる状態にしたいです。最も適切な設計はどれですか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "誰が・いつ・どの入力で・どのツールを・どの引数で実行したかを、改ざんしにくい形で記録する"
+        },
+        {
+          "letter": "B",
+          "ja": "ログは、障害のときだけ有効にする"
+        },
+        {
+          "letter": "C",
+          "ja": "最終的な出力だけを、保存する"
+        },
+        {
+          "letter": "D",
+          "ja": "個人の判断で、必要なときにメモを残す"
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "監査証跡は、操作の主体、時刻、入力、ツール、引数まで記録し、後から検証できるようにする。"
+    },
+    {
+      "id": 48,
+      "domainLabel": "05: Governance, Safety & Risk Management",
+      "domainLink": "../topics/05-governance-safety-risk/notes.html",
+      "stemJa": "あなたは、アーキテクトです。LLMの限界やリスクを、利害関係者に説明します。ハルシネーションについて、最も適切な説明と対策の組み合わせはどれですか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "誤りを完全にはなくせないため、根拠の提示、検証ステップ、重要な場面での人の確認を組み合わせる"
+        },
+        {
+          "letter": "B",
+          "ja": "ハルシネーションは、利用者の責任である"
+        },
+        {
+          "letter": "C",
+          "ja": "ハルシネーションは、プロンプトを丁寧にすれば完全になくなる"
+        },
+        {
+          "letter": "D",
+          "ja": "最新のモデルならハルシネーションは起きないので、対策は不要"
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "ハルシネーションは完全には防げない。根拠の提示や検証、人の確認で、影響を抑える。"
+    },
+    {
+      "id": 49,
+      "domainLabel": "06: Stakeholder Communication & Lifecycle Management",
+      "domainLink": "../topics/06-stakeholder-communication-lifecycle/notes.html",
+      "stemJa": "あなたは、アーキテクトです。経営層、セキュリティ、現場の担当者それぞれが、Claude導入に異なる期待と懸念を持っています。ディスカバリーの進め方として最も適切なのはどれですか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "要件は、導入後に考える"
+        },
+        {
+          "letter": "B",
+          "ja": "最も声の大きい関係者の要望だけを聞く"
+        },
+        {
+          "letter": "C",
+          "ja": "要件は聞かずに、技術的に面白い構成で作る"
+        },
+        {
+          "letter": "D",
+          "ja": "関係者ごとに目的、制約、成功の基準を聞き取り、要件を文書化して合意する"
+        }
+      ],
+      "correct": [
+        "D"
+      ],
+      "explanation": "体系的なディスカバリーでは、関係者ごとに目的と制約、成功基準を聞き取り、文書化して合意する。"
+    },
+    {
+      "id": 50,
+      "domainLabel": "06: Stakeholder Communication & Lifecycle Management",
+      "domainLink": "../topics/06-stakeholder-communication-lifecycle/notes.html",
+      "stemJa": "あなたは、アーキテクトです。2つの設計案(A: 高精度だが高コスト、B: 低コストだがやや低精度)の、どちらかを経営層に提案します。説明の仕方として最も適切なのはどれですか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "推奨案だけを示し、もう一方には触れない"
+        },
+        {
+          "letter": "B",
+          "ja": "技術の詳細を、専門用語で長く説明する"
+        },
+        {
+          "letter": "C",
+          "ja": "判断を、すべて経営層に任せる"
+        },
+        {
+          "letter": "D",
+          "ja": "各案の利点、欠点、コスト、リスクを示し、推奨案とその理由を、相手の関心に合わせて説明する"
+        }
+      ],
+      "correct": [
+        "D"
+      ],
+      "explanation": "トレードオフは、選択肢の利点・欠点・コスト・リスクと、推奨案の理由を、相手の関心に合わせて伝える。"
+    },
+    {
+      "id": 51,
+      "domainLabel": "06: Stakeholder Communication & Lifecycle Management",
+      "domainLink": "../topics/06-stakeholder-communication-lifecycle/notes.html",
+      "stemJa": "あなたは、アーキテクトです。顧客から「AIの回答は常に100%正確にしてほしい」と要望されました。期待値の調整として、最も適切な対応はどれですか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "要望を無視して、実装を進める"
+        },
+        {
+          "letter": "B",
+          "ja": "要望どおり、100%を約束する"
+        },
+        {
+          "letter": "C",
+          "ja": "導入を、一方的に断る"
+        },
+        {
+          "letter": "D",
+          "ja": "精度は100%にならないことを説明し、SLAや許容できる誤りの水準、検証・エスカレーションの仕組みを合意する"
+        }
+      ],
+      "correct": [
+        "D"
+      ],
+      "explanation": "LLMの限界を率直に伝え、SLAや誤りの許容水準、検証の仕組みを合意するのが、期待値の調整になる。"
+    },
+    {
+      "id": 52,
+      "domainLabel": "06: Stakeholder Communication & Lifecycle Management",
+      "domainLink": "../topics/06-stakeholder-communication-lifecycle/notes.html",
+      "stemJa": "あなたは、アーキテクトです。設計が完了し、運用チームに引き継ぎます。引き継ぎの際に最も重要なのはどれですか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "口頭での簡単な説明だけで、引き継ぐ"
+        },
+        {
+          "letter": "B",
+          "ja": "コードだけを渡す"
+        },
+        {
+          "letter": "C",
+          "ja": "設計の意図、前提、制約、運用手順、監視項目を文書化し、運用担当が自走できる状態にする"
+        },
+        {
+          "letter": "D",
+          "ja": "引き継ぎは、問題が起きてから行う"
+        }
+      ],
+      "correct": [
+        "C"
+      ],
+      "explanation": "引き継ぎでは、設計の意図、前提、制約、運用手順を文書にし、運用担当が自走できるようにする。"
+    },
+    {
+      "id": 53,
+      "domainLabel": "06: Stakeholder Communication & Lifecycle Management",
+      "domainLink": "../topics/06-stakeholder-communication-lifecycle/notes.html",
+      "stemJa": "あなたは、アーキテクトです。Claudeを使ったシステムを導入して半年が経ちました。ライフサイクルの観点で、次に行うべきことはどれですか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "システムを、毎年ゼロから作り直す"
+        },
+        {
+          "letter": "B",
+          "ja": "モニタリングの結果と利用者のフィードバックをもとに、改善点を洗い出して反復する"
+        },
+        {
+          "letter": "C",
+          "ja": "完成したので、以降は何も見直さない"
+        },
+        {
+          "letter": "D",
+          "ja": "フィードバックは、受け付けない"
+        }
+      ],
+      "correct": [
+        "B"
+      ],
+      "explanation": "ライフサイクルは、ディスカバリー → 設計 → 引き継ぎ → モニタリング → 反復。運用後も、データとフィードバックをもとに改善を続ける。"
+    },
+    {
+      "id": 54,
+      "domainLabel": "06: Stakeholder Communication & Lifecycle Management",
+      "domainLink": "../topics/06-stakeholder-communication-lifecycle/notes.html",
+      "stemJa": "あなたは、アーキテクトです。開発チームに、設計したアーキテクチャを実装してもらう必要があります。最も適切なガイダンスはどれですか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "口頭で簡単に説明するだけ"
+        },
+        {
+          "letter": "B",
+          "ja": "実装は、各自の自由に任せる"
+        },
+        {
+          "letter": "C",
+          "ja": "設計図は渡さず、完成品だけを要求する"
+        },
+        {
+          "letter": "D",
+          "ja": "図と文章で、構成、責務の分担、制約、判断の理由を文書にして、実装の基準を示す"
+        }
+      ],
+      "correct": [
+        "D"
+      ],
+      "explanation": "アーキテクチャを文書化して、構成と責務、制約、判断の理由を示すと、実装が設計に沿いやすい。"
+    },
+    {
+      "id": 55,
+      "domainLabel": "07: Developer Productivity & Operational Enablement",
+      "domainLink": "../topics/07-developer-productivity-operational-enablement/notes.html",
+      "stemJa": "あなたは、アーキテクトです。開発チーム全員がClaude Codeを使えるように、環境を整えます。設定の共有方法として最も適切なのはどれですか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "設定は、メールで配布する"
+        },
+        {
+          "letter": "B",
+          "ja": "設定はせず、各自の判断に任せる"
+        },
+        {
+          "letter": "C",
+          "ja": "CLAUDE.md、権限設定、フック、MCPの設定をリポジトリで共有し、チーム標準にする"
+        },
+        {
+          "letter": "D",
+          "ja": "各開発者が、個別に好きな設定を行う"
+        }
+      ],
+      "correct": [
+        "C"
+      ],
+      "explanation": "チーム共通の設定は、リポジトリで共有して標準化する。"
+    },
+    {
+      "id": 56,
+      "domainLabel": "07: Developer Productivity & Operational Enablement",
+      "domainLink": "../topics/07-developer-productivity-operational-enablement/notes.html",
+      "stemJa": "あなたは、アーキテクトです。開発者の生産性向上のため、Claudeを導入する順序を決めます。最も適切な進め方はどれですか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "全社員に、一斉に導入する"
+        },
+        {
+          "letter": "B",
+          "ja": "効果は測らずに、導入だけを進める"
+        },
+        {
+          "letter": "C",
+          "ja": "最もリスクの高い作業から先に導入する"
+        },
+        {
+          "letter": "D",
+          "ja": "効果が大きく、リスクの低い作業(コードレビュー、テスト生成など)から導入し、効果を測りながら広げる"
+        }
+      ],
+      "correct": [
+        "D"
+      ],
+      "explanation": "効果が大きくリスクが低い作業から段階的に導入し、効果を測りながら広げる。"
+    },
+    {
+      "id": 57,
+      "domainLabel": "07: Developer Productivity & Operational Enablement",
+      "domainLink": "../topics/07-developer-productivity-operational-enablement/notes.html",
+      "stemJa": "あなたは、アーキテクトです。本番障害の調査で、Claudeに原因の切り分けを手伝わせます。精度を上げるために、最も有効な入力はどれですか?",
+      "options": [
+        {
+          "letter": "A",
+          "ja": "エラーログ、再現手順、期待する挙動、関連するコードを、具体的に与える"
+        },
+        {
+          "letter": "B",
+          "ja": "「動かない」とだけ伝える"
+        },
+        {
+          "letter": "C",
+          "ja": "すべてのリポジトリを、無差別に渡す"
+        },
+        {
+          "letter": "D",
+          "ja": "ログは伏せて、推測だけを伝える"
+        }
+      ],
+      "correct": [
+        "A"
+      ],
+      "explanation": "ログ、再現手順、期待する挙動、関連するコードなど、具体的な情報を与えるほど、原因の切り分けの精度が上がる。"
     }
   ]
 };
