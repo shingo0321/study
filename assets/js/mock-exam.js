@@ -410,7 +410,7 @@
     questions.forEach(function (q) {
       var card = root.querySelector('.me-question[data-qid="' + q.id + '"]');
       lockQuestion(q, card); // 未確定の問題は、その時点の選択で確定する
-      if (!domainStats[q.domainLabel]) domainStats[q.domainLabel] = { correct: 0, total: 0 };
+      if (!domainStats[q.domainLabel]) domainStats[q.domainLabel] = { correct: 0, total: 0, link: q.domainLink };
       domainStats[q.domainLabel].total++;
       if (q.isCorrect) {
         domainStats[q.domainLabel].correct++;
@@ -435,6 +435,7 @@
         return (
           "<tr><td>" + escapeHtml(label) + "</td><td>" + s.correct + " / " + s.total + "</td><td>" + pctText + "</td>"
           + (data.domainWeights ? "<td>" + (w != null ? w + "%" : "-") + "</td>" : "")
+          + '<td><a href="' + escapeHtml(s.link) + '" target="_blank" rel="noopener">学習ノートを開く</a></td>'
           + "</tr>"
         );
       })
@@ -450,7 +451,7 @@
 
     var table = document.createElement("table");
     table.className = "me-domain-table";
-    table.innerHTML = "<thead><tr><th>出題分野</th><th>正答数</th><th>正答率</th>" + (data.domainWeights ? "<th>公式の配点比率</th>" : "") + "</tr></thead><tbody>" + domainRows + "</tbody>";
+    table.innerHTML = "<thead><tr><th>出題分野</th><th>正答数</th><th>正答率</th>" + (data.domainWeights ? "<th>公式の配点比率</th>" : "") + "<th>学習コンテンツ</th></tr></thead><tbody>" + domainRows + "</tbody>";
     panel.insertAdjacentElement("afterend", table);
 
     panel.querySelector("#me-retry-btn").addEventListener("click", function () {
