@@ -80,6 +80,8 @@
     + "#mock-exam-app .me-option-ja { display: block; }\n"
     + "#mock-exam-app .me-option.me-correct { border-color: #1a7f37; background: #dafbe1; }\n"
     + "#mock-exam-app .me-option.me-incorrect { border-color: #cf222e; background: #ffebe9; }\n"
+    + "#mock-exam-app .me-submit-wrap { margin-top: 0.6rem; }\n"
+    + "#mock-exam-app .me-btn:disabled { background: #8c959f; cursor: not-allowed; }\n"
     + "#mock-exam-app .me-feedback { margin-top: 0.8rem; padding-top: 0.7rem; border-top: 1px dashed #d0d7de; }\n"
     + "#mock-exam-app .me-feedback-badge { display: inline-block; font-size: 0.8rem; font-weight: 700; padding: 0.1rem 0.6rem; border-radius: 999px; margin-bottom: 0.4rem; }\n"
     + "#mock-exam-app .me-badge-correct { background: #dafbe1; color: #116329; }\n"
@@ -215,7 +217,7 @@
         : "";
     root.innerHTML =
       '<div class="me-intro">'
-      + "<p>" + escapeHtml(data.examTitle) + " の模擬試験です。公式の試験ガイドの出題形式(問題数・配点比率・制限時間)に合わせて出題し、最後にまとめて自動採点します。</p>"
+      + "<p>" + escapeHtml(data.examTitle) + " の模擬試験です。公式の試験ガイドの出題形式(問題数・配点比率・制限時間)に合わせて出題し、問題ごとに、解答を確定した時点で正答と解説を表示します。</p>"
       + "<dl>"
       + officialText
       + "<dt>今回の問題数</dt><dd>" + countText + "</dd>"
@@ -223,7 +225,7 @@
       + "<dt>合格ライン</dt><dd>スケールスコア " + data.passScore + " / " + data.scoreMax + "</dd>"
       + "</dl>"
       + shortNote
-      + '<p class="me-note">出題順・選択肢の順序は開始のたびにランダムに入れ替わります。複数選択の問題は、選ぶ数が明記されます。制限時間になると自動的に採点されます。スケールスコアは正答率を100〜1000の範囲に単純換算した自己学習用の目安であり、実際の採点方式(非公開)を再現するものではありません。</p>'
+      + '<p class="me-note">出題順・選択肢の順序は開始のたびにランダムに入れ替わります。1つ選ぶ問題は、選んだ時点で確定します。複数選択の問題は、指定数を選んで「解答する」を押すと確定します。確定後は選び直せず、正誤は変わりません(選び直しによる加点はありません)。制限時間になると、未確定の問題はその時点の選択で確定し、結果を表示します。スケールスコアは正答率を100〜1000の範囲に単純換算した自己学習用の目安であり、実際の採点方式(非公開)を再現するものではありません。</p>'
       + '<button type="button" class="me-btn" id="me-start-btn">模擬試験を開始する</button>'
       + "</div>";
     root.querySelector("#me-start-btn").addEventListener("click", onStart);
@@ -239,9 +241,9 @@
     var panelHtml =
       '<div class="me-panel" id="me-panel">'
       + '<div class="me-panel-item">残り時間: <strong class="me-timer" id="me-timer">' + formatClock(timeLimitFor(data, questions.length) * 60) + "</strong></div>"
-      + '<div class="me-panel-item" id="me-progress">回答済み: <strong>0</strong> / ' + questions.length + "</div>"
+      + '<div class="me-panel-item" id="me-progress">解答済み: <strong>0</strong> / ' + questions.length + "</div>"
       + '<div class="me-panel-spacer"></div>'
-      + '<button type="button" class="me-btn" id="me-grade-btn">採点する</button>'
+      + '<button type="button" class="me-btn" id="me-grade-btn">試験を終了して結果を見る</button>'
       + "</div>";
 
     var lastScenario = null;
@@ -289,6 +291,9 @@
           + '<p class="me-stem-ja">' + formatText(q.stemJa) + "</p>"
           + "</div>"
           + '<div class="me-options">' + optionsHtml + "</div>"
+          + (q.correct.length > 1
+            ? '<div class="me-submit-wrap"><button type="button" class="me-btn me-submit-q" disabled>解答する(' + q.correct.length + "つ選択)</button></div>"
+            : "")
           + '<div class="me-feedback" hidden></div>'
           + "</div>"
         );
@@ -298,12 +303,42 @@
     root.innerHTML = panelHtml + '<div id="me-questions">' + questionsHtml + "</div>";
 
     var progressStrong = root.querySelector("#me-progress strong");
-    root.querySelector("#me-questions").addEventListener("change", function () {
-      var answered = 0;
-      questions.forEach(function (q) {
-        if (root.querySelector('input[name="q-' + q.id + '"]:checked')) answered++;
-      });
-      progressStrong.textContent = String(answered);
+    function updateProgress() {
+      progressStrong.textContent = String(
+        questions.filter(function (q) {
+          return q.locked;
+        }).length
+      );
+    }
+    function findQuestion(el) {
+      var card = el.closest(".me-question");
+      if (!card) return null;
+      var qid = card.getAttribute("data-qid");
+      var q = questions.filter(function (x) {
+        return String(x.id) === qid;
+      })[0];
+      return q ? { q: q, card: card } : null;
+    }
+    var area = root.querySelector("#me-questions");
+    // 1つ選ぶ問題は選んだ時点で確定し、正答と解説を表示する。確定後は選び直せない(再選択による加点はない)。
+    // 複数選択の問題は、指定数を選んだ上で「解答する」で確定する。
+    area.addEventListener("change", function (e) {
+      var f = findQuestion(e.target);
+      if (!f || f.q.locked) return;
+      if (f.q.correct.length === 1) {
+        lockQuestion(f.q, f.card);
+        updateProgress();
+      } else {
+        var n = f.card.querySelectorAll("input:checked").length;
+        f.card.querySelector(".me-submit-q").disabled = n !== f.q.correct.length;
+      }
+    });
+    area.addEventListener("click", function (e) {
+      if (!e.target.classList || !e.target.classList.contains("me-submit-q")) return;
+      var f = findQuestion(e.target);
+      if (!f || f.q.locked) return;
+      lockQuestion(f.q, f.card);
+      updateProgress();
     });
 
     root.querySelector("#me-grade-btn").addEventListener("click", function () {
@@ -329,48 +364,58 @@
     };
   }
 
+  // 問題を確定し、正答と解説を表示する。一度確定した問題の結果は変わらない。
+  function lockQuestion(q, card) {
+    if (q.locked) return;
+    q.locked = true;
+    var checked = Array.prototype.slice
+      .call(card.querySelectorAll("input:checked"))
+      .map(function (i) {
+        return i.value;
+      });
+    var correctSet = q.correct;
+    q.answered = checked.length > 0;
+    q.isCorrect =
+      checked.length === correctSet.length && checked.every(function (v) {
+        return correctSet.indexOf(v) !== -1;
+      });
+
+    Array.prototype.forEach.call(card.querySelectorAll(".me-option"), function (label) {
+      var input = label.querySelector("input");
+      input.disabled = true;
+      label.style.cursor = "default";
+      var letter = label.getAttribute("data-letter");
+      if (correctSet.indexOf(letter) !== -1) {
+        label.classList.add("me-correct");
+      } else if (input.checked) {
+        label.classList.add("me-incorrect");
+      }
+    });
+    var submit = card.querySelector(".me-submit-q");
+    if (submit) submit.hidden = true;
+
+    var fb = card.querySelector(".me-feedback");
+    fb.hidden = false;
+    var badgeClass = !q.answered ? "me-badge-unanswered" : q.isCorrect ? "me-badge-correct" : "me-badge-incorrect";
+    var badgeText = !q.answered ? "未解答" : q.isCorrect ? "正解" : "不正解";
+    fb.innerHTML =
+      '<span class="me-feedback-badge ' + badgeClass + '">' + badgeText + "</span>"
+      + '<p class="me-explanation"><strong>解説: </strong>' + formatText(q.explanation) + "</p>";
+  }
+
   function gradeExam(root, data, questions) {
     var correctCount = 0;
     var domainStats = {};
 
     questions.forEach(function (q) {
       var card = root.querySelector('.me-question[data-qid="' + q.id + '"]');
-      var checked = Array.prototype.slice
-        .call(card.querySelectorAll("input:checked"))
-        .map(function (i) {
-          return i.value;
-        });
-      var correctSet = q.correct;
-      var isCorrect =
-        checked.length === correctSet.length && checked.every(function (v) {
-          return correctSet.indexOf(v) !== -1;
-        });
-
+      lockQuestion(q, card); // 未確定の問題は、その時点の選択で確定する
       if (!domainStats[q.domainLabel]) domainStats[q.domainLabel] = { correct: 0, total: 0 };
       domainStats[q.domainLabel].total++;
-      if (isCorrect) {
+      if (q.isCorrect) {
         domainStats[q.domainLabel].correct++;
         correctCount++;
       }
-
-      Array.prototype.forEach.call(card.querySelectorAll(".me-option"), function (label) {
-        var input = label.querySelector("input");
-        input.disabled = true;
-        var letter = label.getAttribute("data-letter");
-        if (correctSet.indexOf(letter) !== -1) {
-          label.classList.add("me-correct");
-        } else if (input.checked) {
-          label.classList.add("me-incorrect");
-        }
-      });
-
-      var fb = card.querySelector(".me-feedback");
-      fb.hidden = false;
-      var badgeClass = checked.length === 0 ? "me-badge-unanswered" : isCorrect ? "me-badge-correct" : "me-badge-incorrect";
-      var badgeText = checked.length === 0 ? "未回答" : isCorrect ? "正解" : "不正解";
-      fb.innerHTML =
-        '<span class="me-feedback-badge ' + badgeClass + '">' + badgeText + "</span>"
-        + '<p class="me-explanation"><strong>解説: </strong>' + formatText(q.explanation) + "</p>";
     });
 
     return { correctCount: correctCount, total: questions.length, domainStats: domainStats };
