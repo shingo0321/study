@@ -18,8 +18,15 @@ Anthropic公式「Claude Certification Program」の学習用フォルダ。全4
 | --- | --- | --- | --- | --- |
 | [`associate-foundations/`](associate-foundations/) | Claude Certified Associate – Foundations (CCAO-F) | $99 | 60問 | 7 |
 | [`developer-foundations/`](developer-foundations/) | Claude Certified Developer – Foundations (CCDV-F) | $125 | 53問 | 8 |
-| [`architect-foundations/`](architect-foundations/) | Claude Certified Architect – Foundations (CCAR-F) | $125 | 60問(シナリオ形式) | 5 |
+| [`architect-foundations/`](architect-foundations/) | Claude Certified Architect – Foundations (CCAR-F) | $125 | 60問(4シナリオ) | 5 |
 | [`architect-professional/`](architect-professional/) | Claude Certified Architect – Professional (CCAR-P) | $175 | 63問 | 7 |
+
+## 出題形式
+
+公式の試験ガイドによる。
+
+- 4試験とも、問題の形式は**選択式(multiple-choice)**と**複数選択(multiple-response)**。各問題は、いくつ選ぶかを問題文に明記する。
+- **Architect – Foundations**はシナリオベースの出題で、各シナリオが現実の本番環境の状況を示し、それに関連する一連の問題が続く。公式の6シナリオ(カスタマーサポート、Claude Codeでのコード生成、マルチエージェント調査、開発者生産性、CIでのClaude Code、構造化データ抽出)から、本番ではランダムに4つが出題される。
 
 ## 受験の流れ・ルール
 
