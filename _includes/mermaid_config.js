@@ -1,0 +1,4 @@
+{
+  theme: "default",
+  flowchart: { htmlLabels: true, useMaxWidth: true }
+}

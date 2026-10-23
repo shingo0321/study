@@ -10,5 +10,7 @@
 
 ## 補足事項
 
+- `claude/overview.md` — 4試験の知識をテーマ別に整理した俯瞰図ページ(Mermaid図 + 試験×テーマの対応表)。Mermaidは`_config.yml`の`mermaid`設定と`_includes/mermaid_config.js`で有効化している。試験のドメインやノートを追加・改名したら、このページの対応表のリンクも更新する。
+
 - これは親ワークスペース`c:\Users\snows\Claude\`(それ自体はgitリポジトリではない)とは別のgitリポジトリである。
 - 内容は日本語で書かれている。

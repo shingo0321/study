@@ -19,3 +19,6 @@ aux_links:
 
 exclude:
   - CLAUDE.md
+
+mermaid:
+  version: "10.9.1"

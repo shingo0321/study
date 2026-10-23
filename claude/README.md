@@ -58,6 +58,10 @@ Pearson VUEの公式ページ(最終更新日: 2026-10-02)とAnthropic Partner A
 - `practice-questions/` — 練習問題・模擬問題(独自作成、実際の試験問題ではない)
 - `mock-exam/` — `practice-questions/`と同じ問題セットを使った採点機能付きの模擬試験(ブラウザ上で解答し、自動採点・ドメイン別の正答数を表示)
 
+## 全体像
+
+- [知識の俯瞰図]({{ site.baseurl }}/claude/overview/) — 4試験の知識をテーマ別に整理し、試験×テーマの対応を一覧できるページ
+
 ## 参考リンク
 
 - [Pearson VUE: Claude Certification Program](https://www.pearsonvue.com/us/en/anthropic.html)
