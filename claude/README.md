@@ -61,6 +61,7 @@ Pearson VUEの公式ページ(最終更新日: 2026-10-02)とAnthropic Partner A
 ## 全体像
 
 - [知識の俯瞰図]({{ site.baseurl }}/claude/overview/) — 4試験の知識をテーマ別に整理し、試験×テーマの対応を一覧できるページ
+- 試験別の「覚える内容の俯瞰図」 — 各ドメインで覚える具体的な内容(正答の型・誤答になりやすい例)を図と表で整理したページ: [Associate]({{ site.baseurl }}/claude/associate-foundations/overview/)・[Developer]({{ site.baseurl }}/claude/developer-foundations/overview/)・[Architect Foundations]({{ site.baseurl }}/claude/architect-foundations/overview/)・[Architect Professional]({{ site.baseurl }}/claude/architect-professional/overview/)
 
 ## 参考リンク
 
