@@ -123,3 +123,12 @@
     });
   })();
 </script>
+<style>
+  /* 横長の図が縮小されて読めなくならないよう、原寸表示にして横スクロールさせる */
+  .language-mermaid, pre:has(> code.language-mermaid), .mermaid {
+    overflow-x: auto;
+  }
+  .mermaid svg {
+    max-width: none !important;
+  }
+</style>

@@ -1,4 +1,5 @@
 {
   theme: "default",
-  flowchart: { htmlLabels: true, useMaxWidth: true }
+  themeVariables: { fontSize: "16px" },
+  flowchart: { htmlLabels: true, useMaxWidth: false }
 }

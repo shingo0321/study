@@ -115,7 +115,7 @@ flowchart LR
 ## 03. Claude Code の設定とワークフロー(20%)
 
 ```mermaid
-flowchart TD
+flowchart LR
   CM["CLAUDE.md の3階層"] --> U["ユーザー ~/.claude/: 本人だけに適用"]
   CM --> P["プロジェクト: リポジトリにコミットしてチーム共有"]
   CM --> DIR["ディレクトリ: サブディレクトリ内"]
@@ -196,7 +196,7 @@ flowchart LR
 ## 05. コンテキスト管理と信頼性(15%)
 
 ```mermaid
-flowchart TD
+flowchart LR
   K["長い対話の情報保持"] --> K1["取引上の事実を ケース事実 ブロックで別に保持"]
   K --> K2["ツール出力は関連項目に絞ってから蓄積"]
   K --> K3["冒頭に要約・見出しで整理 (lost in the middle 対策)"]

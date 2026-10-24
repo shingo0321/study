@@ -41,7 +41,7 @@ flowchart LR
 ## 03. 統合(19%、最大配点)
 
 ```mermaid
-flowchart TD
+flowchart LR
   API["API/SDK統合"] --> A1["直呼び出し / Agent SDK・Tool Runner"]
   API --> A2["ストリーミング=体感速度 / バッチ=非リアルタイム大量処理"]
   API --> A3["長時間は非同期: ジョブキュー + Webhook/ポーリング"]
@@ -75,7 +75,7 @@ flowchart TD
 ## 01. ソリューション設計とアーキテクチャ(17%)
 
 ```mermaid
-flowchart TD
+flowchart LR
   S["パターン選定の4軸: 曖昧さ・自律性・監査要件・レイテンシ/コスト"] --> P1["単純な1回呼び出し: 分類・要約・抽出"]
   S --> P2["ワークフロー: 監査性・再現性が重要な業務"]
   S --> P3["エージェント: 曖昧で多段階。上限と暴走対策が必須"]
@@ -110,7 +110,7 @@ flowchart TD
 ## 04. 評価・テスト・最適化(16%)
 
 ```mermaid
-flowchart LR
+flowchart TD
   E["評価データセット: 本番サンプル・既知の失敗・境界/敵対事例"] --> G["採点: コード / 人手 / LLM-as-judge"]
   G --> AB["オフライン評価 + オンラインA/B(段階的ロールアウト)"]
   AB --> RG["回帰テスト: CIの品質ゲート"]
@@ -141,7 +141,7 @@ flowchart LR
 ## 05. ガバナンス・安全・リスク管理(14%)
 
 ```mermaid
-flowchart TD
+flowchart LR
   G["責任あるAI"] --> G1["利用方針 + リスク階層化"]
   G1 --> G2["人の関与: in / on / out of the loop"]
   D["データ"] --> D1["PII保護・データレジデンシー・データ最小化"]
@@ -173,7 +173,7 @@ flowchart TD
 ## 06. ステークホルダー対応とライフサイクル(14%)
 
 ```mermaid
-flowchart LR
+flowchart TD
   DS["ディスカバリー: 関係者ごとに目的・制約・成功基準"] --> EX["経営層への説明: 価値・リスク・ROIの言葉で"]
   EX --> CM["変更管理: 早期の巻き込み + チェンジチャンピオン"]
   CM --> RO["ロールアウト: パイロット → 部門 → 全社"]
