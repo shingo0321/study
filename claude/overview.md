@@ -105,6 +105,8 @@ flowchart LR
 
 各セルのリンクは、そのテーマを扱うノートです(「—」は専用のドメインなし)。
 
+> 割り当ての基準は、各ドメインの主題に最も近いテーマです。専用のドメインがない場合は、ノートの中で扱っている内容で補っています(例: Arch-F 04 は、プロンプトのバージョン管理・テストを扱うため「評価・テスト・デバッグ」に含めています。Arch-F のフックによるガバナンスは、Arch-F 03 のノート内で扱うため「Claude Code」の行に入っています)。
+
 | テーマ | Associate | Developer | Architect Foundations | Architect Professional |
 |---|---|---|---|---|
 | **プロンプト/コンテキスト設計** | [Assoc 01]({{ site.baseurl }}/claude/associate-foundations/topics/01-prompting-task-execution/notes.html) | [Dev 06]({{ site.baseurl }}/claude/developer-foundations/topics/06-prompt-context-engineering/notes.html) | [Arch-F 04]({{ site.baseurl }}/claude/architect-foundations/topics/04-prompt-engineering/notes.html)<br>[Arch-F 05]({{ site.baseurl }}/claude/architect-foundations/topics/05-context-management/notes.html) | [Arch-P 02]({{ site.baseurl }}/claude/architect-professional/topics/02-models-prompting-context-engineering/notes.html) |
@@ -119,6 +121,8 @@ flowchart LR
 ## 4. 試験別のドメインと配点
 
 ### Associate – Foundations
+
+> Assoc 07 のフォルダ名は `07-troubleshooting-escalation` ですが、公式のドメイン名は「Troubleshooting and Optimization」です(リンク切れを避けるためフォルダ名は変えていません)。
 
 | ドメイン | 名称 | 配点 |
 |---|---|---|
